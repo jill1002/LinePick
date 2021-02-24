@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
-//import Test from './src/Test';
+
 
 
 
@@ -14,21 +14,20 @@ function App() {
     <NavigationContainer>
       
         
-        <Drawer.Navigator initialRouteName="賣場設定">
+        <Drawer.Navigator initialRouteName="賣場設定2">
           <>
             {/* <View style={{ flexDirection: 'column', padding: 3 }}>
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
             </View>
             <Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>
   <Drawer.Screen*/}
-            <Drawer.Screen
+            {/*<Drawer.Screen
               name="賣場設定"
               component={SellerSet}
               options={{ headerShown: "設定賣場" }}
-            />
-
-            
-          {/*  <Drawer.Screen
+            />*/}
+            {/*
+            <Drawer.Screen
               name="新增活動"
               component={AddActivity}
               options={{ headerShown: "新增活動" }}
@@ -90,12 +89,13 @@ function App() {
             />
             */}
           </>
-          
+
         </Drawer.Navigator>
       
     </NavigationContainer>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
