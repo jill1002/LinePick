@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions } from 'react-native';
-import styles from '../styles.js'
+import styles from '../styles';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -51,7 +51,7 @@ export default function SellerSet() {
                     <Text style={styles.baseText}>賣場簡介</Text>
                 </View>
                 <View style={[styles.border, { marginLeft: 20 }]}>
-                    <SafeAreaView>
+                    <SafeAreaView>{/*?為甚麼要用>>目前只有ios可使用 */}
                         <ScrollView horizontal={true} style={{ height: 60 }}>
                             <TextInput
                                 value={inputscroll}

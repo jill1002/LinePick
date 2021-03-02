@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
+import SignUp from './src/SignUp';
+import ProductLaunch from './src/ProductLaunch';
 
 
 
@@ -16,15 +18,14 @@ function App() {
         
         <Drawer.Navigator initialRouteName="賣場設定2">
           <>
-            {/* <View style={{ flexDirection: 'column', padding: 3 }}>
+           {/* <View style={{ flexDirection: 'column', padding: 3 }}>
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
-            </View>
-            <Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>
-  <Drawer.Screen*/}
+  </View>*/}
+             {/*<Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>*/}
             <Drawer.Screen
-              name="賣場設定"
-              component={SellerSet}
-              options={{ headerShown: "設定賣場" }}
+              name="上架商品"
+              component={ProductLaunch}
+              options={{ headerShown: "上架商品" }}
             />
             {/*
             <Drawer.Screen
@@ -32,6 +33,7 @@ function App() {
               component={AddActivity}
               options={{ headerShown: "新增活動" }}
             />
+            
             <Drawer.Screen
               name="我的活動"
               component={MyActivity}

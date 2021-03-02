@@ -6,7 +6,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFCEC',
     flex: 1,
     flexDirection: 'column',
-    marginTop: StatusBar.currentHeight || 10, //若無值則||or 0(置頂)
+    marginTop: StatusBar.currentHeight || 0, //若無值則||or 0(置頂)
+  },
+  block:{
+    backgroundColor: '#FFFFFF',
   },
   homecontainer: {
     backgroundColor: '#FFFCEC',
@@ -16,14 +19,14 @@ const styles = StyleSheet.create({
   },
   baseText: {
     color: '#AE8F00',
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 20,
   },
   innerText: {
-    color: "gray",
+    color: 'gray',
     fontSize: 15,
   },
-  border: {
+  borderStyle: {
     borderColor: '#AE8F00',
     borderWidth: 2,
     borderTopLeftRadius: 10,
@@ -41,9 +44,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  doublebutton:{
+    margin: 20,
+    padding: 10,
+    backgroundColor: '#AE8F00',
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   buttonText: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
   },
   uploadarea: {
@@ -53,12 +64,36 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    borderStyle: 'dashed',
-    marginHorizontal: 150,
+    marginHorizontal: 8,
+  },
+  frame:{
+    borderColor: '#AE8F00',
+    borderWidth: 2,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    marginHorizontal: 8,
+
   },
   icon: {
     color:'#2C384A',
     fontSize: 28,
-  }
+  },
+  form: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: 35,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  inputStyle: {
+    width: '100%',
+    marginBottom: 15,
+    paddingBottom: 15,
+    alignSelf: "center",
+    borderColor: "#ccc",
+    borderBottomWidth: 1
+  },
 })
 export default styles;
