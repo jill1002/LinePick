@@ -58,6 +58,15 @@ const styles = StyleSheet.create({
   icon: {
     color:'#2C384A',
     fontSize: 28,
+  },
+  textarea:{
+    //heght: DP.dp185,
+    borderColor: '#AE8F00',
+    borderWidth: 2,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   }
 })
 export default styles;
