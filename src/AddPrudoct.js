@@ -108,8 +108,10 @@ export default function AddProduct() {
                         color='#AE8F00'
                         size={20}
                         onPress={() => console.log('Pressed')}
+                        
                         />    
             </Text>
+            
             <IconButton
                         icon="delete"
                         color='#AE8F00'
@@ -151,7 +153,7 @@ export default function AddProduct() {
             />     
             </View>
             <View style={styles.container}>
-            <TouchableOpacity style={[styles.button, { width: 150 }]}>
+            <TouchableOpacity style={[styles.button, { width: 250}]}>
                 <Text style={styles.buttonText}>下一步：設定商品數量和價格</Text>
             </TouchableOpacity>
             </View>
