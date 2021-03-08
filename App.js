@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
 import SignUp from './src/SignUp';
 import ProductLaunch from './src/ProductLaunch';
+import AddProduct from './src/AddPrudoct';
 
 
 
@@ -24,14 +25,14 @@ function App() {
              {/*<Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>*/}
             <Drawer.Screen
               name="上架商品"
-              component={ProductLaunch}
+              component={AddProduct}
               options={{ headerShown: "上架商品" }}
             />
             {/*
             <Drawer.Screen
-              name="新增活動"
-              component={AddActivity}
-              options={{ headerShown: "新增活動" }}
+              name="新增商品"
+              component={AddProduct}
+              options={{ headerShown: "新增商品" }}
             />
             
             <Drawer.Screen

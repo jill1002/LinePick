@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFCEC',
     flex: 1,
-    flexDirection: 'column',
-    marginTop: StatusBar.currentHeight || 0, //若無值則||or 0(置頂)
+    flexDirection: 'row',
+    
   },
   block:{
     backgroundColor: '#FFFFFF',
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     color: '#AE8F00',
     fontWeight: 'bold',
     fontSize: 20,
+    
   },
   innerText: {
     color: 'gray',
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    margin:10,
   },
   button: {
     margin: 20,
@@ -44,18 +46,44 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  doublebutton:{
+  buttonText: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  buttonTextAE: {
+    color: '#AE8F00',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  addbutton:{ 
+    color: '#AE8F00',
+    fontSize: 15,
+    fontWeight: 'bold',
     margin: 20,
     padding: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
     backgroundColor: '#AE8F00',
     borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  buttonText: {
-    color: 'white',
+  addbuttonText:{
+    color: '#AE8F00',
     fontSize: 15,
     fontWeight: 'bold',
+    paddingLeft: 10,
+  
+  },
+  ProductUpload:{
+    borderColor: '#AE8F00',
+    borderWidth: 2,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    marginHorizontal: 8,
   },
   uploadarea: {
     borderColor: '#AE8F00',
@@ -67,12 +95,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   frame:{
-    borderColor: '#AE8F00',
+    
+    backgroundColor:'#FFFFFF',
     borderWidth: 2,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
     marginHorizontal: 8,
 
   },
@@ -88,7 +117,7 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   inputStyle: {
-    width: '100%',
+    width: 150,
     marginBottom: 15,
     paddingBottom: 15,
     alignSelf: "center",
