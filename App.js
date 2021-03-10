@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
+import AddProduct2 from './src/AddProduct2';
 //import Test from './src/Test';
 
 
@@ -12,22 +13,26 @@ const Drawer = createDrawerNavigator();
 function App() {
   return (
     <NavigationContainer>
-      
-        
-        <Drawer.Navigator initialRouteName="賣場設定">
-          <>
-            {/* <View style={{ flexDirection: 'column', padding: 3 }}>
+
+
+      <Drawer.Navigator initialRouteName="新增商品">
+        <>
+          {/* <View style={{ flexDirection: 'column', padding: 3 }}>
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
             </View>
             <Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>
   <Drawer.Screen*/}
-            <Drawer.Screen
-              name="賣場設定"
-              component={SellerSet}
-              options={{ headerShown: "設定賣場" }}
-            />
+          <Drawer.Screen
+            name="賣場設定"
+            component={SellerSet}
+            options={{ headerShown: "設定賣場" }}
+          />
+          <Drawer.Screen
+            name="新增商品"
+            component={AddProduct2}
+            options={{ headerShown: "新增商品" }}
+          />
 
-            
           {/*  <Drawer.Screen
               name="新增活動"
               component={AddActivity}
@@ -58,11 +63,7 @@ function App() {
               component={Completed}
               options={{ headerShown: "已完成" }}
             />
-            <Drawer.Screen
-              name="新增商品"
-              component={AddProduct}
-              options={{ headerShown: "新增商品" }}
-            />
+            
             <Drawer.Screen
               name="商品庫存"
               component={Inventory}
@@ -89,10 +90,10 @@ function App() {
               options={{ headerShown: "設定歡迎訊息" }}
             />
             */}
-          </>
-          
-        </Drawer.Navigator>
-      
+        </>
+
+      </Drawer.Navigator>
+
     </NavigationContainer>
   );
 }

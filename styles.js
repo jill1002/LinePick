@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+  },
+  appbartitle:{
+    backgroundColor:'#EAC100',
   }
 })
 export default styles;
