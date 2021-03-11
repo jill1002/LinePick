@@ -36,6 +36,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     margin:10,
   },
+  tipStyle:{
+    borderStyle:'solid',
+    borderColor: '#AE8F00',
+    borderWidth: 2,
+    borderBottomWidth:0,
+    margin:10,
+  },
   button: {
     margin: 20,
     padding: 10,
@@ -45,6 +52,18 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  whitebutton:{
+    margin: 20,
+    padding: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#AE8F00',
+    borderWidth: 2,
+    margin:10,
   },
   buttonText: {
     color: 'white',
