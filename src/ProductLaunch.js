@@ -20,10 +20,14 @@ export default function ProductLaunch() {
     const [newtags, setNewtags] = useState('');
     //const renderItem = ({ item, style }) => (
     return (
-       <ScrollView >
-       <View style={styles.container}>
+       <ScrollView horizontal={true}>
+       
+            
+            <View style={{flexWrap:'wrap',backgroundColor:'#FFFCEC',alignContent:'stretch'}}>
+
+            <View style={styles.container}>
            <View style={{flexDirection: 'row'}}>
-            <View style={[styles.frame,{ flexDirection: 'column',padding:8,backgroundColor:'#FFFFFF'}]}>
+            <View style={[styles.frame,styles.borderStyle,{ flexDirection: 'column',padding:8,backgroundColor:'#FFFFFF'}]}>
                 <Text style={[styles.baseText,{paddingLeft: 20}]}>新增商品</Text>
                 {/* <View style={[styles.uploadarea, {
                     width: 150, height: 150
@@ -46,8 +50,7 @@ export default function ProductLaunch() {
             
             </View>
             </View>
-            
-            <View style={{flexWrap:'wrap',backgroundColor:'#FFFCEC',alignContent:'stretch'}}>
+
             <View style={{ flexDirection: 'row', padding: 8, borderStyle:'solid',borderColor:'#AE8F00'}}>
               {/*  <Image
                     Source={{
@@ -55,7 +58,7 @@ export default function ProductLaunch() {
                     }}
                     PlaceholderContent={<ActivityIndicator />}
                 />*/}
-              <View style={[styles.frame,{backgroundColor:'#FFFFFF'}]}>
+              <View style={[styles.frame,styles.borderStyle,{backgroundColor:'#FFFFFF'}]}>
               <Text 
                 style={[styles.baseText,{padding:20}]}
               >
@@ -75,7 +78,7 @@ export default function ProductLaunch() {
                 </TouchableOpacity>
                 </View>
 
-                <View style={[styles.frame,{backgroundColor:'#FFFFFF'}]}>
+                <View style={[styles.frame,styles.borderStyle,{backgroundColor:'#FFFFFF'}]}>
               <Text 
                 style={[styles.baseText,{padding:20}]}
               >
