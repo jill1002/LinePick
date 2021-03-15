@@ -34,7 +34,7 @@ export default function AddProduct() {
             placeholder="請輸入商品名稱!"
             onChangeText={text => setText(text)}
             style={[styles.block,styles.inputStyle,{margin:10,padding:8,}]}
-            maxLength='10'
+            maxLength={10}
             />     
             </View>
 
@@ -44,7 +44,7 @@ export default function AddProduct() {
             placeholder="請輸入產品描述!"
             onChangeText={text => setText(text)}
             style={[styles.block,styles.borderStyle,{margin:10,padding:8,}]}
-            maxLength='50'
+            maxLength={50}
             multiline={true}
             />     
             </View>
@@ -125,7 +125,7 @@ export default function AddProduct() {
             placeholder="請輸入產品顏色!"
             onChangeText={text => setText(text)}
             style={[,styles.block,styles.borderStyle,{margin:10,padding:8,}]}
-            maxLength='5'
+            maxLength={5}
             multiline={false}
             />     
             </View>
@@ -148,7 +148,7 @@ export default function AddProduct() {
             placeholder="請輸入產品尺寸!"
             onChangeText={text => setText(text)}
             style={[,styles.block,styles.borderStyle,{margin:10,padding:8,}]}
-            maxLength='5'
+            maxLength={5}
             multiline={false}
             />     
             </View>
