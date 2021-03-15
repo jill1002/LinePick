@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     color: '#AE8F00',
     fontWeight: "bold",
     fontSize: 20,
+    flex:1
   },
   innerText: {
     color: "gray",
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
   },
   textarea:{
-    //heght: DP.dp185,
+   
     borderColor: '#AE8F00',
     borderWidth: 2,
     borderTopLeftRadius: 10,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions, Platform, StyleSheet} from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Button, Dimensions, Platform, StyleSheet,TextInput} from 'react-native';
 import styles from '../styles.js'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
@@ -55,12 +55,12 @@ export default function SellerSet() {
                     <View>
                         <Text style={styles.baseText}>賣場簡介</Text>
                     </View>
-                    <View style={{ flexDirection: 'column', padding: 8 }}>
+                    <View style={{ flexDirection: 'column', padding: 8 ,flex:1}}>
                         {
                           <View>
                         
-                            <TextInput
-                                style={styles.textarea}
+                            <TextInput 
+                                style={[styles.textarea,{flex:1}]}
                                 onChangeText={setText}
                                 value={text}
                                 underlineColorAndroid="transparent"

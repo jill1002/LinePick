@@ -5,6 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
 import AddProduct2 from './src/AddProduct2';
+import ServiceSet from './src/ServiceSet';
 //import Test from './src/Test';
 
 
@@ -15,7 +16,7 @@ function App() {
     <NavigationContainer>
 
 
-      <Drawer.Navigator initialRouteName="新增商品">
+      <Drawer.Navigator initialRouteName="設定常見問題">
         <>
           {/* <View style={{ flexDirection: 'column', padding: 3 }}>
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
@@ -32,7 +33,11 @@ function App() {
             component={AddProduct2}
             options={{ headerShown: "新增商品" }}
           />
-
+          <Drawer.Screen
+            name="設定常見問題"
+            component={ServiceSet}
+            options={{ headerShown: "設定常見問題" }}
+          />
           {/*  <Drawer.Screen
               name="新增活動"
               component={AddActivity}
@@ -74,11 +79,7 @@ function App() {
               component={Reinstock}
               options={{ headerShown: "重新上架商品" }}
             />
-            <Drawer.Screen
-              name="設定常見問題"
-              component={SetRegularQA}
-              options={{ headerShown: "設定常見問題" }}
-            />
+            
             <Drawer.Screen
               name="關鍵字回覆"
               component={SetKeywords}
