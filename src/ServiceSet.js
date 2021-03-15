@@ -13,7 +13,7 @@ import Tags from "react-native-tags";
 import { color } from 'react-native-reanimated';
 
 
-export default function AddProduct2({ }) {
+export default function ServiceSet({ }) {
     const [text, setText] = useState('');
     return (
 
