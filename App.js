@@ -7,6 +7,8 @@ import SellerSet from './src/SellerSet';
 import SignUp from './src/SignUp';
 import ProductLaunch from './src/ProductLaunch';
 import AddProduct from './src/AddPrudoct';
+import MyActivity from './src/MyActivity';
+import ActivitySet from './src/ActivitySet';
 
 
 
@@ -23,12 +25,14 @@ function App() {
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
   </View>*/}
              {/*<Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>*/}
+            
+
             <Drawer.Screen
               name="上架商品"
-              component={AddProduct}
+              component={ProductLaunch}
               options={{ headerShown: "上架商品" }}
             />
-            {/*
+           
             <Drawer.Screen
               name="新增商品"
               component={AddProduct}
@@ -40,11 +44,14 @@ function App() {
               component={MyActivity}
               options={{ headerShown: "我的活動" }}
             />
+            
             <Drawer.Screen
-              name="查看訂單狀況"
-              component={CheckOrders}
-              options={{ headerShown: "查看訂單狀況" }}
+              name="活動設定"
+              component={ActivitySet}
+              options={{ headerShown: "活動設定" }}
             />
+             {/*
+            
             <Drawer.Screen
               name="待出貨"
               component={TBDelivered}
