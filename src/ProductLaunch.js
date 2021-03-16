@@ -56,18 +56,13 @@ export default function ProductLaunch() {
                 />*/}
                     <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
                         <Text
-                            style={[styles.baseText, { padding: 20 }]}
-                        >
-                            項鍊
-              </Text>
-                        <Text
-                            style={[styles.innerText, { padding: 20 }]}
-                        >
+                            style={[styles.baseText, { padding: 20 }]}>項鍊</Text>
+                        <Text style={[styles.innerText, { padding: 20 }]}>
                             價格:{"\n"}
-                    商品簡介:{"\n"}
-                    價錢:{"\n"}
-                    賣出數量:{"\n"}
-                    狀態:{"\n"}
+                            商品簡介:{"\n"}
+                            價錢:{"\n"}
+                            賣出數量:{"\n"}
+                            狀態:{"\n"}
                         </Text>
                         <TouchableOpacity style={[styles.button, { width: 150 }]}>
                             <Text style={styles.buttonText}>重新上架商品</Text>
