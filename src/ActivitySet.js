@@ -26,11 +26,19 @@ export default function ActivitySet() {
         setMode(currentMode);
     };
 
-    const showDatepicker = () => {
+    const showDatepickerStart = () => {
         showMode('date');
     };
 
-    const showTimepicker = () => {
+    const showTimepickerStart = () => {
+        showMode('time');
+    };
+
+    const showDatepickerEnd = () => {
+        showMode('date');
+    };
+
+    const showTimepickerEnd = () => {
         showMode('time');
     };
 
@@ -49,57 +57,61 @@ export default function ActivitySet() {
                 />
             </View>
 
-            <View style={[styles.container, { flexDirection: 'row' }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>開始時間</Text>
-                <View >
-                    <View style={[styles.container, { paddingTop: 10 }]}>
-                        <View style={[styles.borderStyle, styles.block]}>
-                            <Button onPress={showDatepicker} color='#AE8F00' title="活動開始日期" />
+            <View style={[styles.container]}>
+                <View style={[styles.tipStyle, { flexDirection: 'row', borderBottomWidth: 2, paddingBottom: 10, paddingRight: 80 }]}>
+                    <Text style={[styles.baseText, { padding: 20 }]}>開始時間</Text>
+                    <View >
+                        <View style={[styles.container, { paddingTop: 10 }]}>
+                            <View style={[styles.borderStyle, styles.block]}>
+                                <Button onPress={showDatepickerStart} color='#AE8F00' title="活動開始日期" />
+                            </View>
                         </View>
-                    </View>
-                    <View style={[styles.container]}>
-                        <View style={[styles.borderStyle, styles.block]}>
-                            <Button onPress={showTimepicker} color='#AE8F00' title="活動開始時間" />
+                        <View style={[styles.container]}>
+                            <View style={[styles.borderStyle, styles.block]}>
+                                <Button onPress={showTimepickerStart} color='#AE8F00' title="活動開始時間" />
+                            </View>
                         </View>
+                        {show && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={date}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={onChange}
+                            />
+                        )}
                     </View>
-                    {show && (
-                        <DateTimePicker
-                            testID="dateTimePicker"
-                            value={date}
-                            mode={mode}
-                            is24Hour={true}
-                            display="default"
-                            onChange={onChange}
-                        />
-                    )}
                 </View>
             </View>
 
 
 
-            <View style={[styles.container, { flexDirection: 'row' }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>結束時間</Text>
-                <View >
-                    <View style={[styles.container, { paddingTop: 10 }]}>
-                        <View style={[styles.borderStyle, styles.block]}>
-                            <Button onPress={showDatepicker} color='#AE8F00' title="活動結束日期" />
+            <View style={styles.container}>
+                <View style={[styles.tipStyle, { flexDirection: 'row', borderBottomWidth: 2, paddingBottom: 10, paddingRight: 80 }]}>
+                    <Text style={[styles.baseText, { padding: 20 }]}>結束時間</Text>
+                    <View >
+                        <View style={[styles.container, { paddingTop: 10 }]}>
+                            <View style={[styles.borderStyle, styles.block]}>
+                                <Button onPress={showDatepickerEnd} color='#AE8F00' title="活動結束日期" />
+                            </View>
                         </View>
-                    </View>
-                    <View style={[styles.container]}>
-                        <View style={[styles.borderStyle, styles.block]}>
-                            <Button onPress={showTimepicker} color='#AE8F00' title="活動結束時間" />
+                        <View style={[styles.container]}>
+                            <View style={[styles.borderStyle, styles.block]}>
+                                <Button onPress={showTimepickerEnd} color='#AE8F00' title="活動結束時間" />
+                            </View>
                         </View>
+                        {show && (
+                            <DateTimePicker
+                                testID="dateTimePicker"
+                                value={date}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={onChange}
+                            />
+                        )}
                     </View>
-                    {show && (
-                        <DateTimePicker
-                            testID="dateTimePicker"
-                            value={date}
-                            mode={mode}
-                            is24Hour={true}
-                            display="default"
-                            onChange={onChange}
-                        />
-                    )}
                 </View>
             </View>
 
@@ -115,7 +127,7 @@ export default function ActivitySet() {
                 />
             </View>
             <View style={styles.container}>
-                
+
                 <View style={{ flexDirection: 'row', flex: 1 }}>
                     <Text style={[styles.baseText, { padding: 20 }]}>輸入折數</Text>
                     <TextInput
@@ -134,27 +146,73 @@ export default function ActivitySet() {
             <View style={[styles.container, { flex: 1 }]}>
                 <Text style={[styles.baseText, { padding: 20 }]}>選擇商品</Text>
             </View>
+            <ScrollView horizontal={true}>
+                <View style={styles.container}>
+                    <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
+                        <Text style={[styles.baseText, { padding: 20 }]}>項鍊</Text>
+                        <Text
+                            style={[styles.innerText, { padding: 20 }]}>
+                            價格:{"\n"}
+                            商品簡介:{"\n"}
+                            價錢:{"\n"}
+                            賣出數量:{"\n"}
+                            狀態:上架中{"\n"}
+                            限購數量:___個{"\n"}
+                        </Text>
+                        <TouchableOpacity style={[styles.whitebutton, { width: 170 }]}>
+                            <Text style={styles.buttonTextAE}>修改商品</Text>
+                        </TouchableOpacity>
+                        <IconButton
+                            icon="delete"
+                            color='#AE8F00'
+                            size={40}
+                            onPress={() => console.log('Pressed')}
+                            style={{ marginLeft: 63 }}
+                        />
+
+                    </View>
+
+                    <View style={styles.container}>
+                        <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF' }]}>
+                            <Text style={[styles.baseText, { paddingLeft: 20, paddingTop: 10 }]}>新增商品</Text>
+                            {/* <View style={[styles.uploadarea, {
+                    width: 150, height: 150
+                    , paddingHorizontal: 45, paddingVertical: 45
+                    ,
+                }]}> */}
+                            <IconButton
+                                icon="plus-circle"
+                                color='#AE8F00'
+                                size={28}
+                                onPress={() => console.log('Pressed')}
+                                style={{
+                                    width: 150, height: 150
+                                    , paddingHorizontal: 45, paddingVertical: 45
+                                    ,
+                                }}
+                            />
+                            {/* </View> */}
+                        </View>
+                    </View>
+                </View>
+            </ScrollView>
+            <View style={[styles.container, { flexDirection: 'row' }]} >
+                <TextInput
+                    placeholder="新增折扣"
+                    onChangeText={text => setText(text)}
+                    style={[, styles.block, styles.borderStyle, { margin: 10, padding: 8, }]}
+                    maxLength={30}
+                    multiline={false}
+                />
+            </View>
 
             <View style={styles.container}>
-                <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
-                    <Text
-                        style={[styles.baseText, { padding: 20 }]}
-                    >
-                        項鍊
-              </Text>
-                    <Text
-                        style={[styles.innerText, { padding: 20 }]}
-                    >
-                        價格:{"\n"}
-                    商品簡介:{"\n"}
-                    價錢:{"\n"}
-                    賣出數量:{"\n"}
-                    狀態:上架中{"\n"}
-                    </Text>
-                    <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                        <Text style={styles.buttonText}>修改商品</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={[styles.button, { width: 150 }]}>
+                    <Text style={styles.buttonText}>取消修改</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.button, { width: 150 }]}>
+                    <Text style={styles.buttonText}>確認修改</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     )
