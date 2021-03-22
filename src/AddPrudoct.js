@@ -13,9 +13,9 @@ export default function AddProduct() {
     const [text,setText]=useState('');
     return (
         <ScrollView >
-            <View style={styles.container}>
-                <View style={[styles.borderStyle, styles.frame]}>
-                    <Text style={[styles.baseText, { padding: 20 }]}>選擇商品圖片</Text>
+            <View style={styles.container1}>
+                <View style={[styles.borderStyle, styles.frame,{marginLeft:20}]}>
+                    <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品圖片</Text>
                     <IconButton
                         icon="plus-circle"
                         color='#AE8F00'
@@ -29,8 +29,8 @@ export default function AddProduct() {
                 </View>
             </View>
 
-            <View style={[styles.container, { flexDirection: 'row',flex:1 }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>商品名稱</Text>
+            <View style={[styles.container1, { flexDirection: 'row',flex:1 }]}>
+                <Text style={[styles.baseText1, { padding: 20 }]}>商品名稱</Text>
                 <TextInput
                     placeholder={"請輸入商品名稱!"}
                     onChangeText={text => setText(text)}
@@ -39,8 +39,8 @@ export default function AddProduct() {
                 />
             </View>
 
-            <View style={[styles.container, { flexDirection: 'row' ,flex:1}]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>商品描述</Text>
+            <View style={[styles.container1, { flexDirection: 'row' ,flex:1}]}>
+                <Text style={[styles.baseText1, { padding: 20 }]}>商品描述</Text>
                 <TextInput
                     placeholder={"請輸入產品描述!"}
                     onChangeText={text => setText(text)}
@@ -50,8 +50,8 @@ export default function AddProduct() {
                 />
             </View>
 
-            <View style={[styles.container, { flexDirection: 'row' }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>商品分類</Text>
+            <View style={[styles.container1, { flexDirection: 'row' }]}>
+                <Text style={[styles.baseText1, { padding: 20 }]}>商品分類</Text>
                 <DropDownPicker
                     style={{ marginLeft: 10, alignSelf: 'center', }}
                     items={[
@@ -73,10 +73,10 @@ export default function AddProduct() {
             </View>
 
 
-            <View style={[styles.container, { flexDirection: 'column' }]}>
-                <Text style={[styles.baseText, { paddingLeft: 20 }]}>新增規格—</Text>
+            <View style={[styles.container1, { flexDirection: 'column' }]}>
+                <Text style={[styles.baseText1, { paddingLeft: 20 }]}>新增規格—</Text>
 
-                <Text style={[styles.baseText, { padding: 20 }]}>顏色</Text>
+                <Text style={[styles.baseText1, { padding: 20 }]}>顏色</Text>
                 <View style={{ flexDirection: 'row' }}>
                     <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
                         <Text style={styles.buttonTextAE}>黑色</Text>
@@ -121,7 +121,7 @@ export default function AddProduct() {
                     />
                 </View>
             </View>
-            <View style={[styles.container, { flexDirection: 'row' }]} >
+            <View style={[styles.container1, { flexDirection: 'row' }]} >
                 <TextInput
                     placeholder="請輸入產品顏色!"
                     onChangeText={text => setText(text)}
@@ -131,8 +131,8 @@ export default function AddProduct() {
                 />
             </View>
 
-            <Text style={[styles.container, styles.baseText, { padding: 20 }]}>尺寸</Text>
-            <View style={[styles.container, { flexDirection: 'row' }]}>
+            <Text style={[styles.container1, styles.baseText1, { padding: 20 }]}>尺寸</Text>
+            <View style={[styles.container1, { flexDirection: 'row' }]}>
                 <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
                     <Text style={styles.buttonTextAE}>S</Text>
                 </TouchableOpacity>
@@ -144,7 +144,7 @@ export default function AddProduct() {
                 </TouchableOpacity>
             </View>
 
-            <View style={[styles.container, { flexDirection: 'row' }]} >
+            <View style={[styles.container1, { flexDirection: 'row' }]} >
                 <TextInput
                     placeholder="請輸入產品尺寸!"
                     onChangeText={text => setText(text)}
@@ -153,9 +153,9 @@ export default function AddProduct() {
                     multiline={false}
                 />
             </View>
-            <View style={styles.container}>
+            <View style={styles.container1}>
                 <TouchableOpacity style={[styles.button, { width: 250 }]}>
-                    <Text style={styles.buttonText}>下一步：設定商品數量和價格</Text>
+                    <Text style={styles.buttonText1}>下一步：設定商品數量和價格</Text>
                 </TouchableOpacity>
             </View>
 

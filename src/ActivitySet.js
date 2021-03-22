@@ -47,8 +47,8 @@ export default function ActivitySet() {
         <ScrollView >
 
 
-            <View style={[styles.container, { flexDirection: 'row', flex: 1 }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>活動名稱</Text>
+            <View style={[styles.container1, { flexDirection: 'row', flex: 1 }]}>
+                <Text style={[styles.baseText1, { padding: 20 }]}>活動名稱</Text>
                 <TextInput
                     placeholder={"請輸入活動名稱!"}
                     onChangeText={text => setText(text)}
@@ -57,16 +57,16 @@ export default function ActivitySet() {
                 />
             </View>
 
-            <View style={[styles.container]}>
+            <View style={[styles.container1]}>
                 <View style={[styles.tipStyle, { flexDirection: 'row', borderBottomWidth: 2, paddingBottom: 10, paddingRight: 80 }]}>
-                    <Text style={[styles.baseText, { padding: 20 }]}>開始時間</Text>
+                    <Text style={[styles.baseText1, { padding: 20 }]}>開始時間</Text>
                     <View >
-                        <View style={[styles.container, { paddingTop: 10 }]}>
+                        <View style={[styles.container1, { paddingTop: 10 }]}>
                             <View style={[styles.borderStyle, styles.block]}>
                                 <Button onPress={showDatepickerStart} color='#AE8F00' title="活動開始日期" />
                             </View>
                         </View>
-                        <View style={[styles.container]}>
+                        <View style={[styles.container1]}>
                             <View style={[styles.borderStyle, styles.block]}>
                                 <Button onPress={showTimepickerStart} color='#AE8F00' title="活動開始時間" />
                             </View>
@@ -87,16 +87,16 @@ export default function ActivitySet() {
 
 
 
-            <View style={styles.container}>
+            <View style={styles.container1}>
                 <View style={[styles.tipStyle, { flexDirection: 'row', borderBottomWidth: 2, paddingBottom: 10, paddingRight: 80 }]}>
-                    <Text style={[styles.baseText, { padding: 20 }]}>結束時間</Text>
+                    <Text style={[styles.baseText1, { padding: 20 }]}>結束時間</Text>
                     <View >
-                        <View style={[styles.container, { paddingTop: 10 }]}>
+                        <View style={[styles.container1, { paddingTop: 10 }]}>
                             <View style={[styles.borderStyle, styles.block]}>
                                 <Button onPress={showDatepickerEnd} color='#AE8F00' title="活動結束日期" />
                             </View>
                         </View>
-                        <View style={[styles.container]}>
+                        <View style={[styles.container1]}>
                             <View style={[styles.borderStyle, styles.block]}>
                                 <Button onPress={showTimepickerEnd} color='#AE8F00' title="活動結束時間" />
                             </View>
@@ -115,8 +115,8 @@ export default function ActivitySet() {
                 </View>
             </View>
 
-            <View style={[styles.container, { flexDirection: 'row', flex: 1 }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>推播文案</Text>
+            <View style={[styles.container1, { flexDirection: 'row', flex: 1 }]}>
+                <Text style={[styles.baseText1, { padding: 20 }]}>推播文案</Text>
                 <TextInput
                     placeholder={"新品限時三天95折!"}
                     onChangeText={text => setText(text)}
@@ -126,16 +126,16 @@ export default function ActivitySet() {
 
                 />
             </View>
-            <View style={styles.container}>
+            <View style={styles.container1}>
 
                 <View style={{ flexDirection: 'row', flex: 1 }}>
-                    <Text style={[styles.baseText, { padding: 20 }]}>輸入折數</Text>
+                    <Text style={[styles.baseText1, { padding: 20 }]}>輸入折數</Text>
                     <TextInput
                         onChangeText={text => setText(text)}
                         style={[styles.block, styles.inputStyle, { margin: 10, padding: 8, flex: 1 }]}
                         maxLength={10}
                     />
-                    <Text style={[styles.baseText, {
+                    <Text style={[styles.baseText1, {
                         paddingRight: 50,
                         flex: 1,
                         paddingTop: 20
@@ -143,13 +143,13 @@ export default function ActivitySet() {
                 </View>
             </View>
 
-            <View style={[styles.container, { flex: 1 }]}>
-                <Text style={[styles.baseText, { padding: 20 }]}>選擇商品</Text>
+            <View style={[styles.container1, { flex: 1 }]}>
+                <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品</Text>
             </View>
             <ScrollView horizontal={true}>
-                <View style={styles.container}>
+                <View style={styles.container1}>
                     <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
-                        <Text style={[styles.baseText, { padding: 20 }]}>項鍊</Text>
+                        <Text style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
                         <Text
                             style={[styles.innerText, { padding: 20 }]}>
                             價格:{"\n"}
@@ -172,10 +172,10 @@ export default function ActivitySet() {
 
                     </View>
 
-                    <View style={styles.container}>
+                    <View style={styles.container1}>
                         <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF' }]}>
-                            <Text style={[styles.baseText, { paddingLeft: 20, paddingTop: 10 }]}>新增商品</Text>
-                            {/* <View style={[styles.uploadarea, {
+                            <Text style={[styles.baseText1, { paddingLeft: 20, paddingTop: 10 }]}>新增商品</Text>
+                            {/* <View style={[styles.uploadarea1, {
                     width: 150, height: 150
                     , paddingHorizontal: 45, paddingVertical: 45
                     ,
@@ -196,7 +196,7 @@ export default function ActivitySet() {
                     </View>
                 </View>
             </ScrollView>
-            <View style={[styles.container, { flexDirection: 'row' }]} >
+            <View style={[styles.container1, { flexDirection: 'row' }]} >
                 <TextInput
                     placeholder="新增折扣"
                     onChangeText={text => setText(text)}
@@ -206,12 +206,12 @@ export default function ActivitySet() {
                 />
             </View>
 
-            <View style={styles.container}>
+            <View style={styles.container1}>
                 <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                    <Text style={styles.buttonText}>取消修改</Text>
+                    <Text style={styles.buttonText1}>取消修改</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                    <Text style={styles.buttonText}>確認修改</Text>
+                    <Text style={styles.buttonText1}>確認修改</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

@@ -2,7 +2,7 @@ import { StatusBar, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
-  container: {
+  container1: {
     backgroundColor: '#FFFCEC',
     flex: 1,
     flexDirection: 'row',
@@ -17,11 +17,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginTop: StatusBar.currentHeight || 0, //若無值則||or 0(置頂)
   },
-  baseText: {
+  baseText1: {
     color: '#AE8F00',
     fontWeight: 'bold',
     fontSize: 20,
-    
   },
   innerText: {
     color: 'gray',
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin:10,
   },
-  buttonText: {
+  buttonText1: {
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     marginHorizontal: 8,
   },
-  uploadarea: {
+  uploadarea1: {
     borderColor: '#AE8F00',
     borderWidth: 2,
     borderTopLeftRadius: 10,
@@ -114,7 +113,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   frame:{
-    
     backgroundColor:'#FFFFFF',
     borderWidth: 2,
     borderTopLeftRadius: 8,

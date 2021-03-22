@@ -24,10 +24,10 @@ export default function ProductLaunch() {
 
 
             <View style={{ flexWrap: 'wrap', backgroundColor: '#FFFCEC', alignContent: 'stretch' }}>
-                <View style={styles.container}>
-                    <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF' }]}>
-                        <Text style={[styles.baseText, { paddingLeft: 20 }]}>新增商品</Text>
-                        {/* <View style={[styles.uploadarea, {
+                <View style={styles.container1}>
+                    <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF',marginLeft:20 }]}>
+                        <Text style={[styles.baseText1, { paddingLeft: 20 }]}>新增商品</Text>
+                        {/* <View style={[styles.uploadarea1, {
                     width: 150, height: 150
                     , paddingHorizontal: 45, paddingVertical: 45
                     ,
@@ -56,7 +56,7 @@ export default function ProductLaunch() {
                 />*/}
                     <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
                         <Text
-                            style={[styles.baseText, { padding: 20 }]}>項鍊</Text>
+                            style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
                         <Text style={[styles.innerText, { padding: 20 }]}>
                             價格:{"\n"}
                             商品簡介:{"\n"}
@@ -65,13 +65,13 @@ export default function ProductLaunch() {
                             狀態:{"\n"}
                         </Text>
                         <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                            <Text style={styles.buttonText}>重新上架商品</Text>
+                            <Text style={styles.buttonText1}>重新上架商品</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
                         <Text
-                            style={[styles.baseText, { padding: 20 }]}
+                            style={[styles.baseText1, { padding: 20 }]}
                         >
                             背心
               </Text>
@@ -85,10 +85,10 @@ export default function ProductLaunch() {
                     狀態:{"\n"}
                         </Text>
                         <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                            <Text style={styles.buttonText}>修改商品</Text>
+                            <Text style={styles.buttonText1}>修改商品</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                            <Text style={styles.buttonText}>查看商品庫存</Text>
+                            <Text style={styles.buttonText1}>查看商品庫存</Text>
                         </TouchableOpacity>
 
                     </View>
