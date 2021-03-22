@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
 import AddProduct2 from './src/AddProduct2';
 import ServiceSet from './src/ServiceSet';
+import CheckOrders from './src/CheckOrders';
 //import Test from './src/Test';
 
 
@@ -16,7 +17,7 @@ function App() {
     <NavigationContainer>
 
 
-      <Drawer.Navigator initialRouteName="設定常見問題">
+      <Drawer.Navigator initialRouteName="查看訂單狀況">
         <>
           {/* <View style={{ flexDirection: 'column', padding: 3 }}>
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
@@ -38,6 +39,11 @@ function App() {
             component={ServiceSet}
             options={{ headerShown: "設定常見問題" }}
           />
+          <Drawer.Screen
+              name="查看訂單狀況"
+              component={CheckOrders}
+              options={{ headerShown: "查看訂單狀況" }}
+            />
           {/*  <Drawer.Screen
               name="新增活動"
               component={AddActivity}
@@ -48,11 +54,7 @@ function App() {
               component={MyActivity}
               options={{ headerShown: "我的活動" }}
             />
-            <Drawer.Screen
-              name="查看訂單狀況"
-              component={CheckOrders}
-              options={{ headerShown: "查看訂單狀況" }}
-            />
+            
             <Drawer.Screen
               name="待出貨"
               component={TBDelivered}

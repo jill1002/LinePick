@@ -41,6 +41,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  multibuttons: {
+    margin:10,
+    padding:5,
+    backgroundColor: '#AE8F00',
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   buttonText: {
     color: 'white',
     fontSize: 20,
@@ -71,6 +79,14 @@ const styles = StyleSheet.create({
   },
   appbartitle:{
     backgroundColor:'#EAC100',
+  },
+  orderscheckStyle:{
+    borderStyle:'solid',
+    borderColor: '#AE8F00',
+    borderWidth: 2,
+    borderBottomWidth:0,
+    marginLeft:15,
+    marginVertical:20
   }
 })
 export default styles;
