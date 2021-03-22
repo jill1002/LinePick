@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions,Image } from 'react-native';
 import styles from '../styles';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
@@ -150,6 +150,10 @@ export default function ActivitySet() {
                 <View style={styles.container1}>
                     <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
                         <Text style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
+                        <Image
+                            style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
+                            Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
+                        />
                         <Text
                             style={[styles.innerText, { padding: 20 }]}>
                             價格:{"\n"}

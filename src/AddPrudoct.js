@@ -10,11 +10,11 @@ import { IconButton, Colors } from 'react-native-paper';
 
 export default function AddProduct() {
     const [categories, setCategories] = useState('');
-    const [text,setText]=useState('');
+    const [text, setText] = useState('');
     return (
         <ScrollView >
             <View style={styles.container1}>
-                <View style={[styles.borderStyle, styles.frame,{marginLeft:20}]}>
+                <View style={[styles.borderStyle, styles.frame, { marginLeft: 20 }]}>
                     <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品圖片</Text>
                     <IconButton
                         icon="plus-circle"
@@ -29,22 +29,22 @@ export default function AddProduct() {
                 </View>
             </View>
 
-            <View style={[styles.container1, { flexDirection: 'row',flex:1 }]}>
+            <View style={[styles.container1, { flexDirection: 'row', flex: 1 }]}>
                 <Text style={[styles.baseText1, { padding: 20 }]}>商品名稱</Text>
                 <TextInput
                     placeholder={"請輸入商品名稱!"}
                     onChangeText={text => setText(text)}
-                    style={[styles.block, styles.inputStyle, { margin: 10, padding: 8,flex:1}]}
+                    style={[styles.block, styles.inputStyle, { margin: 10, padding: 8, flex: 1 }]}
                     maxLength={10}
                 />
             </View>
 
-            <View style={[styles.container1, { flexDirection: 'row' ,flex:1}]}>
+            <View style={[styles.container1, { flexDirection: 'row', flex: 1 }]}>
                 <Text style={[styles.baseText1, { padding: 20 }]}>商品描述</Text>
                 <TextInput
                     placeholder={"請輸入產品描述!"}
                     onChangeText={text => setText(text)}
-                    style={[styles.block, styles.borderStyle, { margin: 10, padding: 8,flex:1 }]}
+                    style={[styles.block, styles.borderStyle, { margin: 10, padding: 8, flex: 1 }]}
                     maxLength={50}
                     multiline={true}
                 />
@@ -109,7 +109,6 @@ export default function AddProduct() {
                             color='#AE8F00'
                             size={20}
                             onPress={() => console.log('Pressed')}
-
                         />
                     </Text>
 
