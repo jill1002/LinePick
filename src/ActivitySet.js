@@ -1,11 +1,7 @@
 import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions,Image } from 'react-native';
 import styles from '../styles';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { useNavigation, DrawerActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import InputScrollView from 'react-native-input-scroll-view';
-//import * as React from 'react';
 import { IconButton, Colors } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 

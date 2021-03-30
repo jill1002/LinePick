@@ -2,10 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions } from 'react-native';
 import styles from '../styles';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { useNavigation, DrawerActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import InputScrollView from 'react-native-input-scroll-view';
-//import * as React from 'react';
 import { IconButton, Colors } from 'react-native-paper';
 
 export default function AddProduct() {
@@ -81,15 +78,26 @@ export default function AddProduct() {
                     <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
                         <Text style={styles.buttonTextAE}>黑色</Text>
                     </TouchableOpacity>
-                    <Text style={[styles.borderStyle, styles.addbuttonText, styles.block]}>
-                        加入圖片
-                <IconButton
-                            icon="plus-circle"
-                            color='#AE8F00'
-                            size={20}
-                            onPress={() => console.log('Pressed')}
-                        />
-                    </Text>
+                    
+                    <View style={styles.borderStyle}>
+                        <View style={[styles.block, {
+                            borderTopLeftRadius: 10,
+                            borderTopRightRadius: 10,
+                            borderBottomLeftRadius: 10,
+                            borderBottomRightRadius: 10,
+                            flexDirection: 'column'
+                        }]}>
+                            <IconButton
+                                icon="plus-circle"
+                                color='#AE8F00'
+                                size={20}
+                                onPress={() => console.log('Pressed')}
+                            />
+                         <Text style={[ styles.addbuttonText,{paddingBottom:10}]}>
+                        加入圖片</Text>
+                        </View>
+                    </View>
+                  
                     <IconButton
                         icon="delete"
                         color='#AE8F00'
@@ -102,15 +110,24 @@ export default function AddProduct() {
                     <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
                         <Text style={styles.buttonTextAE}>白色</Text>
                     </TouchableOpacity>
-                    <Text style={[styles.borderStyle, styles.addbuttonText, styles.block]}>
-                        加入圖片
-                <IconButton
-                            icon="plus-circle"
-                            color='#AE8F00'
-                            size={20}
-                            onPress={() => console.log('Pressed')}
-                        />
-                    </Text>
+                    <View style={styles.borderStyle}>
+                        <View style={[styles.block, {
+                            borderTopLeftRadius: 10,
+                            borderTopRightRadius: 10,
+                            borderBottomLeftRadius: 10,
+                            borderBottomRightRadius: 10,
+                            flexDirection: 'column'
+                        }]}>
+                            <IconButton
+                                icon="plus-circle"
+                                color='#AE8F00'
+                                size={20}
+                                onPress={() => console.log('Pressed')}
+                            />
+                         <Text style={[ styles.addbuttonText,{paddingBottom:10}]}>
+                        加入圖片</Text>
+                        </View>
+                    </View>
 
                     <IconButton
                         icon="delete"
