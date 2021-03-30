@@ -1,4 +1,5 @@
 import { StatusBar, StyleSheet } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 const styles = StyleSheet.create({
 
@@ -21,6 +22,12 @@ const styles = StyleSheet.create({
     color: '#AE8F00',
     fontWeight: 'bold',
     fontSize: 20,
+  },
+  drawerText:{
+    flex:1,
+    color: '#AE8F00',
+    fontSize: 18,
+    justifyContent: "center",
   },
   innerText: {
     color: 'gray',
@@ -141,5 +148,9 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderBottomWidth: 1
   },
+  underLine:{
+    textDecorationLine: 'underline',
+    color:'#AE8F00',
+  }
 })
 export default styles;
