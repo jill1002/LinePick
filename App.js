@@ -1,117 +1,152 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import SellerSet from './src/SellerSet';
-import SignUp from './src/SignUp';
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import ProductLaunch from './src/ProductLaunch';
 import AddProduct from './src/AddPrudoct';
 import MyActivity from './src/MyActivity';
 import ActivitySet from './src/ActivitySet';
+import { Header, Left, Right, Body, Thumbnail, Container, Content, Subtitle, Item } from 'native-base';
+import { Menu } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  DrawerContentScrollView,
+  DrawerItem
+} from '@react-navigation/drawer';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import DrawerPage from './src/DrawerPage';
+import { createStackNavigator } from '@react-navigation/stack';
+
+function MyHeader() {
+  // <SafeAreaProvider style={{flex: 1, justifyContent: 'space-between', marginTop:20}}>
+  // <View style={{flex:1}}>
+
+  // <NavigationContainer>
+  //   <Drawer.Navigator initialRouteName="賣場設定2">
+  const navigation = useNavigation();
+
+  return (
+    <View>
+      <Container>
+        <Header style={{ backgroundColor: '#f8f8f8', alignItems: 'center', justifyContent: 'center' }}>
+          <Left style={{ flexDirection: 'row' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('整面導覽列')}>
+              <Icon name='ios-menu' color='#000' size={30} style={{ paddingLeft: 15, width: 50 }} />
+            </TouchableOpacity>
+          </Left>
+          <Body >
+            <Text style={{ fontSize: 22 }}>覽得看</Text>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+        </Content>
+      </Container>
+    </View>
+
+  );
+}
+/*
+    <Container>
+
+  
+
+      <Header style={{ backgroundColor: '#f8f8f8', alignItems: 'center', justifyContent: 'center' }}>
+        <Left style={{ flexDirection: 'row' }}>
+          <TouchableOpacity onPress={() => navigation.navigate('整面導覽列')}>
+            <Icon name='ios-menu' color='#000' size={30} style={{ paddingLeft: 15, width: 50 }} />
+          </TouchableOpacity>
+        </Left>
+        <Body >
+          <Text style={{ fontSize: 22 }}>覽得看</Text>
+        </Body>
+        <Right />
+      </Header>
+      <Content>
+        <Text style={{ fontSize: 22 }}>覽得看</Text>
+      </Content>
+        </Container>
+*/
 
 
-
-
-const Drawer = createDrawerNavigator();
 function App() {
+  //const Drawer = createDrawerNavigator();
+  //const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(true);
+
+  /*
+  {!isLoading ?
+    <FlatList
+      data={events}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => "" + index}
+    >
+    </FlatList>
+    :
+    <View style={{flex:1}}>
+      <ActivityIndicator color="red" size="large" animating={isLoading} />
+    </View>
+  }
+  */
+
+
+  // <Drawer.Screen
+  //   name="test"
+  //   component={DrawerPage}
+  //   options={{
+  //     headerShown: "test"
+  //   }}
+  // />
+
+  // <Drawer.Screen
+  //   name="上架商品"
+  //   component={ProductLaunch}
+  //   options={{
+  //     headerShown: "上架商品"
+  //   }}
+  // />
+
+  // <Drawer.Screen
+  //   name="新增商品"
+  //   component={AddProduct}
+  //   options={{ headerShown: "新增商品" }}
+  // />
+
+  // <Drawer.Screen
+  //   name="我的活動"
+  //   component={MyActivity}
+  //   options={{ headerShown: "我的活動" }}
+  // />
+
+  // <Drawer.Screen
+  //   name="活動設定"
+  //   component={ASet}
+  //   options={{ headerShown: "活動設定" }}
+  // />
+  //    </Drawer.Navigator>
+
+  //  </NavigationContainer> 
+
+  // </View>
+  // </SafeAreaProvider> 
+
+
+
+
+  const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      
-        
-        <Drawer.Navigator initialRouteName="賣場設定2">
-          <>
-           {/* <View style={{ flexDirection: 'column', padding: 3 }}>
-              <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
-  </View>*/}
-             {/*<Text style={{ padding: 8, fontSize: 15 }}>我的賣場</Text>*/}
-            
-
-            <Drawer.Screen
-              name="上架商品"
-              component={ProductLaunch}
-              options={{ headerShown: "上架商品" }}
-            />
-           
-            <Drawer.Screen
-              name="新增商品"
-              component={AddProduct}
-              options={{ headerShown: "新增商品" }}
-            />
-            
-            <Drawer.Screen
-              name="我的活動"
-              component={MyActivity}
-              options={{ headerShown: "我的活動" }}
-            />
-            
-            <Drawer.Screen
-              name="活動設定"
-              component={ActivitySet}
-              options={{ headerShown: "活動設定" }}
-            />
-             {/*
-            
-            <Drawer.Screen
-              name="待出貨"
-              component={TBDelivered}
-              options={{ headerShown: "待出貨" }}
-            />
-            <Drawer.Screen
-              name="運送中"
-              component={Delivering}
-              options={{ headerShown: "運送中" }}
-            />
-            <Drawer.Screen
-              name="已完成"
-              component={Completed}
-              options={{ headerShown: "已完成" }}
-            />
-            <Drawer.Screen
-              name="新增商品"
-              component={AddProduct}
-              options={{ headerShown: "新增商品" }}
-            />
-            <Drawer.Screen
-              name="商品庫存"
-              component={Inventory}
-              options={{ headerShown: "商品庫存" }}
-            />
-            <Drawer.Screen
-              name="重新上架商品"
-              component={Reinstock}
-              options={{ headerShown: "重新上架商品" }}
-            />
-            <Drawer.Screen
-              name="設定常見問題"
-              component={SetRegularQA}
-              options={{ headerShown: "設定常見問題" }}
-            />
-            <Drawer.Screen
-              name="關鍵字回覆"
-              component={SetKeywords}
-              options={{ headerShown: "設定關鍵字" }}
-            />
-            <Drawer.Screen
-              name="歡迎訊息"
-              component={SetWelcome}
-              options={{ headerShown: "設定歡迎訊息" }}
-            />
-            */}
-          </>
-
-        </Drawer.Navigator>
-      
+      <Stack.Navigator initialRouteName="上方導覽列" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="上方導覽列" component={MyHeader} />
+        <Stack.Screen name="整面導覽列" component={DrawerPage} />
+        <Stack.Screen name="上架商品" component={ProductLaunch} />
+        <Stack.Screen name="新增商品" component={AddProduct} />
+        <Stack.Screen name="新增活動" component={ActivitySet} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF8D7',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-export default App
+
+export default App;
 //Jill branch push test
