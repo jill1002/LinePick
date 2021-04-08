@@ -16,9 +16,11 @@ export default function ProductLaunch() {
     const [newtags, setNewtags] = useState('');
     //const renderItem = ({ item, style }) => (
     return (
-        <ScrollView horizontal={true}>
 
-
+        <ScrollView>
+            <View style={[styles.container2]}>
+                <Text style={[styles.linePick, { flex: 1, paddingTop: 30, padding: 20 }]}>Line Pick</Text>
+            </View>
             <View style={{ flexWrap: 'wrap', backgroundColor: '#FFFCEC', alignContent: 'stretch' }}>
                 <View style={styles.container1}>
                     <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF', marginLeft: 20 }]}>
@@ -30,7 +32,7 @@ export default function ProductLaunch() {
                 }]}> */}
                         <IconButton
                             icon="plus-circle"
-                            color='#AE8F00'
+                            color='#6b7f94'
                             size={28}
                             onPress={() => console.log('Pressed')}
                             style={{
@@ -42,49 +44,53 @@ export default function ProductLaunch() {
                         {/* </View> */}
                     </View>
                 </View>
-
-                <View style={{ flexDirection: 'row', padding: 8, borderStyle: 'solid', borderColor: '#AE8F00' }}>
-                    <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
-                        <Text style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
-                        <Image
-                            style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
-                            Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
-                        />
-                        <Text style={[styles.innerText, { padding: 20 }]}>
-                            價格:{"\n"}
+                <ScrollView horizontal={true}>
+                    <View style={styles.container1 }>
+                        <View style={ { flexDirection: 'row', padding: 8, borderStyle: 'solid', borderColor: '#c8d3c5' }}>
+                            <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
+                                <Text style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
+                                <Image
+                                    style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
+                                    Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
+                                />
+                                <Text style={[styles.innerText, { padding: 20 }]}>
+                                    價格:{"\n"}
                             商品簡介:{"\n"}
                             價錢:{"\n"}
                             賣出數量:{"\n"}
                             狀態:{"\n"}
-                        </Text>
-                        <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                            <Text style={styles.buttonText1}>重新上架商品</Text>
-                        </TouchableOpacity>
-                    </View>
+                                </Text>
+                                <TouchableOpacity style={[styles.button, { width: 150 }]}>
+                                    <Text style={styles.buttonText1}>重新上架商品</Text>
+                                </TouchableOpacity>
+                            </View>
 
-                    <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
-                        <Text style={[styles.baseText1, { padding: 20 }]}>背心</Text>
-                        <Image
-                            style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
-                            Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
-                        />
-                        <Text style={[styles.innerText, { padding: 20 }]}>
-                            價格:{"\n"}
+                            <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
+                                <Text style={[styles.baseText1, { padding: 20 }]}>背心</Text>
+                                <Image
+                                    style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
+                                    Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
+                                />
+                                <Text style={[styles.innerText, { padding: 20 }]}>
+                                    價格:{"\n"}
                             商品簡介:{"\n"}
                             價錢:{"\n"}
                             賣出數量:{"\n"}
                             狀態:{"\n"}
-                        </Text>
-                        <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                            <Text style={styles.buttonText1}>修改商品</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                            <Text style={styles.buttonText1}>查看商品庫存</Text>
-                        </TouchableOpacity>
+                                </Text>
+                                <TouchableOpacity style={[styles.button, { width: 150 }]}>
+                                    <Text style={styles.buttonText1}>修改商品</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={[styles.button, { width: 150 }]}>
+                                    <Text style={styles.buttonText1}>查看商品庫存</Text>
+                                </TouchableOpacity>
 
+                            </View>
+                        </View>
                     </View>
-                </View>
+                </ScrollView>
             </View>
+
         </ScrollView>
     );
     // );
