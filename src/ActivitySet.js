@@ -42,18 +42,22 @@ export default function ActivitySet() {
     return (
         <ScrollView >
 
+            <View style={[styles.container2]}>
+                <Text style={[styles.linePick, { flex:1,paddingTop:30,padding: 20 }]}>Line Pick</Text>
+            </View>
+
             <View style={[styles.container1]}>
                 <View style={[styles.tipStyle, { flexDirection: 'row', borderBottomWidth: 2, paddingBottom: 10, paddingRight: 80 }]}>
                     <Text style={[styles.baseText1, { padding: 20 }]}>開始時間</Text>
                     <View >
                         <View style={[styles.container1, { paddingTop: 10 }]}>
                             <View style={[styles.borderStyle, styles.block]}>
-                                <Button onPress={showDatepickerStart} color='#AE8F00' title="活動開始日期" />
+                                <Button onPress={showDatepickerStart} color='#6b7f94' title="活動開始日期" />
                             </View>
                         </View>
                         <View style={[styles.container1]}>
                             <View style={[styles.borderStyle, styles.block]}>
-                                <Button onPress={showTimepickerStart} color='#AE8F00' title="活動開始時間" />
+                                <Button onPress={showTimepickerStart} color='#6b7f94' title="活動開始時間" />
                             </View>
                         </View>
                         {show && (
@@ -78,12 +82,12 @@ export default function ActivitySet() {
                     <View >
                         <View style={[styles.container1, { paddingTop: 10 }]}>
                             <View style={[styles.borderStyle, styles.block]}>
-                                <Button onPress={showDatepickerEnd} color='#AE8F00' title="活動結束日期" />
+                                <Button onPress={showDatepickerEnd} color='#6b7f94' title="活動結束日期" />
                             </View>
                         </View>
                         <View style={[styles.container1]}>
                             <View style={[styles.borderStyle, styles.block]}>
-                                <Button onPress={showTimepickerEnd} color='#AE8F00' title="活動結束時間" />
+                                <Button onPress={showTimepickerEnd} color='#6b7f94' title="活動結束時間" />
                             </View>
                         </View>
                         {show && (
@@ -142,7 +146,7 @@ export default function ActivitySet() {
                         </TouchableOpacity>
                         <IconButton
                             icon="delete"
-                            color='#AE8F00'
+                            color='#6b7f94'
                             size={40}
                             onPress={() => console.log('Pressed')}
                             style={{ marginLeft: 63 }}
@@ -160,7 +164,7 @@ export default function ActivitySet() {
                 }]}> */}
                             <IconButton
                                 icon="plus-circle"
-                                color='#AE8F00'
+                                color='#6b7f94'
                                 size={28}
                                 onPress={() => console.log('Pressed')}
                                 style={{
