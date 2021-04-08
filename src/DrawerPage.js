@@ -21,7 +21,7 @@ export default function DrawerPage() {
   const navigation = useNavigation();
   return (
 
-    <SafeAreaProvider style={{ flex: 1, justifyContent: 'space-between', marginTop: 20 }}>
+    <SafeAreaProvider style={styles.container1,{ flex: 1, justifyContent: 'space-between', marginTop: 20 }}>
 
      
         <TouchableOpacity style={{ margin: 20}} onPress={() => navigation.navigate('上方導覽列')}>

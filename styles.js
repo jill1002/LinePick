@@ -4,7 +4,13 @@ import { color } from 'react-native-reanimated';
 const styles = StyleSheet.create({
 
   container1: {
-    backgroundColor: '#FFFCEC',
+    backgroundColor: '#c8d3c5',
+    flex: 1,
+    flexDirection: 'row',
+    
+  },
+  container2: {
+    backgroundColor: '#f9e7d2',
     flex: 1,
     flexDirection: 'row',
     
@@ -19,22 +25,27 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0, //若無值則||or 0(置頂)
   },
   baseText1: {
-    color: '#AE8F00',
+    color: '#6b7f94',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  linePick:{
+    color: '#77773c',
     fontWeight: 'bold',
     fontSize: 20,
   },
   drawerText:{
     flex:1,
-    color: '#AE8F00',
+    color: '#6b7f94',
     fontSize: 18,
     justifyContent: "center",
   },
   innerText: {
-    color: 'gray',
+    color: '#6b7f94',
     fontSize: 15,
   },
   borderStyle: {
-    borderColor: '#AE8F00',
+    borderColor: '#6b7f94',
     borderWidth: 2,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -44,7 +55,7 @@ const styles = StyleSheet.create({
   },
   tipStyle:{
     borderStyle:'solid',
-    borderColor: '#AE8F00',
+    borderColor: '#6b7f94',
     borderWidth: 2,
     borderBottomWidth:0,
     margin:10,
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 20,
     paddingRight: 20,
-    backgroundColor: '#AE8F00',
+    backgroundColor: '#6b7f94',
     borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center'
@@ -67,7 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#AE8F00',
+    borderColor: '#6b7f94',
     borderWidth: 2,
     margin:10,
   },
@@ -77,12 +88,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonTextAE: {
-    color: '#AE8F00',
+    color: '#6b7f94',
     fontSize: 15,
     fontWeight: 'bold',
   },
   addbutton:{ 
-    color: '#AE8F00',
+    color: '#6b7f94',
     fontSize: 15,
     fontWeight: 'bold',
     margin: 20,
@@ -111,7 +122,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   uploadarea1: {
-    borderColor: '#AE8F00',
+    borderColor: '#6b7f94',
     borderWidth: 2,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,

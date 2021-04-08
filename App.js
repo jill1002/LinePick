@@ -140,9 +140,10 @@ function App() {
       <Stack.Navigator initialRouteName="上方導覽列" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="上方導覽列" component={MyHeader} />
         <Stack.Screen name="整面導覽列" component={DrawerPage} />
-        <Stack.Screen name="上架商品" component={ProductLaunch} />
-        <Stack.Screen name="新增商品" component={AddProduct} />
         <Stack.Screen name="新增活動" component={ActivitySet} />
+        <Stack.Screen name="我的活動" component={MyActivity} />
+        <Stack.Screen name="重新上架商品" component={ProductLaunch} />
+        <Stack.Screen name="新增商品" component={AddProduct} />
       </Stack.Navigator>
     </NavigationContainer>
   );
