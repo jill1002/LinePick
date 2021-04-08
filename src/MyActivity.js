@@ -8,6 +8,9 @@ export default function MyActivity() {
    
     return(
         <ScrollView >
+            <View style={[styles.container2]}>
+                <Text style={[styles.linePick, { flex:1,paddingTop:30,padding: 20 }]}>Line Pick</Text>
+            </View>
             <View style={styles.container1}>
             <View style={{flexDirection:'column'}}>
                 <View style={[styles.tipStyle,{marginBottom:0}]}>
