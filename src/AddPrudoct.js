@@ -10,12 +10,15 @@ export default function AddProduct() {
     const [text, setText] = useState('');
     return (
         <ScrollView >
+            <View style={[styles.container2]}>
+                <Text style={[styles.linePick, { flex:1,paddingTop:30,padding: 20 }]}>Line Pick</Text>
+            </View>
             <View style={styles.container1}>
                 <View style={[styles.borderStyle, styles.frame, { marginLeft: 20 }]}>
                     <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品圖片</Text>
                     <IconButton
                         icon="plus-circle"
-                        color='#AE8F00'
+                        color='#6b7f94'
                         size={28}
                         onPress={() => console.log('Pressed')}
                         style={{
@@ -72,71 +75,8 @@ export default function AddProduct() {
 
             <View style={[styles.container1, { flexDirection: 'column' }]}>
                 <Text style={[styles.baseText1, { paddingLeft: 20 }]}>新增規格—</Text>
-
-                <Text style={[styles.baseText1, { padding: 20 }]}>顏色</Text>
-                <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
-                        <Text style={styles.buttonTextAE}>黑色</Text>
-                    </TouchableOpacity>
-                    
-                    <View style={styles.borderStyle}>
-                        <View style={[styles.block, {
-                            borderTopLeftRadius: 10,
-                            borderTopRightRadius: 10,
-                            borderBottomLeftRadius: 10,
-                            borderBottomRightRadius: 10,
-                            flexDirection: 'column'
-                        }]}>
-                            <IconButton
-                                icon="plus-circle"
-                                color='#AE8F00'
-                                size={20}
-                                onPress={() => console.log('Pressed')}
-                            />
-                         <Text style={[ styles.addbuttonText,{paddingBottom:10}]}>
-                        加入圖片</Text>
-                        </View>
-                    </View>
-                  
-                    <IconButton
-                        icon="delete"
-                        color='#AE8F00'
-                        size={40}
-                        onPress={() => console.log('Pressed')}
-                    />
                 </View>
 
-                <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
-                        <Text style={styles.buttonTextAE}>白色</Text>
-                    </TouchableOpacity>
-                    <View style={styles.borderStyle}>
-                        <View style={[styles.block, {
-                            borderTopLeftRadius: 10,
-                            borderTopRightRadius: 10,
-                            borderBottomLeftRadius: 10,
-                            borderBottomRightRadius: 10,
-                            flexDirection: 'column'
-                        }]}>
-                            <IconButton
-                                icon="plus-circle"
-                                color='#AE8F00'
-                                size={20}
-                                onPress={() => console.log('Pressed')}
-                            />
-                         <Text style={[ styles.addbuttonText,{paddingBottom:10}]}>
-                        加入圖片</Text>
-                        </View>
-                    </View>
-
-                    <IconButton
-                        icon="delete"
-                        color='#AE8F00'
-                        size={40}
-                        onPress={() => console.log('Pressed')}
-                    />
-                </View>
-            </View>
             <View style={[styles.container1, { flexDirection: 'row' }]} >
                 <TextInput
                     placeholder="請輸入產品顏色!"
@@ -148,17 +88,6 @@ export default function AddProduct() {
             </View>
 
             <Text style={[styles.container1, styles.baseText1, { padding: 20 }]}>尺寸</Text>
-            <View style={[styles.container1, { flexDirection: 'row' }]}>
-                <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
-                    <Text style={styles.buttonTextAE}>S</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
-                    <Text style={styles.buttonTextAE}>M</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, styles.borderStyle, { width: 100, margin: 10, backgroundColor: '#FFFFFF' }]}>
-                    <Text style={styles.buttonTextAE}>L</Text>
-                </TouchableOpacity>
-            </View>
 
             <View style={[styles.container1, { flexDirection: 'row' }]} >
                 <TextInput
