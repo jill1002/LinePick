@@ -23,7 +23,7 @@ export default function ProductLaunch() {
             </View>
             <View style={{ flexWrap: 'wrap', backgroundColor: '#FFFCEC', alignContent: 'stretch' }}>
                 <View style={styles.container1}>
-                    <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF', marginLeft: 20 }]}>
+                    <View style={[styles.frame,  { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF', marginLeft: 20,marginTop:20,borderStyle:'dashed',borderColor:'#6b7f94' }]}>
                         <Text style={[styles.baseText1, { paddingLeft: 20 }]}>新增商品</Text>
                         {/* <View style={[styles.uploadarea1, {
                     width: 150, height: 150

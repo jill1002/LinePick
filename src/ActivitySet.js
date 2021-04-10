@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions,Image } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions, Image } from 'react-native';
 import styles from '../styles';
 import InputScrollView from 'react-native-input-scroll-view';
 import { IconButton, Colors } from 'react-native-paper';
@@ -43,7 +43,7 @@ export default function ActivitySet() {
         <ScrollView >
 
             <View style={[styles.container2]}>
-                <Text style={[styles.linePick, { flex:1,paddingTop:30,padding: 20 }]}>Line Pick</Text>
+                <Text style={[styles.linePick, { flex: 1, paddingTop: 30, padding: 20 }]}>Line Pick</Text>
             </View>
 
             <View style={[styles.container1]}>
@@ -105,88 +105,87 @@ export default function ActivitySet() {
             </View>
 
             <View style={styles.container1}>
-
-                <View style={{ flexDirection: 'row', flex: 1 }}>
-                    <Text style={[styles.baseText1, { padding: 20 }]}>輸入折數</Text>
-                    <TextInput
-                        onChangeText={text => setText(text)}
-                        style={[styles.block, styles.inputStyle, { margin: 10, padding: 8, flex: 1 }]}
-                        maxLength={10}
-                    />
-                    <Text style={[styles.baseText1, {
-                        paddingRight: 50,
-                        flex: 1,
-                        paddingTop: 20
-                    }]}>折</Text>
-                </View>
+                <TouchableOpacity style={[styles.whitebutton, { width: "100%", margin: 10 ,flex:1}]}>
+                    <Text style={styles.buttonTextAE}>+ 新增折扣</Text>
+                </TouchableOpacity>
             </View>
 
-            <View style={[styles.container1, { flex: 1 }]}>
-                <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品</Text>
-            </View>
-            <ScrollView horizontal={true}>
-                <View style={styles.container1}>
-                    <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
-                        <Text style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
-                        <Image
-                            style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
-                            Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
-                        />
-                        <Text
-                            style={[styles.innerText, { padding: 20 }]}>
-                            價格:{"\n"}
+            <View style={{backgroundColor: '#c8d3c5' , flex: 1,}}>
+                <View style={[styles.tipStyle, { borderBottomWidth: 2 }]}>
+                    <View style={styles.container1}>
+                        <View style={{ flexDirection: 'row', flex: 1 }}>
+                            <Text style={[styles.baseText1, { padding: 20 }]}>輸入折數</Text>
+                            <TextInput
+                                onChangeText={text => setText(text)}
+                                style={[styles.block, styles.inputStyle, { margin: 10, padding: 8, flex: 1 }]}
+                                maxLength={10}
+                            />
+                            <Text style={[styles.baseText1, {
+                                paddingRight: 50,
+                                flex: 1,
+                                paddingTop: 20
+                            }]}>折</Text>
+                        </View>
+                    </View>
+
+                    <View style={[styles.container1, { flex: 1 }]}>
+                        <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品</Text>
+                    </View>
+
+
+                    <View style={{ backgroundColor: '#c8d3c5', flex: 1, flexDirection: 'column', width: "100%" }}>
+                        <View style={[styles.frame, styles.borderStyle, { backgroundColor: '#FFFFFF' }]}>
+                            <Text style={[styles.baseText1, { padding: 20 }]}>項鍊</Text>
+                            <Image
+                                style={{ width: 50, height: 30, marginBottom: 10, marginHorizontal: 60 }}
+                                Source={{ uri: 'https://s5.mogucdn.com/mlcdn/c45406/200408_6j299599kl066bf9ie7l1fa47jlh9_640x852.jpg' }}
+                            />
+                            <Text
+                                style={[styles.innerText, { padding: 20 }]}>
+                                價格:{"\n"}
                             商品簡介:{"\n"}
                             價錢:{"\n"}
                             賣出數量:{"\n"}
                             狀態:上架中{"\n"}
                             限購數量:___個{"\n"}
-                        </Text>
-                        <TouchableOpacity style={[styles.whitebutton, { width: 170 }]}>
-                            <Text style={styles.buttonTextAE}>修改商品</Text>
-                        </TouchableOpacity>
-                        <IconButton
-                            icon="delete"
-                            color='#6b7f94'
-                            size={40}
-                            onPress={() => console.log('Pressed')}
-                            style={{ marginLeft: 63 }}
-                        />
+                            </Text>
+                            <TouchableOpacity style={[styles.button, { width: 150 }]}>
+                                <Text style={styles.buttonText1}>修改商品</Text>
+                            </TouchableOpacity>
 
-                    </View>
-
-                    <View style={styles.container1}>
-                        <View style={[styles.frame, styles.borderStyle, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF' }]}>
-                            <Text style={[styles.baseText1, { paddingLeft: 20, paddingTop: 10 }]}>新增商品</Text>
-                            {/* <View style={[styles.uploadarea1, {
-                    width: 150, height: 150
-                    , paddingHorizontal: 45, paddingVertical: 45
-                    ,
-                }]}> */}
                             <IconButton
-                                icon="plus-circle"
+                                icon="delete"
                                 color='#6b7f94'
-                                size={28}
+                                size={40}
                                 onPress={() => console.log('Pressed')}
-                                style={{
-                                    width: 150, height: 150
-                                    , paddingHorizontal: 45, paddingVertical: 45
-                                    ,
-                                }}
+                                style={{ marginLeft: 63 }}
                             />
-                            {/* </View> */}
+
+                        </View>
+
+                        <View style={styles.container1}>
+                            <View style={[styles.frame, { flexDirection: 'column', padding: 8, backgroundColor: '#FFFFFF', borderStyle: 'dashed', borderColor: '#6b7f94',marginBottom:20 }]}>
+                                <Text style={[styles.baseText1, { paddingLeft: 20, paddingTop: 10 }]}>新增商品</Text>
+                               
+                                <IconButton
+                                    icon="plus-circle"
+                                    color='#6b7f94'
+                                    size={28}
+                                    onPress={() => console.log('Pressed')}
+                                    style={{
+                                        width: 150, height: 150
+                                        , paddingHorizontal: 45, paddingVertical: 45
+                                        ,
+                                    }}
+                                />
+                                {/* </View> */}
+                            </View>
                         </View>
                     </View>
                 </View>
-            </ScrollView>
-            <View style={[styles.container1, { flexDirection: 'row' }]} >
-                <TextInput
-                    placeholder="新增折扣"
-                    onChangeText={text => setText(text)}
-                    style={[, styles.block, styles.borderStyle, { margin: 10, padding: 8, }]}
-                    maxLength={30}
-                    multiline={false}
-                />
             </View>
+
+
 
             <View style={styles.container1}>
                 <TouchableOpacity style={[styles.button, { width: 150 }]}>
