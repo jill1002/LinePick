@@ -18,7 +18,7 @@ export default function SignUp() {
     const [market_name, setMarketName] = useState('');
 
     return (
-        <View style={[styles.container]}>
+        <View style={styles.container}>
             
                     <Image
                         style={{ width: "35%", height: "15%",alignSelf:'center',top: 80,zIndex:1}}
