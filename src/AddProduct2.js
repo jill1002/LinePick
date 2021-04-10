@@ -23,48 +23,48 @@ export default function AddProduct2({ }) {
                 <Appbar.Header
                     style={{ backgroundColor: 'transparent' }}>
                     <Appbar.BackAction onPress={_goBack} />
-                    <Text style={[styles.baseText, { backgroundColor: '#FFFCEC' }]}>設定庫存和價格-</Text>
+                    <Text style={styles.baseText}>設定庫存和價格-</Text>
                 </Appbar.Header>
 
-                <View style={{ backgroundColor: '#FAEBD7' ,height:20}}>
-                    <View style={{ width: '100%', flexDirection: 'row', paddingHorizontal: 25 }}>
+                <View style={{ backgroundColor: '#f9e7d2' ,height:45,alignContent:'center',justifyContent:'center'}}>
+                    <View style={{ width: '100%', flexDirection: 'row'}}>
                         <View style={{ height: '100%', width: "25%", alignItems: 'center', justifyContent: "center" }}>
-                            <Text style={[styles.baseText, { backgroundColor: '#FFFCEC' }]}>規格</Text>
+                            <Text style={styles.baseText}>規格</Text>
                         </View>
                         <View style={{ height: '100%', width: "25%", alignItems: 'center', justifyContent: "center" }}>
-                            <Text style={[styles.baseText, { backgroundColor: '#FFFCEC' }]}>價格</Text>
+                            <Text style={styles.baseText}>價格</Text>
                         </View>
                         <View style={{ height: '100%', width: "25%", alignItems: 'center', justifyContent: "center" }}>
-                            <Text style={[styles.baseText, { backgroundColor: '#FFFCEC' }]}>商品數量</Text>
+                            <Text style={styles.baseText}>商品數量</Text>
                         </View>
                         <View style={{ height: '100%', width: "25%", alignItems: 'center', justifyContent: "center" }}>
-                            <Text style={[styles.baseText, { backgroundColor: '#FFFCEC' }]}>商品編號</Text>
+                            <Text style={styles.baseText}>商品編號</Text>
                         </View>
                     </View>
                 </View>
 
                 <View style={{ marginVertical: 10 }}>
-                    <View style={{ alignItems: 'center', justifyContent: "center", paddingHorizontal: 25 }}>
+                    <View style={{ alignItems: 'center', justifyContent: "center"}}>
                         <View style={{ width: '100%', alignItems: 'flex-start' }}>
                             <View style={{ flex: 1, alignItems: 'center', width: '25%' }}>
                                 <Text style={styles.baseText}>黑色</Text>
                             </View>
-                            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' ,paddingVertical:30}}>
-                                <View style={{ flex: 1, alignItems: 'center' }}>
+                            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' ,justifyContent:'center',paddingTop:'5%'}}>
+                                <View style={{ flex: 1, alignItems: 'center',justifyContent:'center' }}>
                                     <Text style={styles.baseText}>L</Text>
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center'}} placeholder="Price"
+                                    <TextInput style={{borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center'}} placeholder="Price"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center'}} placeholder="Quantity"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center'}} placeholder="Quantity"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' }} placeholder="Number"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' }} placeholder="Number"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
@@ -72,44 +72,44 @@ export default function AddProduct2({ }) {
 
                             </View>
 
-                            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' ,paddingVertical:30}}>
+                            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center',paddingTop:'5%'}}>
                                 <View style={{ flex: 1, alignItems: 'center' }}>
                                     <Text style={styles.baseText}>M</Text>
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' }} placeholder="Price"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' }} placeholder="Price"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Quantity"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Quantity"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Number"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Number"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
 
 
                             </View>
-                            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' ,paddingVertical:30}}>
+                            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' ,paddingTop:'5%'}}>
                                 <View style={{ flex: 1, alignItems: 'center' }}>
                                     <Text style={styles.baseText}>S</Text>
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Price"
+                                    <TextInput style={{borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Price"
+                                        // Making the Under line Transparent.
+                                        underlineColorAndroid="transparent" />
+                                </View>
+                                <View style={{ flex: 1}}>
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Quantity"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Quantity"
-                                        // Making the Under line Transparent.
-                                        underlineColorAndroid="transparent" />
-                                </View>
-                                <View style={{ flex: 1 }}>
-                                    <TextInput style={{ marginTop: 8, borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Number"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Number"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
@@ -123,7 +123,7 @@ export default function AddProduct2({ }) {
 
                 </View>
                 
-                <TouchableOpacity style={[styles.button, { width: 150,marginLeft:'30%'}]}>
+                <TouchableOpacity style={[styles.button, { width: 150}]}>
                     <Text style={styles.buttonText}>上架</Text>
                 </TouchableOpacity>
                 

@@ -7,6 +7,8 @@ import SellerSet from './src/SellerSet';
 import AddProduct2 from './src/AddProduct2';
 import ServiceSet from './src/ServiceSet';
 import CheckOrders from './src/CheckOrders';
+import SignUp from './src/SignUp';
+import SignIn from './src/SignIn'
 //import Test from './src/Test';
 
 
@@ -17,7 +19,7 @@ function App() {
     <NavigationContainer>
 
 
-      <Drawer.Navigator initialRouteName="查看訂單狀況">
+      <Drawer.Navigator initialRouteName="登入">
         <>
           {/* <View style={{ flexDirection: 'column', padding: 3 }}>
               <Text style={{ color: "gray", fontSize: 20, fontWeight: '500', alignContent: 'flex-end' }}></Text>
@@ -43,6 +45,16 @@ function App() {
               name="查看訂單狀況"
               component={CheckOrders}
               options={{ headerShown: "查看訂單狀況" }}
+            />
+            <Drawer.Screen
+              name="註冊"
+              component={SignUp}
+              options={{ headerShown: "註冊" }}
+            />
+            <Drawer.Screen
+              name="登入"
+              component={SignIn}
+              options={{ headerShown: "登入" }}
             />
           {/*  <Drawer.Screen
               name="新增活動"

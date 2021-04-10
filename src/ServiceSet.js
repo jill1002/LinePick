@@ -19,7 +19,7 @@ export default function ServiceSet({ }) {
 
         <View style={[styles.container]}>
             <ScrollView>
-                <View style={{ backgroundColor: '#FAEBD7', marginTop: 20 }}>
+                <View style={{ backgroundColor: '#f9e7d2', marginTop: 20 }}>
                     <View style={{ width: '100%', flexDirection: 'row', paddingHorizontal: 20 }}>
                         <Text style={styles.baseText}>範例:</Text>
                     </View>
@@ -78,7 +78,7 @@ export default function ServiceSet({ }) {
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity style={[styles.button, { width: 150, marginLeft: '30%' }]}>
+                <TouchableOpacity style={[styles.button, { width: 150}]}>
                     <Text style={styles.buttonText}>儲存</Text>
                 </TouchableOpacity>
 

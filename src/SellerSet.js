@@ -51,20 +51,20 @@ export default function SellerSet() {
 
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 8 }}>
+                <View style={{ flexDirection: 'column', padding: 8 }}>
                     <View>
                         <Text style={styles.baseText}>賣場簡介</Text>
                     </View>
-                    <View style={{ flexDirection: 'column', padding: 8 ,flex:1}}>
+                    <View style={{ flexDirection: 'column', padding: 5 ,flex:1}}>
                         {
                           <View>
                         
                             <TextInput 
-                                style={[styles.textarea,{flex:1}]}
+                                style={[styles.signuptextarea,{flex:1}]}
                                 onChangeText={setText}
                                 value={text}
                                 underlineColorAndroid="transparent"
-                                placeholder={"Type Something in Text Area."}
+                                placeholder={"請輸入您的賣場簡介"}
                                 placeholderTextColor={"#9E9E9E"}
                                 numberOfLines={10}
                                 maxlength={10}
@@ -82,14 +82,11 @@ export default function SellerSet() {
                         <Text style={styles.baseText}>電子信箱</Text>
                     </View>
                     <View>
-                        <FormInput
-                            name='email'
-                            value={email}
-                            placeholder='Enter email'
-                            autoCapitalize='none'
-                            iconName='ios-mail'
-                            iconColor='#2C384A'
-                        />
+                    <TextInput style={styles.signuptextarea}
+                                value={email}
+                                onChangeText={setEmail}
+                                placeholder="電子郵件"
+                            />
                     </View>
                 </View>
                 <View style={{ flexDirection: 'column', padding: 8 }}>
@@ -97,14 +94,11 @@ export default function SellerSet() {
                         <Text style={styles.baseText}>手機號碼</Text>
                     </View>
                     <View>
-                        <FormInput
-                            name='cellphone'
-                            value={cellphone}
-                            placeholder='Enter cellphone number'
-                            autoCapitalize='none'
-                            iconName='ios-call-outline'
-                            iconColor='#2C384A'
-                        />
+                    <TextInput style={styles.signuptextarea}
+                                value={cellphone}
+                                onChangeText={setCellphone}
+                                placeholder="手機號碼"
+                            />
                     </View>
                 </View>
                 <View style={{ flexDirection: 'column', padding: 8 }}>
@@ -128,6 +122,7 @@ export default function SellerSet() {
                 <View style={{ flexDirection: 'column', padding: 8 }}>
                     <View>
                         <Text style={styles.baseText}>商品分類</Text>
+                        <Text style={{color:"#6b7f94"}}>(輸入完畢請按空白鍵)</Text>
                     </View>
                     <View>
 
