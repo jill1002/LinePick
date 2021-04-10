@@ -52,7 +52,7 @@ export default function CheckOrders({ }) {
 
                         <View style={{ flexDirection: 'column', flex: 1 }}>
                             <View style={[styles.orderscheckStyle, { marginBottom: 0 }]}>
-                                <Text style={[styles.innerText, { padding: 20 }]}>訂單編號:hiceline</Text>
+                                <Text style={[styles.innerText, { padding: 20 }]}>訂單編號:hijill</Text>
                             </View>
                             <View style={[styles.orderscheckStyle, { marginTop: 0, marginBottom: 0, flexDirection: 'column' }]}>
                                 <Text style={[styles.innerText, { padding: 20 }]}>第一項產品名:</Text>
@@ -104,7 +104,7 @@ export default function CheckOrders({ }) {
 
                         <View style={{ flexDirection: 'column', flex: 1 }}>
                             <View style={[styles.orderscheckStyle, { marginBottom: 0 }]}>
-                                <Text style={[styles.innerText, { padding: 20 }]}>訂單編號:yovicky</Text>
+                                <Text style={[styles.innerText, { padding: 20 }]}>訂單編號:yo瑄瑄</Text>
                             </View>
                             <View style={[styles.orderscheckStyle, { marginTop: 0, marginBottom: 0, flexDirection: 'column' }]}>
                                 <Text style={[styles.innerText, { padding: 20 }]}>第一項產品名:</Text>

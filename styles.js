@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     borderStyle: 'dashed',
     marginHorizontal: 150,
+    backgroundColor:'#FFFFFF'
     //#c5b8a5
   },
   icon: {
@@ -105,7 +106,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderBottomWidth:0,
     marginLeft:15,
-    marginVertical:20
+    marginVertical:20,
+    backgroundColor:'#FFFFFF'
     //#c5b8a5
   },
   signuptextarea:{
@@ -113,6 +115,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#dcdcdc',
     marginBottom: 10,
+    backgroundColor:'#FFFFFF'
   }
 })
 export default styles;

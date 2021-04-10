@@ -111,8 +111,8 @@ export default function SellerSet() {
                     }]}>
 
                         <IconButton
-                            icon="camera"
-                            color='#2C384A'
+                            icon="plus-circle"
+                            color='#6b7f94'
                             size={28}
                             onPress={() => console.log('Pressed')}
                         />

@@ -54,17 +54,17 @@ export default function AddProduct2({ }) {
                                     <Text style={styles.baseText}>L</Text>
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center'}} placeholder="Price"
+                                    <TextInput style={{borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Price"
+                        
+                                        underlineColorAndroid="transparent" />
+                                </View>
+                                <View style={{ flex: 1 }}>
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Quantity"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center'}} placeholder="Quantity"
-                                        // Making the Under line Transparent.
-                                        underlineColorAndroid="transparent" />
-                                </View>
-                                <View style={{ flex: 1 }}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' }} placeholder="Number"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center',backgroundColor:'#FFFFFF' }} placeholder="Number"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
@@ -77,17 +77,17 @@ export default function AddProduct2({ }) {
                                     <Text style={styles.baseText}>M</Text>
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' }} placeholder="Price"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10,textAlign:'center' ,backgroundColor:'#FFFFFF'}} placeholder="Price"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Quantity"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Quantity"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Number"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Number"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
@@ -99,17 +99,17 @@ export default function AddProduct2({ }) {
                                     <Text style={styles.baseText}>S</Text>
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Price"
+                                    <TextInput style={{borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Price"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1}}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Quantity"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Quantity"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
                                 <View style={{ flex: 1 }}>
-                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center'}} placeholder="Number"
+                                    <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 10 ,textAlign:'center',backgroundColor:'#FFFFFF'}} placeholder="Number"
                                         // Making the Under line Transparent.
                                         underlineColorAndroid="transparent" />
                                 </View>
