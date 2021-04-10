@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container1: {
     backgroundColor: '#c8d3c5',
     flex: 1,
-    flexDirection: 'row',
+    
     
   },
   container2: {
@@ -63,12 +63,13 @@ const styles = StyleSheet.create({
   button: {
     margin: 20,
     padding: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
     backgroundColor: '#6b7f94',
     borderRadius: 9,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf:'center',
   },
   whitebutton:{
     margin: 20,

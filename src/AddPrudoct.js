@@ -11,11 +11,16 @@ export default function AddProduct() {
     return (
         <ScrollView >
             <View style={[styles.container2]}>
-                <Text style={[styles.linePick, { flex:1,paddingTop:30,padding: 20 }]}>Line Pick</Text>
+                <Text style={[styles.linePick, { flex: 1, paddingTop: 30, padding: 20 }]}>Line Pick</Text>
             </View>
             <View style={styles.container1}>
-                <View style={[ styles.frame, { marginLeft: 20,borderStyle:'dashed',borderColor:'#6b7f94',marginTop:20 }]}>
-                    <Text style={[styles.baseText1, { padding: 20 }]}>選擇商品圖片</Text>
+                <View style={[styles.frame, { marginLeft: 20, borderStyle: 'dashed', borderColor: '#6b7f94', marginTop: 20 }]}>
+                    <Text style={[styles.baseText1, {
+                        paddingTop:20,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                    }]}>選擇商品圖片</Text>
                     <IconButton
                         icon="plus-circle"
                         color='#6b7f94'
@@ -24,7 +29,9 @@ export default function AddProduct() {
                         style={{
                             width: 150, height: 150
                             , paddingHorizontal: 45, paddingVertical: 45
-                            ,
+                            , alignItems: 'center',
+                            justifyContent: 'center',
+                            alignSelf: 'center',
                         }} />
                 </View>
             </View>
@@ -44,7 +51,7 @@ export default function AddProduct() {
                 <TextInput
                     placeholder={"請輸入產品描述!"}
                     onChangeText={text => setText(text)}
-                    style={[styles.block,  { margin: 10, padding: 8, flex: 1 }]}
+                    style={[styles.block, { margin: 10, padding: 8, flex: 1 }]}
                     maxLength={50}
                     multiline={true}
                 />
@@ -75,7 +82,7 @@ export default function AddProduct() {
 
             <View style={[styles.container1, { flexDirection: 'column' }]}>
                 <Text style={[styles.baseText1, { paddingLeft: 20 }]}>新增規格—</Text>
-                </View>
+            </View>
 
             <View style={[styles.container1, { flexDirection: 'row' }]} >
                 <TextInput
@@ -93,7 +100,7 @@ export default function AddProduct() {
                 <TextInput
                     placeholder="請輸入產品尺寸!"
                     onChangeText={text => setText(text)}
-                    style={[, styles.block,  { margin: 10, padding: 8, }]}
+                    style={[, styles.block, { margin: 10, padding: 8, }]}
                     maxLength={5}
                     multiline={false}
                 />
