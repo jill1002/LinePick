@@ -23,8 +23,9 @@ export default function SellerSet() {
     const [text,setText]=useState('');
     //const renderItem = ({ item, style }) => (
     return (
-        <ScrollView>
+        
             <View style={styles.container}>
+                <ScrollView>
                 <View style={{ flexDirection: 'row', padding: 8 }}>
                     <View style={{ paddingHorizontal: 0 }}>
                         <Text style={styles.baseText}>賣場類型</Text>
@@ -146,8 +147,9 @@ export default function SellerSet() {
                 <TouchableOpacity style={[styles.button, { width: 150 }]}>
                     <Text style={styles.buttonText}>建立賣場</Text>
                 </TouchableOpacity>
+                </ScrollView>
             </View>
-        </ScrollView>
+        
     );
     // );
 }
