@@ -16,7 +16,7 @@ export default function SignUp() {
     const [email, setEmail] = useState('');
     const [cellphone, setCellphone] = useState('');
     const [market_name, setMarketName] = useState('');
-
+//5j4juigdg
     return (
         <View style={styles.container}>
             
