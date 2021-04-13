@@ -3,6 +3,7 @@ import { Input } from 'react-native-elements'
 import { StyleSheet, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
+//圖示style
 const FormInput = ({
   iconName,
   iconColor,
