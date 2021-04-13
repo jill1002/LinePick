@@ -12,7 +12,7 @@ import { IconButton, Colors } from 'react-native-paper';
 import Tags from "react-native-tags";
 //import InputScrollView from 'react-native-input-scroll-view';
 //import { Constants } from 'expo';
-import Textarea from 'react-native-textarea';
+//import Textarea from 'react-native-textarea';
 
 export default function SellerSet() {
     const [inputscroll, setInputscroll] = useState('');
