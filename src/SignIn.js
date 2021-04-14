@@ -21,7 +21,7 @@ export default function SignUp() {
         <View style={styles.container}>
             
                     <Image
-                        style={{ width: "35%", height: "15%",alignSelf:'center',top: 160,zIndex:1}}
+                        style={{ width: "35%", height: "15%",alignSelf:'center',top:200,zIndex:1}}
                         source={{ uri: 'https://free.com.tw/blog/wp-content/uploads/2014/10/LINE-for-iPad-%E6%AD%A3%E5%BC%8F%E4%BA%AE%E7%9B%B8%EF%BC%81%E9%9B%BB%E8%85%A6%E7%89%88%E3%80%81%E6%89%8B%E6%A9%9F%E3%80%81%E5%B9%B3%E6%9D%BF%E4%B8%89%E6%96%B9%E4%B8%80%E8%B5%B7-LINE%EF%BC%81%E7%9B%B8%E7%89%87-2014-10-16-%E4%B8%8A%E5%8D%8810-06-56.png' }}
                         />                
 
@@ -31,7 +31,7 @@ export default function SignUp() {
                     <View style={styles.signupborder}>
 
 
-                        <View>
+                        <View style={{marginTop:10,marginBottom:10}}>
                             <TextInput style={styles.signuptextarea}
                                 value={email}
                                 onChangeText={setEmail}
