@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
@@ -11,10 +11,119 @@ import SignUp from './src/SignUp';
 import SignIn from './src/SignIn'
 //import Test from './src/Test';
 
+  // <NavigationContainer>
+  //   <Drawer.Navigator initialRouteName="賣場設定2">
+  const navigation = useNavigation();
+
+  return (
+    <View>
+      <Container>
+        <Header style={{ backgroundColor: '#f8f8f8', alignItems: 'center', justifyContent: 'center' }}>
+          <Left style={{ flexDirection: 'row' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('整面導覽列')}>
+              <Icon name='ios-menu' color='#000' size={30} style={{ paddingLeft: 15, width: 50 }} />
+            </TouchableOpacity>
+          </Left>
+          <Body >
+            <Text style={{ fontSize: 22 }}>覽得看</Text>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+        </Content>
+      </Container>
+    </View>
+
+  );
+
+/*
+    <Container>
+
+  
+
+      <Header style={{ backgroundColor: '#f8f8f8', alignItems: 'center', justifyContent: 'center' }}>
+        <Left style={{ flexDirection: 'row' }}>
+          <TouchableOpacity onPress={() => navigation.navigate('整面導覽列')}>
+            <Icon name='ios-menu' color='#000' size={30} style={{ paddingLeft: 15, width: 50 }} />
+          </TouchableOpacity>
+        </Left>
+        <Body >
+          <Text style={{ fontSize: 22 }}>覽得看</Text>
+        </Body>
+        <Right />
+      </Header>
+      <Content>
+        <Text style={{ fontSize: 22 }}>覽得看</Text>
+      </Content>
+        </Container>
+*/
 
 
-const Drawer = createDrawerNavigator();
 function App() {
+  //const Drawer = createDrawerNavigator();
+  //const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(true);
+
+  /*
+  {!isLoading ?
+    <FlatList
+      data={events}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => "" + index}
+    >
+    </FlatList>
+    :
+    <View style={{flex:1}}>
+      <ActivityIndicator color="red" size="large" animating={isLoading} />
+    </View>
+  }
+  */
+
+
+  // <Drawer.Screen
+  //   name="test"
+  //   component={DrawerPage}
+  //   options={{
+  //     headerShown: "test"
+  //   }}
+  // />
+
+  // <Drawer.Screen
+  //   name="上架商品"
+  //   component={ProductLaunch}
+  //   options={{
+  //     headerShown: "上架商品"
+  //   }}
+  // />
+
+  // <Drawer.Screen
+  //   name="新增商品"
+  //   component={AddProduct}
+  //   options={{ headerShown: "新增商品" }}
+  // />
+
+  // <Drawer.Screen
+  //   name="我的活動"
+  //   component={MyActivity}
+  //   options={{ headerShown: "我的活動" }}
+  // />
+
+  // <Drawer.Screen
+  //   name="活動設定"
+  //   component={ASet}
+  //   options={{ headerShown: "活動設定" }}
+  // />
+  //    </Drawer.Navigator>
+
+  //  </NavigationContainer> 
+
+  // </View>
+  // </SafeAreaProvider> 
+
+
+
+
+  const Stack = createStackNavigator();
   return (
     <NavigationContainer>
 
@@ -112,12 +221,6 @@ function App() {
     </NavigationContainer>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF8D7',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-export default App
+
+export default App;
+//Jill branch push test
