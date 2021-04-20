@@ -1,5 +1,4 @@
 {
-  
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -23,6 +22,7 @@
     "react-native-dropdown-picker": "^3.7.8",
     "react-native-elements": "^3.1.0",
     "react-native-gesture-handler": "^1.9.0",
+    "react-native-gmailtype-textinput": "^1.0.6",
     "react-native-input-scroll-view": "^1.11.0",
     "react-native-multiple-select": "^0.5.6",
     "react-native-paper": "^4.7.1",
@@ -32,7 +32,8 @@
     "react-native-tags": "^2.2.0",
     "react-native-tags-input": "^1.0.10",
     "react-native-web": "~0.13.12",
-    "react-navigation-drawer": "^2.6.0"
+    "react-navigation-drawer": "^2.6.0",
+    "reinput": "^3.7.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

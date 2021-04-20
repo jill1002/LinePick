@@ -40,12 +40,8 @@ const styles = StyleSheet.create({
     borderRadius:10,
     flexDirection: 'column', 
     padding: 20, 
-    paddingTop:55,
-    marginTop:"10%",
     width:325,
     position:'absolute',
-    zIndex: -1,
-    
   },
   button: {
    margin: 20,
@@ -112,11 +108,18 @@ const styles = StyleSheet.create({
     //#c5b8a5
   },
   signuptextarea:{
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#dcdcdc',
+     padding: 8,
     marginBottom: 10,
-    backgroundColor:'#FFFFFF'
-  }
+  },
+  textInputStyle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#6b7f94',
+    height: 40,
+    borderRadius: 10 ,
+    margin: 10,
+},
 })
 export default styles;

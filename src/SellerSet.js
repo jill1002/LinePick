@@ -1,18 +1,10 @@
-import React, { useState, useEffect, Component } from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Button, Dimensions, Platform, StyleSheet,TextInput} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity,  ScrollView, TextInput} from 'react-native';
 import styles from '../styles.js'
 import DropDownPicker from 'react-native-dropdown-picker';
-import { useNavigation, DrawerActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import InputScrollView from 'react-native-input-scroll-view';
-import FormInput from './FormInput.js'
-//import * as React from 'react';
-import { IconButton, Colors } from 'react-native-paper';
-//import TagInput from 'react-native-tags-input';
+import { IconButton } from 'react-native-paper';
 import Tags from "react-native-tags";
-//import InputScrollView from 'react-native-input-scroll-view';
-//import { Constants } from 'expo';
-//import Textarea from 'react-native-textarea';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function SellerSet() {
     const [inputscroll, setInputscroll] = useState('');
@@ -26,7 +18,7 @@ export default function SellerSet() {
         
             <View style={styles.container}>
                 <ScrollView>
-                <View style={{ flexDirection: 'row', padding: 8 }}>
+                <View style={{ flexDirection: 'row', padding: 15 }}>
                     <View style={{ paddingHorizontal: 0 }}>
                         <Text style={styles.baseText}>賣場類型</Text>
                     </View>
@@ -52,14 +44,12 @@ export default function SellerSet() {
 
                     </View>
                 </View>
-                <View style={{ flexDirection: 'column', padding: 8 }}>
+                <View style={{ flexDirection: 'row', padding: 15 }}>
                     <View>
                         <Text style={styles.baseText}>賣場簡介</Text>
                     </View>
                     <View style={{ flexDirection: 'column', padding: 5 ,flex:1}}>
-                        {
                           <View>
-                        
                             <TextInput 
                                 style={[styles.signuptextarea,{flex:1}]}
                                 onChangeText={setText}
@@ -70,31 +60,32 @@ export default function SellerSet() {
                                 numberOfLines={10}
                                 maxlength={10}
                                 multiline={true}
-                           />
-                            
+                           />  
                         </View>
-    
-                  }
                     </View>
-
                 </View>
-                <View style={{ flexDirection: 'column', padding: 8 }}>
+                <View style={{ flexDirection: 'row', padding: 15 }}>
                     <View>
                         <Text style={styles.baseText}>電子信箱</Text>
                     </View>
-                    <View>
-                    <TextInput style={styles.signuptextarea}
-                                value={email}
+                    <View style={{ flexDirection: 'column', padding: 5 ,flex:1}}>
+                    <TextInput style={[styles.signuptextarea,{flex:1}]}
                                 onChangeText={setEmail}
-                                placeholder="電子郵件"
+                                value={email}
+                                underlineColorAndroid="transparent"
+                                placeholder={"電子郵件"}
+                                placeholderTextColor={"#9E9E9E"}
+                                numberOfLines={10}
+                                maxlength={10}
+                                multiline={true}
                             />
                     </View>
                 </View>
-                <View style={{ flexDirection: 'column', padding: 8 }}>
+                <View style={{ flexDirection: 'row', padding: 15 }}>
                     <View>
                         <Text style={styles.baseText}>手機號碼</Text>
                     </View>
-                    <View>
+                    <View style={{ flexDirection: 'column', padding: 5 ,flex:1}}>
                     <TextInput style={styles.signuptextarea}
                                 value={cellphone}
                                 onChangeText={setCellphone}
