@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Image, Button } from 'react-native';
 import styles from '../styles.js'
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function SignUp() {
-    const [user_name, setUserName] = useState("");
+export default function SignUp({ navigation }) {
+    const [account, setAccount] = useState("");
     const [user_password, setUserPassword] = useState("");
     const [email, setEmail] = useState('');
     const [cellphone, setCellphone] = useState('');
@@ -13,23 +13,34 @@ export default function SignUp() {
     return (
         <View style={styles.container}>
             <Image
-                style={{ width: "50%", height: "25%", alignSelf: 'center', top: 30, zIndex: 1 }}
+                style={{ width: "50%", height: "25%", alignSelf: 'center', top: 70, zIndex: 1 }}
                 source={require('../assets/linepick.jpg')}
             />
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 8, }}>
                 <View style={styles.signupborder}>
-                    <View style={styles.textInputStyle}>
+                    <View style={styles.textInputStyleSign}>
                         <Icon name='ios-person-circle' color='#8C7599' size={30} style={{ paddingRight: 5, paddingLeft: 5, }} />
                         <TextInput
                             style={{ flex: 1 }}
-                            placeholder="使用者名稱"
+                            placeholder="使用者帳號"
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
-                            value={user_name}
-                            onChangeText={setUserName}
+                            value={account}
+                            onChangeText={setAccount}
                         />
                     </View>
-                    <View style={styles.textInputStyle}>
+                    <View style={styles.textInputStyleSign}>
+                        <Icon name='ios-lock-closed' color='#8C7599' size={30} style={{ paddingRight: 5, paddingLeft: 5, }} />
+                        <TextInput
+                            style={{ flex: 1 }}
+                            placeholder="使用者密碼"
+                            underlineColorAndroid="transparent"
+                            placeholderTextColor="#8C7599"
+                            value={user_password}
+                            onChangeText={setUserPassword}
+                        />
+                    </View>
+                    <View style={styles.textInputStyleSign}>
                         <Icon name='ios-mail' color='#8C7599' size={30} style={{ paddingRight: 5, paddingLeft: 5, }} />
                         <TextInput
                             style={{ flex: 1 }}
@@ -40,7 +51,7 @@ export default function SignUp() {
                             onChangeText={setEmail}
                         />
                     </View>
-                    <View style={styles.textInputStyle}>
+                    <View style={styles.textInputStyleSign}>
                         <Icon name='ios-call' color='#8C7599' size={30} style={{ paddingRight: 5, paddingLeft: 5, }} />
                         <TextInput
                             style={{ flex: 1 }}
@@ -51,26 +62,20 @@ export default function SignUp() {
                             onChangeText={setCellphone}
                         />
                     </View>
-                    <View style={{ marginBottom: 10 }}>
-                        <TextInput style={styles.signuptextarea}
-                            value={user_password}
-                            onChangeText={setUserPassword}
-                            placeholder="密碼"
-                        />
-                    </View>
-                    <View style={{ marginBottom: 10 }}>
-                        <TextInput style={styles.signuptextarea}
+                    <View style={styles.textInputStyleSign}>
+                        <Icon name='ios-basket' color='#8C7599' size={30} style={{ paddingRight: 5, paddingLeft: 5, }} />
+                        <TextInput
+                            style={{ flex: 1 }}
+                            placeholder="賣場名稱"
+                            underlineColorAndroid="transparent"
+                            placeholderTextColor="#8C7599"
                             value={market_name}
                             onChangeText={setMarketName}
-                            placeholder="賣場名稱"
                         />
                     </View>
-                    <View style={{ flexDirection: 'row', paddingLeft: "5%", marginTop: "10%" }}>
-                        <TouchableOpacity style={[styles.multibuttons, { width: "40%" }]}>
-                            <Text style={styles.buttonText}>註冊</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[styles.multibuttons, { width: "40%" }]}>
-                            <Text style={styles.buttonText}>取消</Text>
+                    <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginTop: 25 }}>
+                        <TouchableOpacity>
+                            <Button title="註冊" color="#6b7f94" onPress={() => navigation.navigate('註冊')}/>
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -1,22 +1,57 @@
 import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Button, Dimensions } from 'react-native';
 import styles from '../styles';
+import { Header, Left, Right, Body } from "native-base";
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
+import { IconButton } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import InputScrollView from 'react-native-input-scroll-view';
-import { IconButton, Colors } from 'react-native-paper';
 
-export default function AddProduct() {
+export default function AddProduct({navigation}) {
     const [categories, setCategories] = useState('');
     const [text, setText] = useState('');
     return (
         <ScrollView >
-            <View style={[styles.container2]}>
-                <Text style={[styles.linePick, { flex: 1, paddingTop: 30, padding: 20 }]}>Line Pick</Text>
-            </View>
+            <Header
+                style={{
+                    backgroundColor: "#f9e7d2",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
+                <Left style={{ flexDirection: "row" }}>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigation.dispatch(DrawerActions.toggleDrawer())
+                        }
+                    >
+                        <Icon
+                            name="ios-menu"
+                            color="#77773c"
+                            size={30}
+                            style={{ paddingLeft: 15, width: 50 }}
+                        />
+                    </TouchableOpacity>
+                </Left>
+                <Body>
+                    <Text style={{ fontSize: 22, color: "#77773c", fontWeight: 'bold' }}>新增商品</Text>
+                </Body>
+                <Right>
+                    <TouchableOpacity onPress={() => navigation.navigate("賣場設定")}>
+                        <Icon
+                            name="ios-settings-sharp"
+                            color="#77773c"
+                            size={30}
+                            style={{ paddingLeft: 15, width: 50 }}
+                        />
+                    </TouchableOpacity>
+                </Right>
+            </Header>
             <View style={styles.container1}>
                 <View style={[styles.frame, { marginLeft: 20, borderStyle: 'dashed', borderColor: '#6b7f94', marginTop: 20 }]}>
                     <Text style={[styles.baseText1, {
-                        paddingTop:20,
+                        paddingTop: 20,
                         alignItems: 'center',
                         justifyContent: 'center',
                         alignSelf: 'center',
@@ -110,13 +145,6 @@ export default function AddProduct() {
                     <Text style={styles.buttonText1}>下一步：設定商品數量和價格</Text>
                 </TouchableOpacity>
             </View>
-
-
-
-
-
-
-
         </ScrollView>
     )
 };

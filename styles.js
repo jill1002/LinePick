@@ -5,10 +5,8 @@ const styles = StyleSheet.create({
 
   container: {
     backgroundColor: '#c8d3c5',
-    flex: 1,
+    flex: 10,
   },
-  // flexDirection: 'column',
-  //#FFFCC
   container1: {
     backgroundColor: '#c8d3c5',
     flex: 1,
@@ -27,9 +25,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginTop: StatusBar.currentHeight || 0, //若無值則||or 0(置頂)
   },
+  baseTextBig: {
+    color: '#8C7599',
+    fontWeight: "bold",
+    fontSize: 23,
+  },
   baseText: {
     color: '#6b7f94',
     fontWeight: "bold",
+    fontSize: 18,
   },
   baseText1: {
     color: '#6b7f94',
@@ -91,18 +95,11 @@ const styles = StyleSheet.create({
     //#c5b8a5
   },
   multibuttons: {
-    margin: 10,
-    padding: 5,
-    backgroundColor: '#6b7f94',
     margin: 20,
     padding: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
     backgroundColor: '#6b7f94',
     borderRadius: 9,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
+    justifyContent: 'center'
   },
   whitebutton: {
     margin: 20,
@@ -159,13 +156,10 @@ const styles = StyleSheet.create({
     //#c5b8a5
     marginHorizontal: 8,
   },
-  uploadarea1: {
+  uploadarea: {
     borderColor: '#6b7f94',
     borderWidth: 2,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderRadius: 10,
     marginHorizontal: 8,
   },
   frame: {
@@ -208,6 +202,16 @@ const styles = StyleSheet.create({
     padding: 8,
     marginBottom: 10,
   },
+  textInputStyleSign: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#6b7f94',
+    height: 40,
+    borderRadius: 10,
+    margin: 15,
+  },
   textInputStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -216,7 +220,19 @@ const styles = StyleSheet.create({
     borderColor: '#6b7f94',
     height: 40,
     borderRadius: 10,
-    margin: 10,
+    margin: 5,
+    marginLeft: 20,
+  },
+  textInputStyleLarge: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    borderWidth: 1,
+    borderColor: '#6b7f94',
+    height: 100,
+    borderRadius: 10,
+    margin: 5,
+    marginLeft: 20,
   },
   form: {
     flex: 1,
@@ -236,6 +252,15 @@ const styles = StyleSheet.create({
   underLine: {
     textDecorationLine: 'underline',
     color: '#AE8F00',
-  }
+  },
+  marketBorder: {
+    flexDirection: 'column',
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 20,
+    borderColor: '#b5c4b1',
+    borderWidth: 6,
+    borderRadius: 30,
+  },
 })
 export default styles;

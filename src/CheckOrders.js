@@ -1,32 +1,79 @@
 import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Button, Dimensions, TextInput, Image } from 'react-native';
 import styles from '../styles.js'
-import DropDownPicker from 'react-native-dropdown-picker';
+import { Header, Left, Right, Body } from "native-base";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
-import { createStackNavigator, useHeaderHeight } from '@react-navigation/stack';
-import InputScrollView from 'react-native-input-scroll-view';
-import FormInput from './FormInput.js'
-//import * as React from 'react';
-import { IconButton, Colors, Appbar, Title, Searchbar } from 'react-native-paper';
-//import TagInput from 'react-native-tags-input';
-import Tags from "react-native-tags";
-import { color } from 'react-native-reanimated';
-//import ImageView from 'react-native-image-view';
+import { Dropdown } from 'sharingan-rn-modal-dropdown';
+import Icon from 'react-native-vector-icons/Ionicons';
 
+export const data = [
+    {
+        value: "1",
+        label: '未出貨',
+    },
+    {
+        value: "2",
+        label: '運送中',
+    },
+    {
+        value: "3",
+        label: '已完成',
+    },
+];
 
-export default function CheckOrders({ }) {
-    const [searchQuery, setSearchQuery] = React.useState('');
-    const onChangeSearch = query => setSearchQuery(query);
+export default function CheckOrders({ navigation }) {
+    const [value, setValue] = useState(''); //下拉選單的
+    const onChange = (value) => {
+        setValue(value);
+    };
+
     return (
-
-        <View style={[styles.container]}>
+        <View style={{ backgroundColor: '#c8d3c5' }}>
+            <Header
+                style={{
+                    backgroundColor: "#f9e7d2",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
+                <Left style={{ flexDirection: "row" }}>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigation.dispatch(DrawerActions.toggleDrawer())
+                        }
+                    >
+                        <Icon
+                            name="ios-menu"
+                            color="#77773c"
+                            size={30}
+                            style={{ paddingLeft: 15, width: 50 }}
+                        />
+                    </TouchableOpacity>
+                </Left>
+                <Body>
+                    <Text style={{ fontSize: 22, color: "#77773c", fontWeight: 'bold' }}>LINEPICK</Text>
+                </Body>
+                <Right>
+                    <TouchableOpacity onPress={() => navigation.navigate("賣場設定")}>
+                        <Icon
+                            name="ios-settings-sharp"
+                            color="#77773c"
+                            size={30}
+                            style={{ paddingLeft: 15, width: 50 }}
+                        />
+                    </TouchableOpacity>
+                </Right>
+            </Header>
             <ScrollView>
-                <Searchbar
-                    placeholder="Search"
-                    onChangeText={onChangeSearch}
-                    value={searchQuery}
-                />
                 <View style={{ flexDirection: 'column' }}>
+                    <View style={{ flex: 1 }}>
+                        <Dropdown
+                            label="選擇訂單狀態"
+                            data={data}
+                            value={value}
+                            onChange={onChange}
+                        />
+                    </View>
                     <View style={{ flexDirection: 'row', marginHorizontal: 15 }}>
                         <View style={{ flexDirection: 'column', flex: 1 }}>
                             <View style={[styles.orderscheckStyle, { marginBottom: 0 }]}>
