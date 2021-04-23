@@ -47,6 +47,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
+  OrderTitle: {
+    color: '#6b7f94',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  ordercard: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: "#f9e7d2"
+  },
+  CardContentText:{
+    color: "#6b7f94", 
+    fontSize: 15, 
+    alignContent: 'flex-end' 
+  },
   drawerText: {
     flex: 1,
     color: '#6b7f94',
@@ -98,7 +113,10 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 10,
     backgroundColor: '#6b7f94',
-    borderRadius: 9,
+    borderRadius: 9,  
+    width: 90,
+    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center'
   },
   whitebutton: {
