@@ -57,6 +57,11 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: "#f9e7d2"
   },
+  ordercard1: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: "#c8d3c5"
+  },
   CardContentText:{
     color: "#6b7f94", 
     fontSize: 15, 

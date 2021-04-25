@@ -10,6 +10,7 @@ import AddProduct from './src/AddProduct';
 import AddProduct2 from './src/AddProduct2';
 import ServiceSet from './src/ServiceSet';
 import NotFinishOrder from './src/NotFinishOrder';
+import CheckOrders from './src/CheckOrders';
 import FinishOrder from './src/FinishOrder';
 import TransportOrder from './src/TransportOrder';
 import SignUp from './src/SignUp';
@@ -35,7 +36,11 @@ function App() {
             component={AddProduct}
             options={{ headerShown: false }}
           />
-          
+          <Drawer.Screen
+            name="訂單詳細資訊"
+            component={CheckOrders}
+            options={{ headerShown: false }}
+          />
           <Drawer.Screen
             name="未出貨訂單"
             component={NotFinishOrder}
