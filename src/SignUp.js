@@ -13,7 +13,7 @@ export default function SignUp({ navigation }) {
     return (
         <View style={styles.container}>
             <Image
-                style={{ width: "50%", height: "25%", alignSelf: 'center', top: 70, zIndex: 1 }}
+                style={{ width: "50%", height: "25%", alignSelf: 'center', top: 80, zIndex: 1 }}
                 source={require('../assets/linepick.jpg')}
             />
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 8, }}>
@@ -74,8 +74,8 @@ export default function SignUp({ navigation }) {
                         />
                     </View>
                     <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginTop: 25 }}>
-                        <TouchableOpacity>
-                            <Button title="註冊" color="#6b7f94" onPress={() => navigation.navigate('註冊')}/>
+                        <TouchableOpacity style={[styles.button, { width: "40%" }]}>
+                            <Text style={{color: '#ffff', fontWeight:'bold', fontSize: 15}}>註冊</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

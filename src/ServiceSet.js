@@ -6,10 +6,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 
-export default function ServiceSet({navigation }) {
+export default function ServiceSet({ navigation }) {
     const [text, setText] = useState('');
     return (
-        <View style={[styles.container]}>
+        <View style={styles.container}>
             <ScrollView>
                 <Header
                     style={{
@@ -63,8 +63,6 @@ export default function ServiceSet({navigation }) {
                                 <View style={{ flex: 1 }}>
                                     <Text style={styles.baseText}>A:現貨商品將於3日內出貨</Text>
                                 </View>
-
-
                             </View>
                         </View>
                     </View>
@@ -84,7 +82,7 @@ export default function ServiceSet({navigation }) {
                                         onChangeText={setText}
                                         value={text}
                                         multiline={true}
-                                        placeholder={'請輸入10字以內問題。'}
+                                        placeholder={'請輸入10字以內問題'}
                                     />
                                 </View>
                                 <View style={{ flex: 1, marginBottom: 10, flexDirection: 'row' }}>
@@ -96,21 +94,19 @@ export default function ServiceSet({navigation }) {
                                         onChangeText={setText}
                                         value={text}
                                         multiline={true}
-                                        placeholder={'請輸入回覆訊息。'}
+                                        placeholder={'請輸入回覆訊息'}
                                     />
                                 </View>
-
-
                             </View>
                         </View>
                     </View>
                 </View>
                 <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                    <Text style={styles.buttonText}>儲存</Text>
+                    <Text style={{ color: '#ffff', fontWeight: 'bold', fontSize: 15 }}>新增</Text>
                 </TouchableOpacity>
 
             </ScrollView>
-        </View>
+        </View >
 
     );
 }

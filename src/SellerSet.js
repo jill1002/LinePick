@@ -64,12 +64,18 @@ export default function SellerSet({ navigation }) {
                 </Right>
             </Header>
             <View style={styles.marketBorder}>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-person-circle' color='#6b7f94' size={25} />
-                            使用者帳號: linepick</Text>
+                            使用者帳號:
+                    </Text>
+                    <View style={{ flexDirection: 'column', flex: 1 }}>
+                        <View style={styles.userAcount}>
+                            <Text style={{ color: "#8C7599", fontSize: 18 }}>LINEPICK</Text>
+                        </View>
+                    </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-lock-closed' color='#6b7f94' size={25} />
                             使用者密碼:</Text>
@@ -78,14 +84,14 @@ export default function SellerSet({ navigation }) {
                             <TextInput
                                 placeholder="ABC123"  //之後後端改這裡為變數
                                 underlineColorAndroid="transparent"
-                                placeholderTextColor="#6b7f94"
+                                placeholderTextColor="#8C7599"
                                 value={user_password}
                                 onChangeText={setUserPassword}
                             />
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-basket' color='#6b7f94' size={25} />
                             賣場名稱:</Text>
@@ -94,14 +100,14 @@ export default function SellerSet({ navigation }) {
                             <TextInput
                                 placeholder="日韓代購"
                                 underlineColorAndroid="transparent"
-                                placeholderTextColor="#6b7f94"
+                                placeholderTextColor="#8C7599"
                                 value={market_name}
                                 onChangeText={setMarketName}
                             />
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-call' color='#6b7f94' size={25} />
                             手機號碼:</Text>
@@ -110,14 +116,14 @@ export default function SellerSet({ navigation }) {
                             <TextInput
                                 placeholder="0912345678"
                                 underlineColorAndroid="transparent"
-                                placeholderTextColor="#6b7f94"
+                                placeholderTextColor="#8C7599"
                                 value={cellphone}
                                 onChangeText={setCellphone}
                             />
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-mail' color='#6b7f94' size={25} />
                             電子郵件:</Text>
@@ -126,14 +132,14 @@ export default function SellerSet({ navigation }) {
                             <TextInput
                                 placeholder=" buy@gmail.com"
                                 underlineColorAndroid="transparent"
-                                placeholderTextColor="#6b7f94"
+                                placeholderTextColor="#8C7599"
                                 value={email}
                                 onChangeText={setEmail}
                             />
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-information-circle' color='#6b7f94' size={25} />
                             賣場簡介:</Text>
@@ -142,7 +148,7 @@ export default function SellerSet({ navigation }) {
                             <TextInput
                                 placeholder="專業日韓美妝、零食、雜貨代購，定期進貨~"
                                 underlineColorAndroid="transparent"
-                                placeholderTextColor="#6b7f94"
+                                placeholderTextColor="#8C7599"
                                 value={market_desc}
                                 onChangeText={setMarketDesc}
                                 multiline='true'
@@ -160,7 +166,7 @@ export default function SellerSet({ navigation }) {
                         <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
                             <IconButton
                                 icon="plus-circle"
-                                color='#6b7f94'
+                                color='#8C7599'
                                 size={28}
                                 onPress={openImagePickerAsync} title='選擇檔案'
                             />

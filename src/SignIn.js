@@ -10,7 +10,7 @@ export default function SignIn({ navigation }) {
     return (
         <View style={styles.container}>
             <Image
-                style={{ width: "50%", height: "25%", alignSelf: 'center', top: 120, zIndex: 1 }}
+                style={{ width: "50%", height: "25%", alignSelf: 'center', top: 160, zIndex: 1 }}
                 source={require('../assets/linepick.jpg')}
             />
             <View style={{ flex: 10, alignItems: 'center', justifyContent: 'center', padding: 8, }}>

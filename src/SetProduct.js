@@ -4,7 +4,7 @@ import styles from '../styles';
 import { Header, Left, Right, Body } from "native-base";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { IconButton } from 'react-native-paper';
+import { IconButton, Colors, Appbar, Title } from 'react-native-paper';
 import ReactChipsInput from 'react-native-chips';
 import InputScrollView from 'react-native-input-scroll-view';
 import AddProduct2 from './AddProduct2';
@@ -27,7 +27,7 @@ export const data = [
     },
 ];
 
-export default function AddProduct() {
+export default function SetProduct() {
 
     function AddProduct1({ navigation }) {
         const [categories, setCategories] = useState('');
@@ -49,42 +49,11 @@ export default function AddProduct() {
 
         return (
             <View style={styles.container}>
-                <Header
-                    style={{
-                        backgroundColor: "#f9e7d2",
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}
-                >
-                    <Left style={{ flexDirection: "row" }}>
-                        <TouchableOpacity
-                            onPress={() =>
-                                navigation.dispatch(DrawerActions.toggleDrawer())
-                            }
-                        >
-                            <Icon
-                                name="ios-menu"
-                                color="#77773c"
-                                size={30}
-                                style={{ paddingLeft: 15, width: 50 }}
-                            />
-                        </TouchableOpacity>
-                    </Left>
-                    <Body>
-                        <Text style={{ fontSize: 22, color: "#77773c", fontWeight: 'bold' }}>新增商品</Text>
-                    </Body>
-                    <Right>
-                        <TouchableOpacity onPress={() => navigation.navigate("賣場設定")}>
-                            <Icon
-                                name="ios-settings-sharp"
-                                color="#77773c"
-                                size={30}
-                                style={{ paddingLeft: 15, width: 50 }}
-                            />
-                        </TouchableOpacity>
-                    </Right>
-                </Header>
-
+                <Appbar.Header
+                    style={{ backgroundColor: '#f9e7d2' }}>
+                    <Appbar.BackAction onPress={() => navigation.goBack()} />
+                    <Text style={styles.baseText}>修改商品</Text>
+                </Appbar.Header>
                 <ScrollView >
                     <View style={{ margin: 20, paddingTop: 10 }}>
                         <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
@@ -160,7 +129,7 @@ export default function AddProduct() {
                         <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingTop: 15 }}>
                             <Text style={[styles.baseText1, { paddingLeft: 20 }]}>
                                 <Icon name='ios-create' color='#6b7f94' size={25} />
-                            新增商品規格</Text>
+                            修改商品規格</Text>
                         </View>
                         <View style={{ paddingLeft: 18 }}>
                             < ReactChipsInput
@@ -175,7 +144,7 @@ export default function AddProduct() {
                         <View style={{ marginTop: 10 }}>
                             <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("AddProduct2")}>
                                 <Text style={styles.buttonText1}>下一步
-                                <Icon name='ios-chevron-forward' color='#FFFFFF' size={18} />     
+                                <Icon name='ios-chevron-forward' color='#FFFFFF' size={18} />
                                 </Text>
                             </TouchableOpacity>
                         </View>

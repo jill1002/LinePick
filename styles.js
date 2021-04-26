@@ -7,10 +7,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#c8d3c5',
     flex: 10,
   },
-  container1: {
-    backgroundColor: '#c8d3c5',
-    flex: 1,
-  },
   container2: {
     backgroundColor: '#f9e7d2',
     flex: 1,
@@ -60,11 +56,9 @@ const styles = StyleSheet.create({
   borderStyle: {
     borderColor: '#6b7f94',
     borderWidth: 2,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    margin: 10,
+    borderRadius: 20,
+    margin: 20,
+    backgroundColor: '#FFFFFF'
   },
   tipStyle: {
     borderStyle: 'solid',
@@ -157,9 +151,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   uploadarea: {
-    borderColor: '#6b7f94',
+    borderColor: '#8C7599',
     borderWidth: 2,
     borderRadius: 10,
+    borderStyle:'dashed',
     marginHorizontal: 8,
   },
   frame: {
@@ -170,7 +165,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     marginHorizontal: 8,
-
   },
   icon: {
     color: '#2C384A',
@@ -207,7 +201,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#6b7f94',
+    borderColor: '#8C7599',
     height: 40,
     borderRadius: 10,
     margin: 15,
@@ -217,7 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#6b7f94',
+    borderColor: '#8C7599',
     height: 40,
     borderRadius: 10,
     margin: 5,
@@ -228,11 +222,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     borderWidth: 1,
-    borderColor: '#6b7f94',
-    height: 100,
+    borderColor: '#8C7599',
+    height: 130,
     borderRadius: 10,
+    margin: 15,
+    //marginLeft: 20,
+  },
+  userAcount: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: 5,
-    marginLeft: 20,
   },
   form: {
     flex: 1,
