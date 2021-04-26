@@ -84,7 +84,7 @@ export function DrawerContent(props) {
                             onPress={() => {props.navigation.navigate('新增商品')}}
                         />
                     </Drawer.Section>
-                    <Drawer.Section style={styles.drawerSection} title="賴皮紀錄">
+                    <Drawer.Section style={styles.drawerSection} title="訂單紀錄">
                         <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
