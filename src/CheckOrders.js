@@ -53,51 +53,73 @@ export default function CheckOrders({ navigation }) {
             </Header>
             
                 <View style={{ flexDirection: 'column' }}>
-                    <View style={{ flex: 10, marginTop:30, paddingTop:50 }}>
+                    <View style={{ flex: 10, marginTop:30, paddingTop:10 }}>
                     <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center">
-                     訂單資訊
+                     訂單明細
                     </Divider>
                     </View>
-                    <View style={{paddingBottom:300, paddingTop:15, marginTop:20}}>
+                    <View style={{paddingBottom:100, marginTop:25}}>
                     
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
                             <Text style={[styles.CardContentText, {marginLeft: 35}]}>交易日期: </Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 143}]}>11/11</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 95}]}>11/11</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>訂單編號: </Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 143}]}>1111</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>商品名稱:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 100}]}>白色戀人巧克力</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>買家姓名:</Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 150}]}>Candy</Text>
-                            </View>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>付款方式:</Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 149}]}>匯款</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>商品款式:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 100}]}>白巧克力</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
                             <Text style={[styles.CardContentText, {marginLeft: 35}]}>購買數量:</Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 150}]}>3</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 103}]}>3</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
                             <Text style={[styles.CardContentText, {marginLeft: 35}]}>購物金折抵:</Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 130}]}>30</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 84}]}>30</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
                             <Text style={[styles.CardContentText, {marginLeft: 35}]}>實付金額:</Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 148}]}>300</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 102}]}>300</Text>
+                            </View>
+                            <View style={{ flex: 10, marginTop:60}}>
+                            <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center" >
+                            基本資訊
+                            </Divider>
+                            </View>
+                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center', marginTop:25}}>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>買家姓名:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 102}]}>Candy</Text>
+                            </View>
+                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>連絡電話:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 100}]}>0912345678</Text>
+                            </View>
+                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>電子郵件:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 100}]}>b@gmail.com</Text>
+                            </View>
+                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center', marginBottom:25}}>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>收貨地址:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 100}]}>輔仁大學</Text>
+                            </View>
+                            <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center" >
+                            付款資訊
+                            </Divider>
+                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center', marginTop:25}}>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>付款方式:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 102}]}>LINE PAY</Text>
+                            </View>
+                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
+                            <Text style={[styles.CardContentText, {marginLeft: 35}]}>使用購物金:</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 84}]}>10 元</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
                             <Text style={[styles.CardContentText, {marginLeft: 35}]}>付款狀態:</Text>
-                            <Text style={[styles.CardContentText, {marginLeft: 150}]}>Y</Text>
+                            <Text style={[styles.CardContentText, {marginLeft: 103}]}>Y</Text>
                             </View>
-                            <View style={{ flex: 10, marginTop:60}}>
-                    <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center" >
-                     LINE PICK
-                    </Divider>
-                    </View>
-                     
                     </View>
                    
                 </View>
