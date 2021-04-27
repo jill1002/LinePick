@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, TextInput, SafeAreaView, Image, Button } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
 import { Header, Left, Right, Body } from "native-base";
 import styles from '../styles.js'
-import { IconButton } from 'react-native-paper';
-import Tags from "react-native-tags";
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import ReactChipsInput from 'react-native-chips';
 
 export default function SellerSet({ navigation }) {
     const [user_password, setUserPassword] = useState("");
@@ -64,7 +63,7 @@ export default function SellerSet({ navigation }) {
                 </Right>
             </Header>
             <View style={styles.marketBorder}>
-                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-person-circle' color='#6b7f94' size={25} />
                             使用者帳號:
@@ -75,7 +74,7 @@ export default function SellerSet({ navigation }) {
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-lock-closed' color='#6b7f94' size={25} />
                             使用者密碼:</Text>
@@ -91,7 +90,7 @@ export default function SellerSet({ navigation }) {
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-basket' color='#6b7f94' size={25} />
                             賣場名稱:</Text>
@@ -107,7 +106,7 @@ export default function SellerSet({ navigation }) {
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-call' color='#6b7f94' size={25} />
                             手機號碼:</Text>
@@ -123,7 +122,8 @@ export default function SellerSet({ navigation }) {
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
+
+                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-mail' color='#6b7f94' size={25} />
                             電子郵件:</Text>
@@ -139,7 +139,7 @@ export default function SellerSet({ navigation }) {
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 15, justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'space-between' }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-information-circle' color='#6b7f94' size={25} />
                             賣場簡介:</Text>
@@ -156,43 +156,22 @@ export default function SellerSet({ navigation }) {
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'column', padding: 15 }}>
-                    <View>
-                        <Text style={styles.baseText}>
-                            <Icon name='ios-camera' color='#6b7f94' size={25} />
-                            上傳賣場封面</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', margin: 8, justifyContent: 'flex-end' }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                            <IconButton
-                                icon="plus-circle"
-                                color='#8C7599'
-                                size={28}
-                                onPress={openImagePickerAsync} title='選擇檔案'
-                            />
-                        </View>
-                        <View style={[styles.uploadarea, {
-                            width: 150, height: 150
-                            , paddingHorizontal: 45, paddingVertical: 45
-                        }]}>
-                            <Image
-                                style={{ width: "200%", height: "200%", bottom: 25, alignSelf: 'center' }}
-                                source={require('../assets/linepick.jpg')}
-                            />
-                        </View>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row', padding: 15 }}>
+                <View style={{ flexDirection: 'row', padding: 10 }}>
                     <Text style={styles.baseText}>
                         <Icon name='ios-apps' color='#6b7f94' size={25} />
                             賣場商品分類</Text>
-                    <TouchableOpacity style={{ paddingLeft: 30, flexDirection: 'row' }} onPress={() => navigation.navigate('註冊')}>
-                        <Text style={{ color: "#8C7599", fontSize: 18, textDecorationLine: 'underline' }}>編輯分類
-                            <Icon name='ios-pencil' color='#8C7599' size={25} />
-                        </Text>
-                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={[styles.button, { width: 150, marginBottom: 25 }]}>
+                <View style={{ paddingLeft: 18 }}>
+                            < ReactChipsInput
+                                label="請輸入賣場商品分類" initialChips={["零食", "美妝保養","生活雜貨"]}
+                                onChangeChips={(chips) => console.log(chips)}
+                                alertRequired={true}
+                                chipStyle={{ borderColor: '#f9e7d2', backgroundColor: '#f9e7d2' }}
+                                inputStyle={{ fontSize: 10 }}
+                                labelStyle={{ color: '#8C7599', fontSize: 15 }}
+                                labelOnBlur={{ color: '#666' }} />
+                        </View>
+                <TouchableOpacity style={[styles.button, { width: 150, marginBottom: 20 }]}>
                     <Text style={styles.buttonText}>完成</Text>
                 </TouchableOpacity>
             </View>

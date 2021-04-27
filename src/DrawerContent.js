@@ -93,7 +93,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="未出貨"
+                            label="未出貨訂單"
                             onPress={() => {props.navigation.navigate('賣場設定')}}
                         />
                         <DrawerItem 
@@ -104,7 +104,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="運送中"
+                            label="運送中訂單"
                             onPress={() => {props.navigation.navigate('訂單紀錄')}}
                         />
                         <DrawerItem 
@@ -115,7 +115,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="已完成"
+                            label="已完成訂單"
                             onPress={() => {props.navigation.navigate('我的商品')}}
                         />
                     </Drawer.Section>
