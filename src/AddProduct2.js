@@ -32,9 +32,6 @@ export default function AddProduct2({ navigation }) {
                             <Text style={styles.baseText}>價格</Text>
                         </View>
                         <View style={{ height: '100%', width: "25%", alignItems: 'center', justifyContent: "center" }}>
-                            <Text style={styles.baseText}>折扣</Text>
-                        </View>
-                        <View style={{ height: '100%', width: "25%", alignItems: 'center', justifyContent: "center" }}>
                             <Text style={styles.baseText}>庫存</Text>
                         </View>
                     </View>
@@ -51,10 +48,6 @@ export default function AddProduct2({ navigation }) {
                                             underlineColorAndroid="transparent" />
                                     </View>
                                     <View style={{ flex: 1 }}>
-                                        <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 8, textAlign: 'center', backgroundColor: '#FFFFFF' }} placeholder="Discount"
-                                            underlineColorAndroid="transparent" />
-                                    </View>
-                                    <View style={{ flex: 1 }}>
                                         <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 8, textAlign: 'center', backgroundColor: '#FFFFFF' }} placeholder="Quantity"
                                             underlineColorAndroid="transparent" />
                                     </View>
@@ -67,10 +60,6 @@ export default function AddProduct2({ navigation }) {
                                     <View style={{ flex: 1 }}>
                                         <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 8, textAlign: 'center', backgroundColor: '#FFFFFF' }} placeholder="Price"
                                             // Making the Under line Transparent.
-                                            underlineColorAndroid="transparent" />
-                                    </View>
-                                    <View style={{ flex: 1 }}>
-                                        <TextInput style={{ borderColor: "gray", borderWidth: 2, marginHorizontal: 8, textAlign: 'center', backgroundColor: '#FFFFFF' }} placeholder="Discount"
                                             underlineColorAndroid="transparent" />
                                     </View>
                                     <View style={{ flex: 1 }}>
