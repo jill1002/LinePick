@@ -94,7 +94,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="未出貨訂單"
-                            onPress={() => {props.navigation.navigate('賣場設定')}}
+                            onPress={() => {props.navigation.navigate('未出貨訂單')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -105,7 +105,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="運送中訂單"
-                            onPress={() => {props.navigation.navigate('訂單紀錄')}}
+                            onPress={() => {props.navigation.navigate('運送中訂單')}}
                         />
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -116,7 +116,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="已完成訂單"
-                            onPress={() => {props.navigation.navigate('我的商品')}}
+                            onPress={() => {props.navigation.navigate('已完成訂單')}}
                         />
                     </Drawer.Section>
                     <Drawer.Section style={styles.drawerSection} >

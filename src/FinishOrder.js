@@ -12,7 +12,20 @@ import { color } from 'react-native-reanimated';
 
 export default function FinishOrder({ navigation }) {
     
+    const [orderlists, setOrderlists] = useState([]);
+    useEffect(() => {
 
+        async function fetchData () {
+    
+          const result = await axios.get('/Orderlist/'+orderlistStatus);
+    
+          setOrderlists(result.data);
+    
+        }
+    
+        fetchData();
+    
+      },[]);
     return (
         <ScrollView>
         <View style={{ backgroundColor: '#c8d3c5' }}>
