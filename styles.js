@@ -262,5 +262,14 @@ const styles = StyleSheet.create({
     borderWidth: 6,
     borderRadius: 30,
   },
+  ordercard1: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: "#c8d3c5"
+  },CardContentText:{
+    color: "#6b7f94", 
+    fontSize: 15, 
+    alignContent: 'flex-end' 
+  },
 })
 export default styles;

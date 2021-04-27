@@ -1,19 +1,16 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { Header, Left, Right, Body } from "native-base";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { useNavigation, DrawerActions } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
-import Icon from 'react-native-vector-icons/Ionicons';
 import SellerSet from './src/SellerSet';
 import AddProduct from './src/AddProduct';
-import AddProduct2 from './src/AddProduct2';
 import ServiceSet from './src/ServiceSet';
-import CheckOrders from './src/CheckOrders';
 import ProductLaunch from './src/ProductLaunch';
 import SignUp from './src/SignUp';
 import SignIn from './src/SignIn'
 import { DrawerContent } from './src/DrawerContent';
+import NotFinishOrder from './src/NotFinishOrder';
+import TransportOrder from './src/TransportOrder';
+import FinishOrder from './src/FinishOrder';
 
 const Drawer = createDrawerNavigator();
 function App() {
@@ -44,11 +41,6 @@ function App() {
           options={{ headerShown: false }}
         />
         <Drawer.Screen
-          name="訂單紀錄"
-          component={CheckOrders}
-          options={{ headerShown: false }}
-        />
-        <Drawer.Screen
           name="註冊"
           component={SignUp}
           options={{ headerShown: false }}
@@ -56,6 +48,21 @@ function App() {
         <Drawer.Screen
           name="登入"
           component={SignIn}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="未出貨訂單"
+          component={NotFinishOrder}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="運送中訂單"
+          component={TransportOrder}
+          options={{ headerShown: false }}
+        />
+        <Drawer.Screen
+          name="已完成訂單"
+          component={FinishOrder}
           options={{ headerShown: false }}
         />
       </Drawer.Navigator>
