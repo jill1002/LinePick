@@ -8,11 +8,28 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Divider from 'react-native-divider';
 import { Card, CardTitle, CardContent, CardImage } from "react-native-cards";
 import { color } from 'react-native-reanimated';
+import { createStackNavigator } from '@react-navigation/stack';
+import axios from 'axios';
+import CheckOrders from './CheckOrders';
 
-
-export default function TransportOrder({ navigation }) {
+const Stack = createStackNavigator();
+export default function TransportOrder({ navigation, route }) {
     
-
+    const [orderlists, setOrderlists] = useState([]);
+    const orderListStatus="運送中";
+    useEffect(() => {
+        async function fetchData () {
+        console.log("in fetchData");
+        
+        const orderListCard = await axios.get('http://cc9c6c1ad271.ngrok.io/Orderlist/'+orderListStatus);
+          //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
+          setOrderlists(orderListCard.data);
+             
+        }
+        fetchData();
+      },[]);
+function MyTransportOrder(){
+      
     return (
         <ScrollView>
         <View style={{ backgroundColor: '#c8d3c5' }}>
@@ -53,85 +70,34 @@ export default function TransportOrder({ navigation }) {
             </Header>
             
                 <View style={{ flexDirection: 'column' }}>
-                    <View style={{ flex: 10, marginTop:10, paddingTop: 15 }}>
+                    <View style={{ flex: 10, marginTop:10, paddingTop:15 }}>
                     <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center">
                      運送中訂單
                     </Divider>
                     </View>
-                    <View style={{paddingBottom:90, paddingTop:15}}>
+                    <View style={{marginBottom: 500, paddingTop:15}}>
+                        
+                    {orderlists.map((orderlist) => (
+                        
                     <Card style={styles.ordercard}>
                         <CardContent style={{padding:10}}>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 50}]}>訂單編號: 1234</Text>
-                            <Text style={styles.CardContentText}>姓名: Candy</Text>
+                            <Text style={[styles.CardContentText, {marginRight: 50}]}>訂單編號: {orderlist.orderListId}</Text>
+                            <Text style={[styles.CardContentText, {marginLeft:50}]}>姓名: {orderlist.buyerName}</Text>
                             </View>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: 11/11</Text>
-                            <Text style={styles.CardContentText}>付款狀態: 1234</Text>
+                            <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: {orderlist.orderDate}</Text>
+                            <Text style={styles.CardContentText}>付款狀態: {orderlist.payStatus}</Text>
                             </View>
-                            <View style={{paddingRight:180}}>
-                                {/* <Text style={[styles.baseText,{padding: 20}]}>選擇商品圖片</Text> */}
-                                <TouchableOpacity style={styles.multibuttons}>
-                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
-                                </TouchableOpacity>
+                            <View style={{marginLeft:20, flexDirection:'row'}}>
                                 
+                                <TouchableOpacity style={styles.multibuttons} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
+                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
+                                </TouchableOpacity>   
                             </View>
                         </CardContent>
                         </Card> 
-                <Card style={styles.ordercard}>
-                        <CardContent style={{padding:10}}>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 50}]}>訂單編號: 1234</Text>
-                            <Text style={styles.CardContentText}>姓名: Candy</Text>
-                            </View>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: 11/11</Text>
-                            <Text style={styles.CardContentText}>付款狀態: 1234</Text>
-                            </View>
-                            <View style={{paddingRight:180}}>
-                                {/* <Text style={[styles.baseText,{padding: 20}]}>選擇商品圖片</Text> */}
-                                <TouchableOpacity style={styles.multibuttons}>
-                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </CardContent>
-                        </Card>
-                        <Card style={styles.ordercard}>                   
-                        <CardContent style={{padding:10}}>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 50}]}>訂單編號: 1234</Text>
-                            <Text style={styles.CardContentText}>姓名: Candy</Text>
-                            </View>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: 11/11</Text>
-                            <Text style={styles.CardContentText}>付款狀態: 1234</Text>
-                            </View>
-                            <View style={{paddingRight:180}}>
-                                {/* <Text style={[styles.baseText,{padding: 20}]}>選擇商品圖片</Text> */}
-                                <TouchableOpacity style={styles.multibuttons}>
-                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </CardContent>
-                        </Card> 
-                        <Card style={styles.ordercard}>                   
-                        <CardContent style={{padding:10}}>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 50}]}>訂單編號: 1234</Text>
-                            <Text style={styles.CardContentText}>姓名: Candy</Text>
-                            </View>
-                            <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
-                            <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: 11/11</Text>
-                            <Text style={styles.CardContentText}>付款狀態: 1234</Text>
-                            </View>
-                            <View style={{paddingRight:180}}>
-                                {/* <Text style={[styles.baseText,{padding: 20}]}>選擇商品圖片</Text> */}
-                                <TouchableOpacity style={styles.multibuttons}>
-                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </CardContent>
-                        </Card>     
+                         ))}
                     </View>
                     
                 </View>
@@ -139,4 +105,19 @@ export default function TransportOrder({ navigation }) {
         </View>
         </ScrollView>
     );
+}
+
+return (
+
+
+    <Stack.Navigator  screenOptions={{ headerShown: false }}>
+
+      <Stack.Screen name="運送中訂單" component={MyTransportOrder} />
+
+      <Stack.Screen name="訂單詳細資訊" component={CheckOrders}  />
+
+    </Stack.Navigator>
+
+ );
+
 }
