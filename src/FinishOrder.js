@@ -22,7 +22,7 @@ export default function FinishOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://cc9c6c1ad271.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://128d9afd7c58.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
              
@@ -33,7 +33,7 @@ function MyOrder(){
       
     return (
         <ScrollView>
-        <View style={{ backgroundColor: '#c8d3c5' }}>
+        <View style={{ backgroundColor: '#f4f3eb' }}>
             <Header
                 style={{
                     backgroundColor: "#f9e7d2",

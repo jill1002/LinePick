@@ -11,7 +11,7 @@ export default function SignUp({ navigation }) {
     const [market_name, setMarketName] = useState('');
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container1}>
             <Image
                 style={{ width: "50%", height: "25%", alignSelf: 'center', top: 80, zIndex: 1 }}
                 source={require('../assets/linepick.jpg')}

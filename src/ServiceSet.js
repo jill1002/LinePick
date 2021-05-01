@@ -1,15 +1,43 @@
 import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Button, Dimensions, TextInput } from 'react-native';
 import styles from '../styles.js'
-import { Header, Left, Right, Body } from "native-base";
+import { Header, Left, Right, Body, Fab } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
-
-
+import { Card, CardTitle, CardContent, CardImage } from "react-native-cards";
+import Info from 'react-native-vector-icons/Feather';
+import Divider from 'react-native-divider';
+import axios from 'axios';
+import QAadd from './QAadd';
 export default function ServiceSet({ navigation }) {
-    const [text, setText] = useState('');
+    const [replys, setReplys] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+
+    useEffect(() => {
+        async function fetchData () {
+        console.log("in fetchData");
+        
+        const SellerQA = await axios.get('http://128d9afd7c58.ngrok.io/Reply');
+          //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
+          setReplys(SellerQA.data);
+          
+        }
+        fetchData();
+      },[modalVisible]);
+      
+  function hide() {
+
+    setModalVisible(false);
+
+  }
+
+  function update() {
+
+    setModalVisible(false);
+
+  }
     return (
-        <View style={styles.container}>
+        <View style={{ backgroundColor: '#f4f3eb' }}>
             <ScrollView>
                 <Header
                     style={{
@@ -46,64 +74,74 @@ export default function ServiceSet({ navigation }) {
                         </TouchableOpacity>
                     </Right>
                 </Header>
-                <View style={{ backgroundColor: '#f9e7d2', marginTop: 20 }}>
-                    <View style={{ width: '100%', flexDirection: 'row', paddingHorizontal: 20 }}>
-                        <Text style={styles.baseText}>範例:</Text>
+                <View style={{ marginTop: 25 }}>
+                <View style={{ flex: 10}}>
+                    <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center">
+                     填寫範例
+                    </Divider>
                     </View>
-                </View>
-
-                <View style={{ marginVertical: 10 }}>
-                    <View style={{ alignItems: 'center', justifyContent: "center", paddingHorizontal: 25 }}>
-                        <View style={{ width: '100%', alignItems: 'flex-start' }}>
-                            <View style={[styles.textarea, { flexDirection: 'column', width: '100%', paddingVertical: 10 }]}>
-
-                                <View style={{ flex: 1, marginBottom: 10 }}>
-                                    <Text style={styles.baseText}>Q:到貨時間</Text>
-                                </View>
-                                <View style={{ flex: 1 }}>
-                                    <Text style={styles.baseText}>A:現貨商品將於3日內出貨</Text>
-                                </View>
+                    <View style={{marginTop:10}}>
+                    <Card style={{marginLeft:10,marginRight:10,backgroundColor:"#dbebf0"}}>
+                        <CardContent style={{padding:10}}>
+                            
+                            <View style={{flexDirection: 'row',flexWrap: "wrap"}}>
+                            
+                            <Text style={{color: "#6b7f94", fontSize:15}}><Info name='info' color="#6b7f94" size={20} style={{width: 30,marginLeft:5 }} />
+                            {" "}設定賴皮客服讓聊天機器人</Text>
+                            <Text style={{color: "#6b7f94", fontSize:15}}>{"     "}幫你自動回覆常見的問題吧～</Text>
                             </View>
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{ marginVertical: 10 }}>
-                    <View style={{ alignItems: 'center', justifyContent: "center", paddingHorizontal: 25 }}>
-                        <View style={{ width: '100%', alignItems: 'flex-start' }}>
-                            <View style={[styles.textarea, { flexDirection: 'column', width: '100%', paddingVertical: 10 }]}>
-
-                                <View style={{ flex: 1, marginBottom: 10, flexDirection: 'row' }}>
-                                    <View>
-                                        <Text style={styles.baseText}>Q:</Text>
-                                    </View>
-                                    <TextInput
-                                        style={{ flex: 1 }}
-                                        onChangeText={setText}
-                                        value={text}
-                                        multiline={true}
-                                        placeholder={'請輸入10字以內問題'}
-                                    />
-                                </View>
-                                <View style={{ flex: 1, marginBottom: 10, flexDirection: 'row' }}>
-                                    <View>
-                                        <Text style={styles.baseText}>A:</Text>
-                                    </View>
-                                    <TextInput
-                                        style={{ flex: 1 }}
-                                        onChangeText={setText}
-                                        value={text}
-                                        multiline={true}
-                                        placeholder={'請輸入回覆訊息'}
-                                    />
-                                </View>
+                            <View>
+                                <Text style={{color: "#6b7f94", fontSize:16}}>
+                                    {"\n"}範例:
+                                </Text>
                             </View>
-                        </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginLeft:20, marginTop:10}}>
+                            <Text style={{color: "#6b7f94", fontSize: 20}}>Q: </Text>
+                            <Text style={[styles.CardContentText,{marginLeft:10}]}>請問何時會出貨?</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop:20, marginLeft:20}}>
+                            <Text style={{color: "#6b7f94", fontSize: 20}}>A: </Text>
+                            <Text style={[styles.CardContentText,{marginLeft:10}]}>大概下單的三天後</Text>
+                            </View>
+                            
+                        </CardContent>
+                        </Card> 
+                </View></View>
+
+                
+                    <View style={{ flex: 10, marginTop:10, paddingTop:15 }}>
+                    <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center">
+                     Q & A
+                    </Divider>
                     </View>
-                </View>
-                <TouchableOpacity style={[styles.button, { width: 150 }]}>
-                    <Text style={{ color: '#ffff', fontWeight: 'bold', fontSize: 15 }}>新增</Text>
-                </TouchableOpacity>
+                    <View style={{marginBottom:300}}>
+                        {replys.map((reply) => (
+                        <Card style={[styles.ordercard]}>
+                            <CardContent style={{padding:3}}>
+                            <View style={{flexDirection: 'row', alignItems: 'center',marginTop:10}}>
+                            <Text style={{color: "#6b7f94", fontSize: 20}}>Q: </Text>
+                            <Text style={[styles.CardContentText,{fontSize:15}]}>{reply.replyQuestion}</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginTop:20}}>
+                            <Text style={{color: "#6b7f94", fontSize: 20}}>A: </Text>
+                            <Text style={[styles.CardContentText,{fontSize:15}]}>{reply.replyAnswer}</Text>
+                            </View>
+                            <View style={{marginLeft:40, flexDirection:'row'}}>
+                                <TouchableOpacity style={[styles.multibuttons,{paddingLeft:20, paddingRight:20}]} >
+                                    <Text style={{color:'#D8D8EB'}}>修改</Text>
+                                </TouchableOpacity>   
+                            </View>
+                            </CardContent>
+                            </Card> 
+                             ))}
+                        </View>
+                        <Fab buttonColor="#8696a7" onPress={() => setModalVisible(true)} style={{position:"absolute", marginBottom:600}}>
+              <Icon name="md-add" size={26} />
+            </Fab>
+
+            <QAadd modalVisible={modalVisible} hide={hide} />
+
+
 
             </ScrollView>
         </View >

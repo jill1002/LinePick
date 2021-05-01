@@ -19,7 +19,7 @@ export default function CheckOrders({ navigation,route }) {
     useEffect(() => {
         console.log(orderListId)
         async function fetchData () {
-        const orderListCardContent = await axios.get('http://cc9c6c1ad271.ngrok.io/OrderlistContent/'+orderListId);
+        const orderListCardContent = await axios.get('http://128d9afd7c58.ngrok.io/OrderlistContent/'+orderListId);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlistContents(orderListCardContent.data);
           
@@ -30,7 +30,7 @@ export default function CheckOrders({ navigation,route }) {
     return (
         
         <ScrollView>
-        <View style={{ backgroundColor: '#c8d3c5' }}>
+        <View style={{ backgroundColor: '#f4f3eb' }}>
             <Header
                 style={{
                     backgroundColor: "#f9e7d2",

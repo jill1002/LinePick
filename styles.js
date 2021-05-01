@@ -4,6 +4,10 @@ import { color } from 'react-native-reanimated';
 const styles = StyleSheet.create({
 
   container: {
+  
+    flex: 10,
+  },
+  container1: {
     backgroundColor: '#c8d3c5',
     flex: 10,
   },
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
     //#c5b8a5
   },
   multibuttons: {
-    margin: 20,
+    marginTop: 10,
     padding: 10,
     backgroundColor: '#6b7f94',
     borderRadius: 9,
@@ -116,6 +120,11 @@ const styles = StyleSheet.create({
     color: '#6b7f94',
     fontSize: 15,
     fontWeight: 'bold',
+  },
+  ordercard: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: "#f9e7d2"
   },
   addbutton: {
     color: '#6b7f94',

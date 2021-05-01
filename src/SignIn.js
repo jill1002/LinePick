@@ -8,7 +8,7 @@ export default function SignIn({ navigation }) {
     const [user_password, setUserPassword] = useState("");
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container1}>
             <Image
                 style={{ width: "50%", height: "25%", alignSelf: 'center', top: 160, zIndex: 1 }}
                 source={require('../assets/linepick.jpg')}

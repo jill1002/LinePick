@@ -31,7 +31,7 @@ export default function NotFinishOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://cc9c6c1ad271.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://128d9afd7c58.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
       
@@ -39,10 +39,7 @@ export default function NotFinishOrder({ navigation, route }) {
         fetchData();
       },[value]);
     function changeStatus(index){
-        
         setOrderListStatus("運送中")
-        
-        
         setValue((value)=>value+1);
         const orderInfo={
             orderListId: orderlists[index].orderListId,
@@ -54,10 +51,11 @@ export default function NotFinishOrder({ navigation, route }) {
             pickmoneyUse: orderlists[index].pickmoneyUse,
             buyerId: orderlists[index].buyerId
         }
-        axios.put("http://cc9c6c1ad271.ngrok.io/OrderStatus/", orderInfo)
+        axios.put("http://128d9afd7c58.ngrok.io/OrderStatus/", orderInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);
+            
           });
 
     }console.log("value")
@@ -66,7 +64,7 @@ function MyNotFinishOrder(){
       
     return (
         <ScrollView>
-        <View style={{ backgroundColor: '#c8d3c5' }}>
+        <View style={{ backgroundColor: '#f4f3eb' }}>
             <Header
                 style={{
                     backgroundColor: "#f9e7d2",
@@ -123,11 +121,12 @@ function MyNotFinishOrder(){
                             <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: {orderlist.orderDate}</Text>
                             <Text style={styles.CardContentText}>付款狀態: {orderlist.payStatus}</Text>
                             </View>
-                            <View style={{marginLeft:60, flexDirection:'row'}}>
+                            <View style={{marginLeft:45, flexDirection:'row'}}>
                                 
                                 <TouchableOpacity style={styles.multibuttons} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
                                     <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
                                 </TouchableOpacity>   
+                            <Text>{"     "}</Text>
                                 <TouchableOpacity style={[styles.multibuttons, { marginHorizontal: 20 }]} onPress={() => changeStatus(index)}>
                                     
                                     <Text style={{color:'#D8D8EB'}}>出 貨</Text>
