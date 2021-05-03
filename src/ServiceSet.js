@@ -9,22 +9,28 @@ import Info from 'react-native-vector-icons/Feather';
 import Divider from 'react-native-divider';
 import axios from 'axios';
 import QAadd from './QAadd';
-export default function ServiceSet({ navigation }) {
+import { createStackNavigator } from '@react-navigation/stack';
+import ServiceEdit from './ServiceEdit';
+
+const Stack = createStackNavigator();
+export default function ServiceSet({ navigation, route }) {
     const [replys, setReplys] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-
+    const [value, setValue] =useState(0);
+    
     useEffect(() => {
         async function fetchData () {
         console.log("in fetchData");
-        
-        const SellerQA = await axios.get('http://128d9afd7c58.ngrok.io/Reply');
+            
+        const SellerQA = await axios.get('http://0e2dceb73099.ngrok.io/Reply');
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setReplys(SellerQA.data);
           
         }
         fetchData();
-      },[modalVisible]);
-      
+        
+      },[modalVisible,value]);
+
   function hide() {
 
     setModalVisible(false);
@@ -36,6 +42,8 @@ export default function ServiceSet({ navigation }) {
     setModalVisible(false);
 
   }
+
+  function MyServiceSet(){
     return (
         <View style={{ backgroundColor: '#f4f3eb' }}>
             <ScrollView>
@@ -84,7 +92,7 @@ export default function ServiceSet({ navigation }) {
                     <Card style={{marginLeft:10,marginRight:10,backgroundColor:"#dbebf0"}}>
                         <CardContent style={{padding:10}}>
                             
-                            <View style={{flexDirection: 'row',flexWrap: "wrap"}}>
+                            <View style={{flexDirection: 'row',flexWrap: "wrap"}} >
                             
                             <Text style={{color: "#6b7f94", fontSize:15}}><Info name='info' color="#6b7f94" size={20} style={{width: 30,marginLeft:5 }} />
                             {" "}設定賴皮客服讓聊天機器人</Text>
@@ -127,7 +135,7 @@ export default function ServiceSet({ navigation }) {
                             <Text style={[styles.CardContentText,{fontSize:15}]}>{reply.replyAnswer}</Text>
                             </View>
                             <View style={{marginLeft:40, flexDirection:'row'}}>
-                                <TouchableOpacity style={[styles.multibuttons,{paddingLeft:20, paddingRight:20}]} >
+                                <TouchableOpacity style={[styles.multibuttons,{paddingLeft:20, paddingRight:20}]} onPress={() => navigation.navigate('客服編輯', {replyid: reply.replyId}, setValue((value)=>value+1))}>
                                     <Text style={{color:'#D8D8EB'}}>修改</Text>
                                 </TouchableOpacity>   
                             </View>
@@ -135,16 +143,26 @@ export default function ServiceSet({ navigation }) {
                             </Card> 
                              ))}
                         </View>
-                        <Fab buttonColor="#8696a7" onPress={() => setModalVisible(true)} style={{position:"absolute", marginBottom:600}}>
+            <Fab buttonColor="#8696a7" onPress={() => setModalVisible(true)} style={{position:"absolute", marginBottom:600}}>
               <Icon name="md-add" size={26} />
             </Fab>
-
             <QAadd modalVisible={modalVisible} hide={hide} />
-
-
-
             </ScrollView>
         </View >
 
     );
+}
+
+return (
+
+
+    <Stack.Navigator  screenOptions={{ headerShown: false }}>
+
+      <Stack.Screen name="賴皮客服" component={MyServiceSet} />
+
+      <Stack.Screen name="客服編輯" component={ServiceEdit} />
+
+    </Stack.Navigator>
+
+ );
 }

@@ -19,7 +19,7 @@ export default function CheckOrders({ navigation,route }) {
     useEffect(() => {
         console.log(orderListId)
         async function fetchData () {
-        const orderListCardContent = await axios.get('http://128d9afd7c58.ngrok.io/OrderlistContent/'+orderListId);
+        const orderListCardContent = await axios.get('http://0e2dceb73099.ngrok.io/OrderlistContent/'+orderListId);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlistContents(orderListCardContent.data);
           

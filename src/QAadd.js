@@ -25,7 +25,7 @@ export default function QAAdd(props) {
 
     }
 
-    axios.post("http://128d9afd7c58.ngrok.io/QAadd/", QAInfo)
+    axios.post("http://0e2dceb73099.ngrok.io/QAadd/", QAInfo)
     .then(res => {
         console.log(res);
         console.log(res.data);
@@ -53,13 +53,13 @@ export default function QAAdd(props) {
 
   return (
 
-    <Modal visible={props.modalVisible} >
-    <View style={{marginTop:30}}>
+    <Modal visible={props.modalVisible}>
+    <View style={{marginTop:30, backgroundColor:'#f4f3eb', paddingBottom:20, paddingStart:30}}>
     <TextInput placeholder="請輸入問題" value={question} style={{marginTop:20, fontSize:20}} onChangeText={text=>setQuestion(text)}/>
     
     <TextInput placeholder="請輸入答案" value={answer} style={{marginTop:30, fontSize:20}} onChangeText={text=>setAnswer(text)}/>
     {/* <TextInput placeholder="賣家編號" value={seller} style={styles.textInput} onChangeText={text=>setSeller(text)}/> */}
-    <View style={{flexDirection:"row", marginLeft: 130, marginTop:30}}>
+    <View style={{flexDirection:"row", marginLeft: 90, marginTop:30}}>
     <Button onPress={addQA} title="新增"/>
 <Text>{"   "}</Text>
     <Button onPress={cancel} title="取消"/>

@@ -21,7 +21,7 @@ export default function TransportOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://128d9afd7c58.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://0e2dceb73099.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
              

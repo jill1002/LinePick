@@ -31,7 +31,7 @@ export default function NotFinishOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://128d9afd7c58.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://0e2dceb73099.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
       
@@ -51,15 +51,15 @@ export default function NotFinishOrder({ navigation, route }) {
             pickmoneyUse: orderlists[index].pickmoneyUse,
             buyerId: orderlists[index].buyerId
         }
-        axios.put("http://128d9afd7c58.ngrok.io/OrderStatus/", orderInfo)
+        axios.put("http://0e2dceb73099.ngrok.io/OrderStatus/", orderInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);
             
           });
 
-    }console.log("value")
-console.log(value)
+    }
+
 function MyNotFinishOrder(){
       
     return (
