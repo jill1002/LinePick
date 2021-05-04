@@ -31,7 +31,7 @@ export default function NotFinishOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://0e2dceb73099.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://dde74ced07f9.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
       
@@ -111,7 +111,7 @@ function MyNotFinishOrder(){
                         
                     {orderlists.map((orderlist,index) => (
                         
-                    <Card style={styles.ordercard}>
+                    <Card style={styles.ordercard} >
                         <CardContent style={{padding:10}}>
                             <View style={{flexDirection: 'row',padding: 5, alignItems: 'center'}}>
                             <Text style={[styles.CardContentText, {marginRight: 50}]}>訂單編號: {orderlist.orderListId}</Text>

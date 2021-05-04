@@ -25,13 +25,11 @@ export default function QAAdd(props) {
 
     }
 
-    axios.post("http://0e2dceb73099.ngrok.io/QAadd/", QAInfo)
+    axios.post("http://aaa0e7f5b550.ngrok.io/QAadd/", QAInfo)
     .then(res => {
         console.log(res);
         console.log(res.data);
-        setQuestion("");
-        setAnswer(""),
-        setSeller(1);
+        
       });
 
     props.hide();

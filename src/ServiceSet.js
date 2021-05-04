@@ -13,23 +13,23 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ServiceEdit from './ServiceEdit';
 
 const Stack = createStackNavigator();
-export default function ServiceSet({ navigation, route }) {
+export default function ServiceSet({ navigation, route,value}) {
     const [replys, setReplys] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-    const [value, setValue] =useState(0);
-    
+    // const [value, setValue] = useState(value);
+  console.log(value)
     useEffect(() => {
         async function fetchData () {
         console.log("in fetchData");
             
-        const SellerQA = await axios.get('http://0e2dceb73099.ngrok.io/Reply');
+        const SellerQA = await axios.get('http://aaa0e7f5b550.ngrok.io/Reply');
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setReplys(SellerQA.data);
           
         }
         fetchData();
         
-      },[modalVisible,value]);
+      },[modalVisible]);
 
   function hide() {
 
@@ -135,7 +135,7 @@ export default function ServiceSet({ navigation, route }) {
                             <Text style={[styles.CardContentText,{fontSize:15}]}>{reply.replyAnswer}</Text>
                             </View>
                             <View style={{marginLeft:40, flexDirection:'row'}}>
-                                <TouchableOpacity style={[styles.multibuttons,{paddingLeft:20, paddingRight:20}]} onPress={() => navigation.navigate('客服編輯', {replyid: reply.replyId}, setValue((value)=>value+1))}>
+                                <TouchableOpacity style={[styles.multibuttons,{paddingLeft:20, paddingRight:20}]} onPress={() => navigation.navigate('客服編輯', {replyid: reply.replyId})}>
                                     <Text style={{color:'#D8D8EB'}}>修改</Text>
                                 </TouchableOpacity>   
                             </View>
