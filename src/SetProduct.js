@@ -4,10 +4,10 @@ import styles from '../styles';
 import { Header, Left, Right, Body } from "native-base";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Checkbox, Appbar, Title } from 'react-native-paper';
+import { Appbar, Title } from 'react-native-paper';
 import ReactChipsInput from 'react-native-chips';
 import SetProductNext from './SetProductNext';
-import { Dropdown } from 'sharingan-rn-modal-dropdown';
+import CheckBox from 'react-native-modest-checkbox'
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 
@@ -16,41 +16,48 @@ export default function SetProduct({ route }) {
     const productDesc = route.params.productDesc;
     const [productNameEnd, setproductName] = useState(productName);
     const [productDescEnd, setproductDesc] = useState(productDesc);
-
-    const [productStyles, setProductStyles] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            const result = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsInfo/' + productName);
-            setProductStyles(result.data);
-        }
-        fetchData();
-    }, []);
-
     const [types, setTypes] = useState([]); //賣場商品分類
+    const [productStyles, setProductStyles] = useState([]);
+    const [checked, setChecked] = useState([]); //checkbox
+
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://42c21ae11ac0.ngrok.io/Type');
-            setTypes(result.data);
+            const result = await axios.get('http://0dccfbd223d7.ngrok.io/ProductsInfo/' + productName);
+            setProductStyles(result.data);
+            const type = await axios.get('http://0dccfbd223d7.ngrok.io/Type');
+            setTypes(type.data);
+            type.data.forEach((item, index)=>checked[index]=false);
         }
         fetchData();
     }, []);
 
     function AddProduct1({ navigation }) {
-        // const [value, setValue] = useState(''); 
-        // const onChange = (value) => {
-        //     setValue(value);
-        // };
-        // //const data={types.map((type) => ({type.typeName} ))};
-        const [checked, setChecked] = React.useState(false); //下拉選單的
+        const chooseType = (index, checked) => {
+            console.log("in choosrType:"+index);
+            console.log("in choosrType:"+checked[index]);
+            if (checked[index] == false) {
+                checked[index] = true;
+            } else {
+                checked[index] == false
+            }
+            setChecked(...[checked]);
+            console.log("in choosrType after:"+checked[index]);
+        }
+
+        var [typeChips, settypeChips] = useState([]);  // productStyle chip
+        var checkChip = 0;
+        if (checkChip == 0) {
+            typeChips = productStyles.map((post) => ([post.productStyle]))
+        };
 
         return (
             <View style={{ backgroundColor: '#f4f3eb' }}>
-                <Appbar.Header
-                    style={{ backgroundColor: '#f9e7d2' }}>
-                    <Appbar.BackAction onPress={() => navigation.goBack()} />
-                    <Text style={styles.baseText}>修改商品</Text>
-                </Appbar.Header>
                 <ScrollView >
+                    <Appbar.Header
+                        style={{ backgroundColor: '#f9e7d2' }}>
+                        <Appbar.BackAction onPress={() => navigation.goBack()} />
+                        <Text style={styles.baseText}>修改商品</Text>
+                    </Appbar.Header>
                     <View style={styles.marketBorder2}>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
@@ -89,34 +96,22 @@ export default function SetProduct({ route }) {
                         <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                             <Text style={[styles.baseText1, { padding: 20 }]}>
                                 <Icon name='ios-apps' color='#6b7f94' size={25} />
-                            商品分類</Text>
-                            {/* <Dropdown
-                                label="選擇商品分類"
-                                labelStyle={{ color: '#8C7599' }}
-                                data={data}
-                                value={value}
-                                onChange={onChange}
-                            /> */}
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                                {types.map((type) => (
-                                    // <CheckBox
-                                    //     center
-                                    //     title={type.typeName}
-                                    //     checkedIcon='dot-circle-o'
-                                    //     uncheckedIcon='circle-o'
-                                    //     //checked={}
-                                    // />
-
-                                    <Checkbox
-                                    title={type.typeName}
-                                        color="#6b7f94"
-                                        status={checked ? 'checked' : 'unchecked'}
-                                        onPress={() => {
-                                            setChecked(!checked);
-                                        }}
+                            修改商品分類</Text>
+                            {types.map((type, index) => (
+                                <View style={{
+                                    flexDirection: "row",
+                                    marginBottom: 20,
+                                }}>
+                                    <CheckBox
+                                        checkedComponent={<Icon name="ios-checkmark-circle" size={25} color="#222" />}
+                                        uncheckedComponent={<Icon name="ios-ellipse-outline" size={25} color="#222" />}
+                                        label={type.typeName}
+                                        defaultChecked={checked[index]}
+                                        value={type.typeName}
+                                        onChange={() => chooseType(index, checked)}
                                     />
-                                ))}
-                            </View>
+                                </View>
+                            ))}
                         </View>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingTop: 25 }}>
@@ -126,10 +121,9 @@ export default function SetProduct({ route }) {
                         </View>
                         <View style={{ paddingLeft: 23 }}>
                             < ReactChipsInput
-                                label="請輸入商品規格" initialChips={productStyles.map((styles) => (
-                                    [styles.productStyle]
-                                ))}
-                                onChangeChips={(chips) => console.log(chips)}
+                                label="請輸入商品規格"
+                                initialChips={typeChips}
+                                onChangeChips={(chips) => settypeChips(chips), checkChip++}
                                 alertRequired={true}
                                 chipStyle={{ borderColor: '#f9e7d2', backgroundColor: '#f9e7d2' }}
                                 inputStyle={{ fontSize: 10 }}
@@ -137,7 +131,7 @@ export default function SetProduct({ route }) {
                                 labelOnBlur={{ color: '#666' }} />
                         </View>
                         <View style={{ marginTop: 20 }}>
-                            <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("SetProductNext", {productStyles: productStyles})}>
+                            <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("SetProductNext", { productName: productName, productNameEnd: productNameEnd, productDesc: productDescEnd, productStyle: typeChips, products: productStyles})}>
                                 <Text style={styles.buttonText1}>下一步
                                 <Icon name='ios-chevron-forward' color='#FFFFFF' size={18} />
                                 </Text>
