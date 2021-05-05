@@ -4,136 +4,131 @@ import styles from '../styles';
 import { Header, Left, Right, Body } from "native-base";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { IconButton, Colors, Appbar, Title } from 'react-native-paper';
+import { Checkbox, Appbar, Title } from 'react-native-paper';
 import ReactChipsInput from 'react-native-chips';
-import InputScrollView from 'react-native-input-scroll-view';
-import AddProduct2 from './AddProduct2';
+import SetProductNext from './SetProductNext';
 import { Dropdown } from 'sharingan-rn-modal-dropdown';
 import Icon from 'react-native-vector-icons/Ionicons';
-import * as ImagePicker from 'expo-image-picker';
+import axios from 'axios';
 
-export const data = [
-    {
-        value: "1",
-        label: '零食',
-    },
-    {
-        value: "2",
-        label: '生活雜貨',
-    },
-    {
-        value: "3",
-        label: '美妝保養',
-    },
-];
+export default function SetProduct({ route }) {
+    const productName = route.params.productName;
+    const productDesc = route.params.productDesc;
+    const [productNameEnd, setproductName] = useState(productName);
+    const [productDescEnd, setproductDesc] = useState(productDesc);
 
-export default function SetProduct() {
+    const [productStyles, setProductStyles] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+            const result = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsInfo/' + productName);
+            setProductStyles(result.data);
+        }
+        fetchData();
+    }, []);
+
+    const [types, setTypes] = useState([]); //賣場商品分類
+    useEffect(() => {
+        async function fetchData() {
+            const result = await axios.get('http://42c21ae11ac0.ngrok.io/Type');
+            setTypes(result.data);
+        }
+        fetchData();
+    }, []);
 
     function AddProduct1({ navigation }) {
-        const [categories, setCategories] = useState('');
-        const [text, setText] = useState('');
-        const [value, setValue] = useState(''); //下拉選單的
-        const onChange = (value) => {
-            setValue(value);
-        };
-
-        let openImagePickerAsync = async () => {
-            let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-            if (permissionResult.granted === false) {
-                alert("Permission to access camera roll is required!");
-                return;
-            }
-            let pickerResult = await ImagePicker.launchImageLibraryAsync();
-            console.log(pickerResult);
-        }
+        // const [value, setValue] = useState(''); 
+        // const onChange = (value) => {
+        //     setValue(value);
+        // };
+        // //const data={types.map((type) => ({type.typeName} ))};
+        const [checked, setChecked] = React.useState(false); //下拉選單的
 
         return (
-            <View style={styles.container}>
+            <View style={{ backgroundColor: '#f4f3eb' }}>
                 <Appbar.Header
                     style={{ backgroundColor: '#f9e7d2' }}>
                     <Appbar.BackAction onPress={() => navigation.goBack()} />
                     <Text style={styles.baseText}>修改商品</Text>
                 </Appbar.Header>
                 <ScrollView >
-                    <View style={{ margin: 20, paddingTop: 10 }}>
-                        <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
-                            <Text style={[styles.baseText1, { paddingLeft: 20 }]}>
-                                <Icon name='ios-image' color='#6b7f94' size={25} />
-                            商品圖片</Text>
-                            <View style={{ flexDirection: 'row', marginBottom: 8, justifyContent: 'flex-end' }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                    <IconButton
-                                        icon="plus-circle"
-                                        color='#8C7599'
-                                        size={28}
-                                        onPress={openImagePickerAsync} title='選擇檔案'
-                                    />
-                                </View>
-                                <View style={[styles.uploadarea, {
-                                    width: 150, height: 150
-                                    , paddingHorizontal: 45, paddingVertical: 45
-                                }]}>
-                                    <Image
-                                        style={{ width: "200%", height: "200%", bottom: 25, alignSelf: 'center' }}
-                                        source={require('../assets/linepick.jpg')}
-                                    />
-                                </View>
-                            </View>
-                        </View>
+                    <View style={styles.marketBorder2}>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                             <Text style={[styles.baseText1, { padding: 20 }]}>
                                 <Icon name='ios-bookmark' color='#6b7f94' size={25} />
                             商品名稱</Text>
-                            <View style={styles.textInputStyleSign}>
+                            <View style={[styles.textInputStyle, { margin: 20 }]}>
                                 <TextInput
-                                    placeholder={"請輸入商品名稱"}
+                                    placeholder={productName}
                                     underlineColorAndroid="transparent"
                                     placeholderTextColor="#8C7599"
-                                    onChangeText={text => setText(text)}
-                                    style={{ margin: 10, padding: 10 }}
-                                    maxLength={10}
+                                    style={{ margin: 10 }}
+                                    value={productNameEnd}
+                                    onChangeText={value => setproductName(value)}
                                 />
                             </View>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                        <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
                             <Text style={[styles.baseText1, { padding: 20 }]}>
                                 <Icon name='ios-information-circle' color='#6b7f94' size={25} />
                             商品描述</Text>
                             <View style={styles.textInputStyleLarge}>
                                 <TextInput
-                                    placeholder={"請輸入產品描述"}
+                                    placeholder={productDesc}
                                     underlineColorAndroid="transparent"
                                     placeholderTextColor="#8C7599"
-                                    onChangeText={text => setText(text)}
                                     style={{ margin: 10, padding: 10 }}
+                                    value={productDescEnd}
+                                    onChangeText={value => setproductDesc(value)}
                                     multiline='true'
                                 />
                             </View>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                        <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                             <Text style={[styles.baseText1, { padding: 20 }]}>
                                 <Icon name='ios-apps' color='#6b7f94' size={25} />
                             商品分類</Text>
-                            <Dropdown
+                            {/* <Dropdown
                                 label="選擇商品分類"
                                 labelStyle={{ color: '#8C7599' }}
                                 data={data}
                                 value={value}
                                 onChange={onChange}
-                            />
+                            /> */}
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                {types.map((type) => (
+                                    // <CheckBox
+                                    //     center
+                                    //     title={type.typeName}
+                                    //     checkedIcon='dot-circle-o'
+                                    //     uncheckedIcon='circle-o'
+                                    //     //checked={}
+                                    // />
+
+                                    <Checkbox
+                                    title={type.typeName}
+                                        color="#6b7f94"
+                                        status={checked ? 'checked' : 'unchecked'}
+                                        onPress={() => {
+                                            setChecked(!checked);
+                                        }}
+                                    />
+                                ))}
+                            </View>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingTop: 15 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingTop: 25 }}>
                             <Text style={[styles.baseText1, { paddingLeft: 20 }]}>
                                 <Icon name='ios-create' color='#6b7f94' size={25} />
                             修改商品規格</Text>
                         </View>
-                        <View style={{ paddingLeft: 18 }}>
+                        <View style={{ paddingLeft: 23 }}>
                             < ReactChipsInput
-                                label="請輸入商品規格" initialChips={["黑巧克力(24入)", "白巧克力(24入)"]}
+                                label="請輸入商品規格" initialChips={productStyles.map((styles) => (
+                                    [styles.productStyle]
+                                ))}
                                 onChangeChips={(chips) => console.log(chips)}
                                 alertRequired={true}
                                 chipStyle={{ borderColor: '#f9e7d2', backgroundColor: '#f9e7d2' }}
@@ -141,8 +136,8 @@ export default function SetProduct() {
                                 labelStyle={{ color: '#8C7599', fontSize: 15 }}
                                 labelOnBlur={{ color: '#666' }} />
                         </View>
-                        <View style={{ marginTop: 10 }}>
-                            <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("AddProduct2")}>
+                        <View style={{ marginTop: 20 }}>
+                            <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("SetProductNext", {productStyles: productStyles})}>
                                 <Text style={styles.buttonText1}>下一步
                                 <Icon name='ios-chevron-forward' color='#FFFFFF' size={18} />
                                 </Text>
@@ -157,7 +152,7 @@ export default function SetProduct() {
     return (
         <Stack.Navigator initialRouteName="AddProduct1" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="AddProduct1" component={AddProduct1} />
-            <Stack.Screen name="AddProduct2" component={AddProduct2} />
+            <Stack.Screen name="SetProductNext" component={SetProductNext} />
         </Stack.Navigator>
     );
 };

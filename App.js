@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import SellerSet from './src/SellerSet';
 import AddProduct from './src/AddProduct';
 import ServiceSet from './src/ServiceSet';
-import ProductLaunch from './src/ProductLaunch';
+import ProductHome from './src/ProductHome';
 import SignUp from './src/SignUp';
 import SignIn from './src/SignIn'
 import { DrawerContent } from './src/DrawerContent';
@@ -37,7 +37,7 @@ function App() {
         />
         <Drawer.Screen
           name="我的商品"
-          component={ProductLaunch}
+          component={ProductHome}
           options={{ headerShown: false }}
         />
         <Drawer.Screen
