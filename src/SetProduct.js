@@ -11,6 +11,7 @@ import CheckBox from 'react-native-modest-checkbox'
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 
+
 export default function SetProduct({ route }) {
     const productName = route.params.productName;
     const productDesc = route.params.productDesc;
