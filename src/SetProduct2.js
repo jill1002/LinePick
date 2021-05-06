@@ -16,42 +16,8 @@ export default function SetProduct2({ route, navigation }) {
     const [productStyle, setProductStyle] = useState([]); 
     useEffect(() => {
         async function fetchData() {
-            console.log("fetch1"+productName);
             const result1 = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsInfo/' + productName);
-            console.log("fetch2");
-            const temp = 
-            [{productName:"白色戀人巧克力",
-            productDesc:"及後有黑色的牛奶巧克力口味。",
-            productPrice:700,
-            productPhoto:"https://firebasestorage.googleapis.com/v0/b/line-pick-5da9a.appspot.com/o/%E7%99%BD%E8%89%B2%E6%88%80%E4%BA%BA.jpg?alt=media&token=46dbaec3-21ee-471e-bd7e-0d24dd5743f2",
-            productStyle:"黑巧克力(24入)",
-            productStock:91,
-            productId:1},
-            /*
-            {productName:"白色戀人巧克力",
-            productDesc:"及後有黑色的牛奶巧克力口味。",
-            productPrice:700,
-            productPhoto:"https://firebasestorage.googleapis.com/v0/b/line-pick-5da9a.appspot.com/o/%E7%99%BD%E8%89%B2%E6%88%80%E4%BA%BA.jpg?alt=media&token=46dbaec3-21ee-471e-bd7e-0d24dd5743f2",
-            productStyle:"白巧克力(24入)",
-            productStock:100,
-            productId:2}
-            */
-        ];
-        /*
-            setProductStyles(
-                [{productName:"123",
-                productDesc:"133",
-                productPrice:700,
-                productPhoto:"",
-                productStyle:"123",
-                productStock:91,
-                productId:1},
-
-            ]
-            );
-            */
             setProductStyle(result1.data);
-            console.log(result1.data);
             const result2 = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsId/' + productName);
             console.log(result2.data);
             setProductId(result2.data);

@@ -17,7 +17,7 @@ export default function SellerSet({ navigation }) {
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
         }
         fetchData();
@@ -26,7 +26,7 @@ export default function SellerSet({ navigation }) {
     const [types, setTypes] = useState([]); //賣場商品分類
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/Type');
+            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/Type');
             setTypes(result.data);
         }
         fetchData();

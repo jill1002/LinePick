@@ -16,7 +16,7 @@ export default function SellerSetEdit({ navigation }) {
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
         }
         fetchData();
@@ -25,15 +25,16 @@ export default function SellerSetEdit({ navigation }) {
     const [types, setTypes] = useState([]); //賣場商品分類
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/Type');
+            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/Type');
             setTypes(result.data);
         }
         fetchData();
     }, []);
     var [typeChips, settypeChips] = useState([]);  //chip
     var checkChip = 0;
-    if(checkChip == 0){
+    if (checkChip == 0) {
         typeChips = types.map((types) => ([types.typeName]))
+        checkChip += 1;
     };
 
     function send() {
@@ -41,48 +42,64 @@ export default function SellerSetEdit({ navigation }) {
         console.log(types.map((post) => ("types" + post.typeName)));
         if (types != [" "]) {
             try {
-                for (var i = 0; i < types.length; i++) {  //新增
-                    for (var j = 0; j < typeChips.length; j++) {
-                        if (typeChips[j] == types[i].typeName) {
-                            console.log("i:" + types[i].typeName);
-                            console.log("j:" + typeChips[j]);
-                            console.log("already inside");
-                        } else if (typeChips[j] != types[i].typeName && j == typeChips.length - 1 && i == types.length - 1) {
-                            //console.log("i:" + types[i].typeName);
-                            //console.log("j:" + typeChips[j]);
-                            console.log(typeChips[j] + "not in");
-                            const newTypes = {
-                                typeName: typeChips[j],
-                                sellerId: 1,
-                            };
-                            axios.post("http://0dccfbd223d7.ngrok.io/TypeAdd/", newTypes)
-                                .then(res => {
-                                    console.log(res);
-                                    console.log(res.data);
-                                    props.update();
-                                });
-                        }
-                    };
-                };
-                for (var i = 0; i < types.length; i++) {  //刪除
-                    for (var j = 0; j < typeChips.length; j++) {
-                        if (typeChips[j] == types[i].typeName) {
-                            console.log("i:" + types[i].typeName);
-                            console.log("j:" + typeChips[j]);
-                            console.log("not delete");
-                        } else if (typeChips[j] != types[i].typeName && j == typeChips.length - 1 && i == types.length - 1) {
-                            //console.log("i:" + types[i].typeName);
-                            //console.log("j:" + typeChips[j]);
-                            console.log(types[i].typeName + "delete");
-                            axios.delete("http://0dccfbd223d7.ngrok.io/TypeDelete/" + types[i].typeName)
-                                .then(res => {
-                                    console.log(res);
-                                    console.log(res.data);
-                                });
-                        }
-                    };
-                };
+                for (var i = 0; i < typeChips.length; i++) { //找出新增的chip
+                    if (i == typeChips.length - 1) {
+                        let typeChipsStr = typeChips[i].join();
+                        console.log("typeChipsStr" + typeChipsStr);
+                        var newChips = typeChipsStr.split(',');
+                        console.log(newChips);
+                    }
+                }
 
+                var typesLength = types.length; //判斷要新增還是刪除
+                var newChipsLength = newChips.length;
+                console.log("productStylesLength" + typesLength);
+                console.log("newChipsLength" + newChipsLength);
+                if ( typesLength < newChipsLength) {
+
+                    for (var i = 0; i < types.length; i++) {  //新增  
+                        for (var j = 0; j < newChips.length; j++) {
+                            if (newChips[j] == types[i].typeName) {
+                                console.log("i:" + types[i].typeName);
+                                console.log("j:" + newChips[j]);
+                                console.log("already inside");
+                            } else if (newChips[j] != types[i].typeName && j == newChips.length - 1 && i == types.length - 1) {
+                                //console.log("i:" + types[i].typeName);
+                                //console.log("j:" + newChips[j]);
+                                console.log(newChips[j] + "not in");
+                                const newTypes = {
+                                    typeName: newChips[j],
+                                    sellerId: 1,
+                                };
+                                axios.post("http://9cbfdd0a9475.ngrok.io/TypeAdd/", newTypes)
+                                    .then(res => {
+                                        console.log(res);
+                                        console.log(res.data);
+                                        props.update();
+                                    });
+                            }
+                        };
+                    };
+                } else if ( typesLength > newChipsLength) {
+                    for (var i = 0; i < types.length; i++) {  //刪除
+                        for (var j = 0; j < newChips.length; j++) {
+                            if (newChips[j] == types[i].typeName) {
+                                console.log("i:" + types[i].typeName);
+                                console.log("j:" + newChips[j]);
+                                console.log("not delete");
+                            } else if (newChips[j] != types[i].typeName && j == newChips.length - 1 && i == types.length - 1) {
+                                //console.log("i:" + types[i].typeName);
+                                //console.log("j:" + newChips[j]);
+                                console.log(types[i].typeName + "delete");
+                                axios.delete("http://9cbfdd0a9475.ngrok.io/TypeDelete/" + types[i].typeName)
+                                    .then(res => {
+                                        console.log(res);
+                                        console.log(res.data);
+                                    });
+                            }
+                        };
+                    };
+                }
             } catch { }
         }
 
@@ -96,10 +113,10 @@ export default function SellerSetEdit({ navigation }) {
             marketDesc: seller.marketDesc,
         };
         //console.log(customer);
-        axios.put("http://0dccfbd223d7.ngrok.io/SellerEdit/", Seller)
+        axios.put("http://9cbfdd0a9475.ngrok.io/SellerEdit/", Seller)
             .then(res => {
                 console.log(res);
-                console.log(res.data);
+                //console.log(res.data);
                 props.hide();
             });
     }
@@ -223,7 +240,7 @@ export default function SellerSetEdit({ navigation }) {
                         //     [types.typeName]
                         // ))}
                         initialChips={typeChips}
-                        onChangeChips={(chips) => settypeChips(chips), checkChip++}
+                        onChangeChips={(chips) => typeChips.push(chips)}
                         alertRequired={true}
                         chipStyle={{ borderColor: '#f9e7d2', backgroundColor: '#f9e7d2' }}
                         inputStyle={{ fontSize: 10 }}
