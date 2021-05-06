@@ -1,22 +1,23 @@
 import React, { useState, useEffect, Component } from 'react';
-import { Button , TextInput, Modal,View,Text } from 'react-native';
+import { Button , TextInput, Modal,View,Text, DeviceEventEmitter } from 'react-native';
 import styles from '../styles';
 import axios from 'axios';
 import { useNavigation, NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 
 export default function ServiceEdit({route, props}) {
   const [replys, setReplys] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [sellerid, setSellerId] = useState("");
-  const [value, setValue] =useState(0);
+  
 
 const replyId = route.params.replyid;
 useEffect(() => {
   async function fetchData () {
   console.log("in fetchData");
    
-  const orderListCard = await axios.get('http://aaa0e7f5b550.ngrok.io/ReplyContent/'+replyId);
+  const orderListCard = await axios.get('http://5aa27558545e.ngrok.io/ReplyContent/'+replyId);
     //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
     setReplys(orderListCard.data);
 
@@ -28,7 +29,7 @@ useEffect(() => {
     setQuestion(replys.replyQuestion);
     setAnswer(replys.replyAnswer);
     setSellerId(1);
-    setValue((value)=>value+1);
+    
     const QAEditInfo={
         replyId:replys.replyId,
         replyQuestion: replys.replyQuestion,
@@ -37,13 +38,12 @@ useEffect(() => {
         
     }
 
-    axios.put("http://0e2dceb73099.ngrok.io/ServiceEdit/", QAEditInfo)
+    axios.put("http://5aa27558545e.ngrok.io/ServiceEdit/", QAEditInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);
-            
-            navigation.goBack();
-          
+            route.params.callback();
+            navigation.goBack(); 
           });
           
         

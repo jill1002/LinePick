@@ -31,7 +31,7 @@ export default function NotFinishOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://dde74ced07f9.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://5aa27558545e.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
       
@@ -51,7 +51,7 @@ export default function NotFinishOrder({ navigation, route }) {
             pickmoneyUse: orderlists[index].pickmoneyUse,
             buyerId: orderlists[index].buyerId
         }
-        axios.put("http://0e2dceb73099.ngrok.io/OrderStatus/", orderInfo)
+        axios.put("http://5aa27558545e.ngrok.io/OrderStatus/", orderInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -121,16 +121,18 @@ function MyNotFinishOrder(){
                             <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: {orderlist.orderDate}</Text>
                             <Text style={styles.CardContentText}>付款狀態: {orderlist.payStatus}</Text>
                             </View>
-                            <View style={{marginLeft:45, flexDirection:'row'}}>
-                                
-                                <TouchableOpacity style={styles.multibuttons} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
-                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
+                            <View style={{flexDirection:'row', marginTop:20}}>
+                                <View style={{justifyContent:"flex-start", marginLeft:13}}>
+                                <TouchableOpacity style={{paddingLeft:20, paddingRight:20, flexDirection:"row", marginTop:20}} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
+                                <Text style={{color:'#8C7599', fontWeight:"bold", fontSize:18,textDecorationLine:1}}><Icon name='ios-pencil' color='#8C7599' size={18} />詳細資訊</Text>
                                 </TouchableOpacity>   
-                            <Text>{"     "}</Text>
-                                <TouchableOpacity style={[styles.multibuttons, { marginHorizontal: 20 }]} onPress={() => changeStatus(index)}>
+                                </View>
+                                <View style={{marginLeft:50,justifyContent:"flex-end"}}>
+                                <TouchableOpacity style={{paddingLeft:20, paddingRight:20, flexDirection:"row", marginTop:20, marginHorizontal: 20}} onPress={() => changeStatus(index)}>
                                     
-                                    <Text style={{color:'#D8D8EB'}}>出 貨</Text>
+                                <Text style={{color:'#8C7599', fontWeight:"bold", fontSize:18,textDecorationLine:1}}><Icon name='ios-pencil' color='#8C7599' size={18} />出貨</Text>
                                 </TouchableOpacity>
+                                </View>
                             </View>
                         </CardContent>
                         </Card> 

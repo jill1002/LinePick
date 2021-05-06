@@ -1,12 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image, Button } from 'react-native';
 import styles from '../styles.js'
 import Icon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
 
 export default function SignIn({ navigation }) {
+    const [signUser, setSignUser] = useState("");
     const [account, setAccount] = useState("");
     const [user_password, setUserPassword] = useState("");
 
+    // useEffect(() => {
+    //     async function fetchData () {
+    //     console.log("in fetchData");
+        
+    //     const orderListCard = await axios.get('http://81728945fd9d.ngrok.io/SellerLogIn/'+account+user_password);
+    //       //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
+    //       setSignUser(orderListCard.data);
+             
+    //     }
+    //     fetchData();
+    //   },[]);
+//console.log(signUser);
+function login(){
+    console.log("account:"+account);
+    console.log("user_password:"+user_password);
+    const result = axios.get('http://81728945fd9d.ngrok.io/SellerLogIn/'+account+'/'+user_password)
+    .then(res => {
+        console.log(res);
+        console.log(res.data);
+        var info = res.data;
+        if(info!=undefined){
+            console.log("in true");
+            navigation.navigate("賴皮客服")
+        }else{
+            console.log("in false");
+            alert("登入失敗")
+        }
+      }); 
+    //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
+    setSignUser(result.data);
+    
+    
+}
+   
     return (
         <View style={styles.container1}>
             <Image
@@ -23,7 +59,7 @@ export default function SignIn({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={account}
-                            onChangeText={setAccount}
+                            onChangeText={text=>setAccount(text)}
                         />
                     </View>
                     <View style={styles.textInputStyleSign}>
@@ -34,11 +70,11 @@ export default function SignIn({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={user_password}
-                            onChangeText={setUserPassword}
+                            onChangeText={text=>setUserPassword(text)}
                         />
                     </View>
                     <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginTop: 25 }}>
-                        <TouchableOpacity style={[styles.button, { width: "40%" }]}>
+                        <TouchableOpacity style={[styles.button, { width: "40%" }]} onPress={login}>
                             <Text style={{color: '#ffff', fontWeight:'bold', fontSize: 15}}>登入</Text>
                         </TouchableOpacity>
                     </View>

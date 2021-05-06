@@ -21,7 +21,7 @@ export default function TransportOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://dde74ced07f9.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://5aa27558545e.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
              
@@ -89,10 +89,10 @@ function MyTransportOrder(){
                             <Text style={[styles.CardContentText, {marginRight: 40}]}>訂購日期: {orderlist.orderDate}</Text>
                             <Text style={styles.CardContentText}>付款狀態: {orderlist.payStatus}</Text>
                             </View>
-                            <View style={{marginLeft:20, flexDirection:'row'}}>
+                            <View style={{marginLeft:20, flexDirection:'row', justifyContent:"flex-end", marginTop:20}}>
                                 
-                                <TouchableOpacity style={styles.multibuttons} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
-                                    <Text style={{color:'#D8D8EB'}}>詳細資訊</Text>
+                                <TouchableOpacity style={{paddingLeft:20, paddingRight:20, flexDirection:"row", marginTop:20}} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
+                                <Text style={{color:'#8C7599', fontWeight:"bold", fontSize:18,textDecorationLine:1}}><Icon name='ios-pencil' color='#8C7599' size={18} />詳細資訊</Text>
                                 </TouchableOpacity>   
                             </View>
                         </CardContent>

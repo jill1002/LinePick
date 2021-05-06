@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image, Button } from 'react-native';
 import styles from '../styles.js'
 import Icon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
 
 export default function SignUp({ navigation }) {
     const [account, setAccount] = useState("");
@@ -9,7 +10,24 @@ export default function SignUp({ navigation }) {
     const [email, setEmail] = useState('');
     const [cellphone, setCellphone] = useState('');
     const [market_name, setMarketName] = useState('');
-
+    
+    function add(){
+        const SellerInfo={
+            sellerAccount: account,
+            sellerPassword: user_password,
+            sellerMail: email,
+            sellerPhone: cellphone,
+            marketName: market_name
+    
+        }
+    
+        axios.post("http://81728945fd9d.ngrok.io/SellerSignUp/", SellerInfo)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            navigation.goBack();
+          }); 
+      }
     return (
         <View style={styles.container1}>
             <Image
@@ -26,7 +44,7 @@ export default function SignUp({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={account}
-                            onChangeText={setAccount}
+                            onChangeText={text=>setAccount(text)}
                         />
                     </View>
                     <View style={styles.textInputStyleSign}>
@@ -37,7 +55,7 @@ export default function SignUp({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={user_password}
-                            onChangeText={setUserPassword}
+                            onChangeText={text=>setUserPassword(text)}
                         />
                     </View>
                     <View style={styles.textInputStyleSign}>
@@ -48,7 +66,7 @@ export default function SignUp({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={email}
-                            onChangeText={setEmail}
+                            onChangeText={text=>setEmail(text)}
                         />
                     </View>
                     <View style={styles.textInputStyleSign}>
@@ -59,7 +77,7 @@ export default function SignUp({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={cellphone}
-                            onChangeText={setCellphone}
+                            onChangeText={text=>setCellphone(text)}
                         />
                     </View>
                     <View style={styles.textInputStyleSign}>
@@ -70,11 +88,11 @@ export default function SignUp({ navigation }) {
                             underlineColorAndroid="transparent"
                             placeholderTextColor="#8C7599"
                             value={market_name}
-                            onChangeText={setMarketName}
+                            onChangeText={text=>setMarketName(text)}
                         />
                     </View>
                     <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginTop: 25 }}>
-                        <TouchableOpacity style={[styles.button, { width: "40%" }]}>
+                        <TouchableOpacity style={[styles.button, { width: "40%" }] } onPress={add}>
                             <Text style={{color: '#ffff', fontWeight:'bold', fontSize: 15}}>註冊</Text>
                         </TouchableOpacity>
                     </View>

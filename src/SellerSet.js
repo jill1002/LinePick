@@ -151,7 +151,7 @@ export default function SellerSet({ navigation }) {
                                 placeholderTextColor="#8C7599"
                                 value={market_desc}
                                 onChangeText={setMarketDesc}
-                                multiline='true'
+                                // multiline='true'
                             />
                         </View>
                     </View>

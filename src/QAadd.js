@@ -25,7 +25,7 @@ export default function QAAdd(props) {
 
     }
 
-    axios.post("http://aaa0e7f5b550.ngrok.io/QAadd/", QAInfo)
+    axios.post("http://5aa27558545e.ngrok.io/QAadd/", QAInfo)
     .then(res => {
         console.log(res);
         console.log(res.data);

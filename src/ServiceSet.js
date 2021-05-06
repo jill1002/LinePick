@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Button, Dimensions, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, ScrollView, Button, Dimensions, TextInput, DeviceEventEmitter } from 'react-native';
 import styles from '../styles.js'
 import { Header, Left, Right, Body, Fab } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,21 +16,26 @@ const Stack = createStackNavigator();
 export default function ServiceSet({ navigation, route,value}) {
     const [replys, setReplys] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const [change, setChange] = useState(0);
+    
+
+
+   
     // const [value, setValue] = useState(value);
-  console.log(value)
+  
     useEffect(() => {
         async function fetchData () {
         console.log("in fetchData");
-            
-        const SellerQA = await axios.get('http://aaa0e7f5b550.ngrok.io/Reply');
+        
+        const SellerQA = await axios.get('http://5aa27558545e.ngrok.io/Reply');
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setReplys(SellerQA.data);
           
         }
         fetchData();
         
-      },[modalVisible]);
-
+      },[modalVisible, change]);
+    
   function hide() {
 
     setModalVisible(false);
@@ -41,6 +46,11 @@ export default function ServiceSet({ navigation, route,value}) {
 
     setModalVisible(false);
 
+  }
+
+  function backHere(){
+      console.log("hi");
+      setChange((change)=>change+1);
   }
 
   function MyServiceSet(){
@@ -84,6 +94,11 @@ export default function ServiceSet({ navigation, route,value}) {
                 </Header>
                 <View style={{ marginTop: 25 }}>
                 <View style={{ flex: 10}}>
+                
+                <TouchableOpacity buttonColor="#8696a7" style={{flexDirection:"row",justifyContent:"flex-end",marginRight:20}} onPress={() => setModalVisible(true)} position="bottomRight">
+             
+              <Text style={{fontSize:20, color: "#8C7599", fontWeight:"bold",textDecorationLine:1}}> <Icon name="md-add" size={20} style={{color:"#8C7599"}} /> 新增</Text>
+                </TouchableOpacity>
                     <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center">
                      填寫範例
                     </Divider>
@@ -134,18 +149,16 @@ export default function ServiceSet({ navigation, route,value}) {
                             <Text style={{color: "#6b7f94", fontSize: 20}}>A: </Text>
                             <Text style={[styles.CardContentText,{fontSize:15}]}>{reply.replyAnswer}</Text>
                             </View>
-                            <View style={{marginLeft:40, flexDirection:'row'}}>
-                                <TouchableOpacity style={[styles.multibuttons,{paddingLeft:20, paddingRight:20}]} onPress={() => navigation.navigate('客服編輯', {replyid: reply.replyId})}>
-                                    <Text style={{color:'#D8D8EB'}}>修改</Text>
+                            <View style={{marginLeft:40, flexDirection:'row',justifyContent:"flex-end"}}>
+                                <TouchableOpacity style={{paddingLeft:20, paddingRight:20, flexDirection:"row", marginTop:20}} onPress={() => navigation.navigate('客服編輯', {callback: backHere,replyid: reply.replyId})}>
+                                <Text style={{color:'#8C7599', fontWeight:"bold", fontSize:18,textDecorationLine:1}}><Icon name='ios-pencil' color='#8C7599' size={18} />修改</Text>
                                 </TouchableOpacity>   
                             </View>
                             </CardContent>
                             </Card> 
                              ))}
                         </View>
-            <Fab buttonColor="#8696a7" onPress={() => setModalVisible(true)} style={{position:"absolute", marginBottom:600}}>
-              <Icon name="md-add" size={26} />
-            </Fab>
+            
             <QAadd modalVisible={modalVisible} hide={hide} />
             </ScrollView>
         </View >
