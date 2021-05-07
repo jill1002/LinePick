@@ -16,7 +16,7 @@ export default function AddProduct() {
         const [productName, setproductName] = useState("");
         const [productDesc, setproductDesc] = useState("");
         const [productType, setProductType] = useState("");
-        const [productTypeId, setProductTypeId] = useState("");
+        const [productTypeId, setProductTypeId] = useState(1);
         const [checked, setChecked] = useState([true,false,false]); //checkbox
         const chooseType = (index, checked) => {
             console.log("value");
@@ -38,7 +38,7 @@ export default function AddProduct() {
         const [types, setTypes] = useState([]); //賣場商品分類
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://0324bb0e2bbc.ngrok.io/Type');
+                const result = await axios.get('http://2362e252c931.ngrok.io/Type');
                 setTypes(result.data);
                 //result.data.forEach((item, index)=>checked[index]=false);
             }
