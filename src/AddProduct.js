@@ -4,7 +4,6 @@ import styles from '../styles';
 import { Header, Left, Right, Body } from "native-base";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Checkbox } from 'react-native-paper';
 import ReactChipsInput from 'react-native-chips';
 import AddProduct2 from './AddProduct2';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,27 +15,35 @@ export default function AddProduct() {
     function AddProduct1({ navigation }) {
         const [productName, setproductName] = useState("");
         const [productDesc, setproductDesc] = useState("");
-
-        const [checked, setChecked] = useState([]); //checkbox
+        const [productType, setProductType] = useState("");
+        const [productTypeId, setProductTypeId] = useState("");
+        const [checked, setChecked] = useState([true,false,false]); //checkbox
         const chooseType = (index, checked) => {
-            if (checked[index] == false) {
-                checked[index] = true;
-            } else {
-                checked[index] == false
+            console.log("value");
+            console.log(types[index].typeName);
+            for(var i=0;i<checked.length;i++){
+                    checked[i] = false;
+                    checked[index] = true;
             }
-            setChecked(...[checked]);
-        }
+            setChecked([...checked]);
+            setProductType(types[index].typeName);
+            console.log("in choosrType after:");
+            console.log(types[index].typeId);
+            setProductTypeId(types[index].typeId);
+    }
+        
 
         const [typeChips, settypeChips] = useState([]);  //chip
 
         const [types, setTypes] = useState([]); //賣場商品分類
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://0dccfbd223d7.ngrok.io/Type');
+                const result = await axios.get('http://0324bb0e2bbc.ngrok.io/Type');
                 setTypes(result.data);
+                //result.data.forEach((item, index)=>checked[index]=false);
             }
             fetchData();
-        }, []);
+        }, [checked]);
 
         return (
             <View style={{ backgroundColor: '#f4f3eb' }}>
@@ -117,17 +124,19 @@ export default function AddProduct() {
                                     <View style={{
                                         flexDirection: "row",
                                         marginBottom: 20,
+                                        marginLeft: 22,
                                     }}>
                                         <CheckBox
                                             checkedComponent={<Icon name="ios-checkmark-circle" size={25} color="#222" />}
                                             uncheckedComponent={<Icon name="ios-ellipse-outline" size={25} color="#222" />}
                                             label={type.typeName}
-                                            defaultChecked={checked[index]}
-                                            //onChange={() => {setChecked(checked => !checked)}}
+                                            defaultChecked={false}
+                                            checked = {checked[index]}
+                                            value={type.typeName}
                                             onChange={() => chooseType(index, checked)}
                                         />
                                     </View>
-                                ))}
+                                ))} 
                             </View>
 
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingTop: 15 }}>
@@ -147,7 +156,7 @@ export default function AddProduct() {
                                     labelOnBlur={{ color: '#666' }} />
                             </View>
                             <View style={{ marginTop: 10 }}>
-                                <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("AddProduct2", { productName: productName, productDesc: productDesc, productStyle: typeChips })}>
+                                <TouchableOpacity style={[styles.button, { width: 110 }]} onPress={() => navigation.navigate("AddProduct2", { productName: productName, productDesc: productDesc, productType:productType,productTypeId:productTypeId, productStyle: typeChips })}>
                                     <Text style={styles.buttonText1}>下一步
                                 <Icon name='ios-chevron-forward' color='#FFFFFF' size={18} />
                                     </Text>

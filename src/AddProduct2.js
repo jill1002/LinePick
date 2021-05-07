@@ -10,22 +10,48 @@ import * as ImagePicker from 'expo-image-picker';
 
 
 export default function AddProduct2({ navigation, route }) {
-    const productName = route.params.productName;
-    const productDesc = route.params.productDesc;
+    console.log("in AddProduct2");
+    const productName1 = route.params.productName;
+    const productDesc1 = route.params.productDesc;
+    const productType1 = route.params.productType;
+    const productStyle1 = route.params.productStyle;
+    const productTypeId1 = route.params.productTypeId;
+    const [productPrice1, setProductPrice] = useState("");
+    const [productStock1, setProductStock] = useState("");
+
     function add() {
+        console.log("in add");
+        console.log(productName1);
+        console.log(productDesc1);
+        console.log(productType1);
+        console.log(productStyle1);
+        console.log(productType1);
+        console.log(productStyle1);
+        console.log(productTypeId1);
         const product = {
-            productName: productName,
-            productDesc: productDesc,
-        };
-        axios.post("http://0dccfbd223d7.ngrok.io/ProductAdd/", product)
+            productName: ""+productName1,
+            productDesc: ""+productDesc1,
+            productPhoto:"",
+            productPrice:productPrice1,
+            productStock:productStock1,
+            productStyle:""+productStyle1,
+        }
+        console.log("in add after");
+        axios.put("http://0324bb0e2bbc.ngrok.io/ProductAdd/", product)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-                props.update();
-            });
-        
-    };
-
+                const productType = {
+                    productId: res.data,
+                    typeId: productTypeId1
+                }
+                axios.put("http://0324bb0e2bbc.ngrok.io/ProductTypeAdd/", productType)
+                .then(res => {
+                console.log(res);
+                console.log(res.data);
+            });  
+    });
+    }
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
         if (permissionResult.granted === false) {
@@ -49,7 +75,7 @@ export default function AddProduct2({ navigation, route }) {
                         <CardContent>
                             <View style={{ margin: 15, flexDirection: 'row', justifyContent: 'center' }}>
                                 <Text style={{ fontSize: 20, color: '#6b7f94', fontWeight: 'bold' }}>
-                                    post.productStyle</Text>
+                                    {productStyle1}</Text>
                             </View>
                             <Divider style={{ backgroundColor: '#6b7f94', height: 2, margin: 5 }} />
                             <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 18 }}>
@@ -78,7 +104,7 @@ export default function AddProduct2({ navigation, route }) {
                             </View>
 
                             <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
                                     <Text style={[styles.baseText1, { paddingBottom: 10 }]}>
                                         <Icon name='ios-wallet' color='#8C7599' size={20} />價格:</Text>
                                     <View style={styles.textInputStyle}>
@@ -86,13 +112,13 @@ export default function AddProduct2({ navigation, route }) {
                                             placeholder="請輸入商品價格"
                                             underlineColorAndroid="transparent"
                                             placeholderTextColor="#8C7599"
-                                            //value={productPrice}
-                                            //onChangeText={text => setProductStyles({...productStyles, productPrice: text})}
-                                            style={{ margin: 10, padding: 10 }}
+                                            value={productPrice1}
+                                            onChangeText={text => setProductPrice(text)}
+                                            style={{padding: 10 }}
                                         />
                                     </View>
                                 </View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
                                     <Text style={[styles.baseText1, { paddingBottom: 10 }]}>
                                         <Icon name='ios-file-tray' color='#8C7599' size={20} />庫存:</Text>
                                     <View style={styles.textInputStyle}>
@@ -100,9 +126,9 @@ export default function AddProduct2({ navigation, route }) {
                                             placeholder="請輸入商品庫存"
                                             underlineColorAndroid="transparent"
                                             placeholderTextColor="#8C7599"
-                                            //value={productStock}
-                                            //onChangeText={text => setProductStyles({...productStyles, productStock: text})}
-                                            style={{ margin: 10, padding: 10 }}
+                                            value={productStock1}
+                                            onChangeText={text => setProductStock(text)}
+                                            style={{ padding: 10 }}
                                         />
                                     </View>
                                 </View>
