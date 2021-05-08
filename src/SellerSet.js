@@ -17,7 +17,7 @@ export default function SellerSet({ navigation }) {
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://41d4417b19ff.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
         }
         fetchData();
@@ -26,7 +26,7 @@ export default function SellerSet({ navigation }) {
     const [types, setTypes] = useState([]); //賣場商品分類
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/Type');
+            const result = await axios.get('http://41d4417b19ff.ngrok.io/Type');
             setTypes(result.data);
         }
         fetchData();
@@ -70,7 +70,7 @@ export default function SellerSet({ navigation }) {
                         </TouchableOpacity>
                     </Right>
                 </Header>
-                <View style={{ padding: 10, marginBottom: 8 }}>
+                <View style={{ padding: 10, marginBottom: 25 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-end', padding: 18, }}>
                         <TouchableOpacity onPress={() => navigation.navigate("SellerSetEdit")}>
                             <Text style={{ fontSize: 18, textDecorationLine: 1, color: '#6b7f94', fontWeight: 'bold' }}>

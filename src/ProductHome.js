@@ -18,7 +18,7 @@ export default function ProductHome() {
         const [products, setProducts] = useState([]); //商品資訊
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://9cbfdd0a9475.ngrok.io/Home');
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/Home');
                 setProducts(result.data);
             }
             fetchData();
@@ -27,7 +27,7 @@ export default function ProductHome() {
         const [types, setTypes] = useState([]); //賣場商品分類
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://9cbfdd0a9475.ngrok.io/Type');
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/Type');
                 setTypes(result.data);
             }
             fetchData();

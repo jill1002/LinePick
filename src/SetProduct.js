@@ -6,7 +6,7 @@ import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Appbar, Title } from 'react-native-paper';
 import ReactChipsInput from 'react-native-chips';
-import SetProductStyle from './SetProductStyle';
+import SetProduct2 from './SetProduct2';
 import CheckBox from 'react-native-modest-checkbox'
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
@@ -23,13 +23,13 @@ export default function SetProduct({ route }) {
 
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://9cbfdd0a9475.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
-                const one = await axios.get('http://9cbfdd0a9475.ngrok.io/ProductsInfo/' + productName);
+                const one = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
                 setOneProduct(one.data[0]);
                 // console.log("one product:");
                 // console.log(one.data);
-                const type = await axios.get('http://9cbfdd0a9475.ngrok.io/Type');
+                const type = await axios.get('http://41d4417b19ff.ngrok.io/Type');
                 setTypes(type.data);
                 type.data.forEach((item, index) => checked[index] = false);
             }
@@ -68,7 +68,7 @@ export default function SetProduct({ route }) {
                             productStyle: productStyles[i].productStyle,
                         };
 
-                        axios.put("http://9cbfdd0a9475.ngrok.io/ProductEdit/", productNameDesc)
+                        axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productNameDesc)
                             .then(res => {
                                 console.log(res);
                                 console.log(res.data);
@@ -107,7 +107,7 @@ export default function SetProduct({ route }) {
                                         productDesc: "" + oneProduct.productDesc,
                                         productStyle: "" + styleChips[j],
                                     };
-                                    axios.post("http://9cbfdd0a9475.ngrok.io/ProductAdd/", newStyles)
+                                    axios.post("http://41d4417b19ff.ngrok.io/ProductAdd/", newStyles)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);
@@ -127,7 +127,7 @@ export default function SetProduct({ route }) {
                                     // console.log("i:" + productStyles[i].productStyle);
                                     // console.log("j:" + typeChips[j]);
                                     console.log(productStyles[i].productStyle + "delete");
-                                    axios.delete("http://9cbfdd0a9475.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
+                                    axios.delete("http://41d4417b19ff.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);
@@ -136,7 +136,7 @@ export default function SetProduct({ route }) {
                             };
                         };
                     }
-                    navigation.navigate("SetProductStyle",{ productName: productName});
+                    navigation.navigate("SetProduct2",{ productName: productName});
                 } catch { }
             }
         }
@@ -152,7 +152,7 @@ export default function SetProduct({ route }) {
                     <View style={styles.marketBorder2}>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                            <Text style={[styles.baseText1, { padding: 20 }]}>
+                            <Text style={[styles.baseText, { padding: 20 }]}>
                                 <Icon name='ios-bookmark' color='#6b7f94' size={25} />
                             商品名稱</Text>
                             <View style={[styles.textInputStyle, { margin: 20 }]}>
@@ -168,7 +168,7 @@ export default function SetProduct({ route }) {
                         </View>
 
                         <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
-                            <Text style={[styles.baseText1, { padding: 20 }]}>
+                            <Text style={[styles.baseText, { padding: 20 }]}>
                                 <Icon name='ios-information-circle' color='#6b7f94' size={25} />
                             商品描述</Text>
                             <View style={styles.textInputStyleLarge}>
@@ -185,7 +185,7 @@ export default function SetProduct({ route }) {
                         </View>
 
                         <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-                            <Text style={[styles.baseText1, { padding: 20 }]}>
+                            <Text style={[styles.baseText, { padding: 20 }]}>
                                 <Icon name='ios-apps' color='#6b7f94' size={25} />
                             修改商品分類</Text>
                             {types.map((type, index) => (
@@ -208,7 +208,7 @@ export default function SetProduct({ route }) {
                         </View>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingTop: 25 }}>
-                            <Text style={[styles.baseText1, { paddingLeft: 20 }]}>
+                            <Text style={[styles.baseText, { paddingLeft: 20 }]}>
                                 <Icon name='ios-create' color='#6b7f94' size={25} />
                             修改商品規格</Text>
                         </View>
@@ -240,7 +240,7 @@ export default function SetProduct({ route }) {
     return (
         <Stack.Navigator initialRouteName="AddProduct1" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="AddProduct1" component={AddProduct1} />
-            <Stack.Screen name="SetProductStyle" component={SetProductStyle} />
+            <Stack.Screen name="SetProduct2" component={SetProduct2} />
         </Stack.Navigator>
     );
 };

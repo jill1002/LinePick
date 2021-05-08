@@ -16,7 +16,7 @@ export default function SellerSetEdit({ navigation }) {
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://41d4417b19ff.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
         }
         fetchData();
@@ -25,7 +25,7 @@ export default function SellerSetEdit({ navigation }) {
     const [types, setTypes] = useState([]); //賣場商品分類
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://9cbfdd0a9475.ngrok.io/Type');
+            const result = await axios.get('http://41d4417b19ff.ngrok.io/Type');
             setTypes(result.data);
         }
         fetchData();
@@ -55,7 +55,7 @@ export default function SellerSetEdit({ navigation }) {
                 var newChipsLength = newChips.length;
                 console.log("productStylesLength" + typesLength);
                 console.log("newChipsLength" + newChipsLength);
-                if ( typesLength < newChipsLength) {
+                if (typesLength < newChipsLength) {
 
                     for (var i = 0; i < types.length; i++) {  //新增  
                         for (var j = 0; j < newChips.length; j++) {
@@ -71,7 +71,7 @@ export default function SellerSetEdit({ navigation }) {
                                     typeName: newChips[j],
                                     sellerId: 1,
                                 };
-                                axios.post("http://9cbfdd0a9475.ngrok.io/TypeAdd/", newTypes)
+                                axios.post("http://41d4417b19ff.ngrok.io/TypeAdd/", newTypes)
                                     .then(res => {
                                         console.log(res);
                                         console.log(res.data);
@@ -80,7 +80,7 @@ export default function SellerSetEdit({ navigation }) {
                             }
                         };
                     };
-                } else if ( typesLength > newChipsLength) {
+                } else if (typesLength > newChipsLength) {
                     for (var i = 0; i < types.length; i++) {  //刪除
                         for (var j = 0; j < newChips.length; j++) {
                             if (newChips[j] == types[i].typeName) {
@@ -91,7 +91,7 @@ export default function SellerSetEdit({ navigation }) {
                                 //console.log("i:" + types[i].typeName);
                                 //console.log("j:" + newChips[j]);
                                 console.log(types[i].typeName + "delete");
-                                axios.delete("http://9cbfdd0a9475.ngrok.io/TypeDelete/" + types[i].typeName)
+                                axios.delete("http://41d4417b19ff.ngrok.io/TypeDelete/" + types[i].typeName)
                                     .then(res => {
                                         console.log(res);
                                         console.log(res.data);
@@ -100,25 +100,27 @@ export default function SellerSetEdit({ navigation }) {
                         };
                     };
                 }
+
+                const Seller = {
+                    sellerId: 1,
+                    sellerAccount: seller.sellerAccount,
+                    sellerPassword: seller.sellerPassword,
+                    sellerPhone: seller.sellerPhone,
+                    sellerMail: seller.sellerMail,
+                    marketName: seller.marketName,
+                    marketDesc: seller.marketDesc,
+                };
+                //console.log(customer);
+                axios.put("http://41d4417b19ff.ngrok.io/SellerEdit/", Seller)
+                    .then(res => {
+                        console.log(res);
+                        //console.log(res.data);
+                        props.hide();
+                    });
+
+                navigation.goBack();
             } catch { }
         }
-
-        const Seller = {
-            sellerId: 1,
-            sellerAccount: seller.sellerAccount,
-            sellerPassword: seller.sellerPassword,
-            sellerPhone: seller.sellerPhone,
-            sellerMail: seller.sellerMail,
-            marketName: seller.marketName,
-            marketDesc: seller.marketDesc,
-        };
-        //console.log(customer);
-        axios.put("http://9cbfdd0a9475.ngrok.io/SellerEdit/", Seller)
-            .then(res => {
-                console.log(res);
-                //console.log(res.data);
-                props.hide();
-            });
     }
 
     return (
@@ -206,7 +208,7 @@ export default function SellerSetEdit({ navigation }) {
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor="#8C7599"
                                 value={seller.marketName}
-                                onChangeText={text => setSeller({ ...seller, MarketName: text })}
+                                onChangeText={text => setSeller({ ...seller, marketName: text })}
                             />
                         </View>
                     </View>
@@ -222,7 +224,7 @@ export default function SellerSetEdit({ navigation }) {
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor="#8C7599"
                                 value={seller.marketDesc}
-                                onChangeText={text => setSeller({ ...seller, MarketDesc: text })}
+                                onChangeText={text => setSeller({ ...seller, marketDesc: text })}
                             />
                         </View>
                     </View>
