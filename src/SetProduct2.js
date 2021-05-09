@@ -1,186 +1,128 @@
 import React, { useState, useEffect, Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView, Image, Button, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, ScrollView, Image } from 'react-native';
 import styles from '../styles.js'
-import { IconButton, Colors, Appbar, Title } from 'react-native-paper';
-import axios from 'axios';
+import { IconButton, Appbar } from 'react-native-paper';
+import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 import { Divider } from 'react-native-elements';
+import SetProductStyle from './SetProductStyle';
+import axios from 'axios';
 
 export default function SetProduct2({ route, navigation }) {
     const productName = route.params.productName;
-    const productNameEnd = route.params.productNameEnd;
-    const productDesc = route.params.productDesc;
 
-    const [productStyle, setProductStyle] = useState([]); 
-    useEffect(() => {
-        async function fetchData() {
-            console.log("fetch1"+productName);
-            const result1 = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsInfo/' + productName);
-            console.log("fetch2");
-            const temp = 
-            [{productName:"白色戀人巧克力",
-            productDesc:"及後有黑色的牛奶巧克力口味。",
-            productPrice:700,
-            productPhoto:"https://firebasestorage.googleapis.com/v0/b/line-pick-5da9a.appspot.com/o/%E7%99%BD%E8%89%B2%E6%88%80%E4%BA%BA.jpg?alt=media&token=46dbaec3-21ee-471e-bd7e-0d24dd5743f2",
-            productStyle:"黑巧克力(24入)",
-            productStock:91,
-            productId:1},
-            /*
-            {productName:"白色戀人巧克力",
-            productDesc:"及後有黑色的牛奶巧克力口味。",
-            productPrice:700,
-            productPhoto:"https://firebasestorage.googleapis.com/v0/b/line-pick-5da9a.appspot.com/o/%E7%99%BD%E8%89%B2%E6%88%80%E4%BA%BA.jpg?alt=media&token=46dbaec3-21ee-471e-bd7e-0d24dd5743f2",
-            productStyle:"白巧克力(24入)",
-            productStock:100,
-            productId:2}
-            */
-        ];
-        /*
-            setProductStyles(
-                [{productName:"123",
-                productDesc:"133",
-                productPrice:700,
-                productPhoto:"",
-                productStyle:"123",
-                productStock:91,
-                productId:1},
+    function checkProduct() {
+        const [productStyles, setProductStyles] = useState([]);
+        useEffect(() => {
+            async function fetchData() {
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                setProductStyles(result.data);
+            }
+            fetchData();
+        }, []);
 
-            ]
-            );
-            */
-            setProductStyle(result1.data);
-            console.log(result1.data);
-            const result2 = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsId/' + productName);
-            console.log(result2.data);
-            setProductId(result2.data);
+        function send() {
+            if (productStyles != [""]) {
+                try {
+                    // for (var i = 0; i < productStyles.length; i++) {
+                    //     console.log(productStyles[i].productStyle);
+                    //     const productEdit = {
+                    //         productId: productStyles[i].productId,
+                    //         productName: productStyles[i].productName,
+                    //         productDesc: productStyles[i].productDesc,
+                    //         productPrice: productStyles[i].productPrice,
+                    //         productStock: productStyles[i].productStock,
+                    //         productPhoto: productStyles[i].productPhoto,
+                    //         productStyle: productStyles[i].productStyle,
+                    //     };
 
+                    //     axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productEdit)
+                    //         .then(res => {
+                    //             console.log(res);
+                    //             console.log(res.data);
+                    //             props.hide();
+                    //         });
+                    // }
+                    navigation.navigate("我的商品");
+                } catch { }
+            }
         }
-        fetchData();
-    }, []);
 
-    const [productId, setProductId] = useState([]); //找productId
-    useEffect(() => {
-        async function fetchData() {
-            const result = await axios.get('http://42c21ae11ac0.ngrok.io/ProductsId/' + productName);
-            setProductId(result.data);
+        const [change, setChange] = useState(0);
+        function backHere(){
+            console.log("backHere");
+            setChange((change)=>change+1);
         }
-        //fetchData();
-    }, []);
-/*
-    function send() {
-        const Product = {
-            productId: productId.productId,
-            productName: productNameEnd,
-            productDesc: productDesc,
-            productPrice: productStyles.productPrice,
-            productStock: productStyles.productStock,
-            //productStyle: productStyle,
-        };
-        axios.put("http://42c21ae11ac0.ngrok.io/ProductEdit/", Product)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-                props.hide();
-            });
-    }
-    */
 
-    let openImagePickerAsync = async () => {
-        let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-        if (permissionResult.granted === false) {
-            alert("Permission to access camera roll is required!");
-            return;
-        }
-        let pickerResult = await ImagePicker.launchImageLibraryAsync();
-        console.log(pickerResult);
-    }
+        return (
+            <View style={[styles.container]}>
+                <ScrollView style={{ backgroundColor: '#f4f3eb' }}>
+                    <Appbar.Header
+                        style={{ backgroundColor: '#f9e7d2' }}>
+                        <Appbar.BackAction onPress={() => navigation.goBack()} />
+                        <Text style={styles.baseText}>設定圖片、價格與庫存</Text>
+                    </Appbar.Header>
+                    {productStyles.map((post, index) => (
+                        <View key={index}>
+                            <Card style={{ marginLeft: 35, marginRight: 35, marginTop: 30 }}>
+                                <CardImage
+                                    source={{ uri: post.productPhoto }}
+                                    singleLineTitle={true}
+                                    resizeMode="stretch"
+                                    style={{ height: 230 }}
+                                />
+                                <CardContent>
+                                    <View style={{ margin: 5, flexDirection: 'row', justifyContent: 'center' }}>
+                                        <Text style={{ fontSize: 23, color: '#8C7599', fontWeight: 'bold', padding: 5 }}>
+                                            {post.productStyle}</Text>
+                                    </View>
+                                    <Divider style={{ backgroundColor: '#b5c4b1', height: 2, marginBottom: 8 }} />
+                                    <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <Text style={[styles.baseText, { paddingBottom: 10 }]}>
+                                                <Icon name='ios-wallet' color='#6b7f94' size={20} />價格:</Text>
+                                            <Text style={{ color: "#8C7599", fontSize: 18 }}>{post.productPrice}
+                                            </Text>
 
-    return (
-        <View style={[styles.container]}>
-            <ScrollView style={{ backgroundColor: '#f4f3eb' }}>
-                <Appbar.Header
-                    style={{ backgroundColor: '#f9e7d2' }}>
-                    <Appbar.BackAction onPress={() => navigation.goBack()} />
-                    <Text style={styles.baseText}>設定圖片、價格與庫存</Text>
-                </Appbar.Header>
-                <View style={{ padding: 15 }}>
-                    {productStyle.map((post) => (
-                        <Card style={{ marginLeft: 20, marginRight: 20 }}>
-                            <CardContent>
-                                <View style={{ margin: 15, flexDirection: 'row', justifyContent: 'center' }}>
-                                    <Text style={{ fontSize: 20, color: '#6b7f94', fontWeight: 'bold' }}>
-                                        {post.productStyle}</Text>
-                                </View>
-                                <Divider style={{ backgroundColor: '#6b7f94', height: 2 }} />
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 18 }}>
-                                    <Text style={[styles.baseText1, { paddingBottom: 10 }]}>
-                                        <Icon name='ios-image' color='#8C7599' size={20} />
-                                    商品圖片</Text>
-                                    <View style={{ flexDirection: 'row', marginBottom: 8, justifyContent: 'flex-end' }}>
-                                        <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                            <IconButton
-                                                icon="plus-circle"
-                                                color='#8C7599'
-                                                size={28}
-                                                onPress={openImagePickerAsync} title='選擇檔案'
-                                            />
                                         </View>
-                                        <View style={[styles.uploadarea, {
-                                            width: 150, height: 150
-                                            , paddingHorizontal: 45, paddingVertical: 45
-                                        }]}>
-                                            <Image
-                                                style={{ width: "200%", height: "200%", bottom: 25, alignSelf: 'center' }}
-                                                source={{ uri: post.productPhoto }}
-                                            />
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <Text style={styles.baseText}>
+                                                <Icon name='ios-file-tray' color='#6b7f94' size={20} />庫存:</Text>
+                                            <Text style={{ color: "#8C7599", fontSize: 18 }}>{post.productStock}
+                                            </Text>
                                         </View>
                                     </View>
-                                </View>
-
-                                <View style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <Text style={[styles.baseText1, { paddingBottom: 10 }]}>
-                                            <Icon name='ios-wallet' color='#8C7599' size={20} />價格:{post.productPrice}</Text>
-                                        <View style={styles.textInputStyle}>
-                                            <TextInput
-                                                placeholder={post.productPrice}
-                                                underlineColorAndroid="transparent"
-                                                placeholderTextColor="#8C7599"
-                                                value={post.productPrice}
-                                                //onChangeText={text => setProductStyles({...productStyles, productPrice: text})}
-                                                style={{ margin: 10, padding: 10 }}
-                                                maxLength={10}
-                                            />
-                                        </View>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <Text style={[styles.baseText1, { paddingBottom: 10 }]}>
-                                            <Icon name='ios-file-tray' color='#8C7599' size={20} />庫存:</Text>
-                                        <View style={styles.textInputStyleSign}>
-                                            <TextInput
-                                                placeholder={post.productStock}
-                                                underlineColorAndroid="transparent"
-                                                placeholderTextColor="#8C7599"
-                                                value={post.productStock}
-                                                //onChangeText={text => setProductStyles({...productStyles, productStock: text})}
-                                                style={{ margin: 10, padding: 10 }}
-                                                maxLength={10}
-                                            />
-                                        </View>
-                                    </View>
-                                </View>
-                            </CardContent>
-                        </Card>
+                                </CardContent>
+                                <CardAction
+                                    separator={true}
+                                    inColumn={false}
+                                    style={{ backgroundColor: "#c8d3c5", justifyContent: 'center' }}
+                                >
+                                    <CardButton
+                                        onPress={() => navigation.navigate("SetProductStyle", {callback: backHere, productStyle: post.productStyle})}
+                                        title="修改圖片、價格與庫存"
+                                        color="#8C7599"
+                                        titleStyle={{ fontSize: 16, fontWeight: "bold" }}
+                                    />
+                                </CardAction>
+                            </Card>
+                        </View>
                     ))}
-                    {/* <TouchableOpacity style={[styles.button, { width: 100, margin: 30 }]} onPress={send}> */}
-                    <TouchableOpacity style={[styles.button, { width: 100, margin: 30 }]}> 
-                        <Text style={{ color: "#FFFF", fontWeight: "bold" }}>完成</Text>
+                    <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', padding: 20, marginBottom: 30, }} onPress={send}>
+                        <Icon name='ios-checkmark-done-sharp' color='#6b7f94' size={25} />
+                        <Text style={{ color: "#6b7f94", fontWeight: "bold", fontSize: 23, textDecorationStyle: 'double', textDecorationLine: 1 }}>完成</Text>
                     </TouchableOpacity>
-                </View>
-            </ScrollView>
-        </View>
-
+                </ScrollView>
+            </View>
+        );
+    }
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator initialRouteName="checkProduct" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="checkProduct" component={checkProduct} />
+            <Stack.Screen name="SetProductStyle" component={SetProductStyle} />
+        </Stack.Navigator>
     );
 }

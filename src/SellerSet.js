@@ -70,7 +70,7 @@ export default function SellerSet({ navigation }) {
                         </TouchableOpacity>
                     </Right>
                 </Header>
-                <View style={{ padding: 10, marginBottom: 8 }}>
+                <View style={{ padding: 10, marginBottom: 25 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-end', padding: 18, }}>
                         <TouchableOpacity onPress={() => navigation.navigate("SellerSetEdit")}>
                             <Text style={{ fontSize: 18, textDecorationLine: 1, color: '#6b7f94', fontWeight: 'bold' }}>
