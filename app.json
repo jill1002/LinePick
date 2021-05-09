@@ -26,7 +26,17 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyC_az4w7X0U4ZsYfGtnh00bQqw7mGgSiPA",
+          "authDomain": "exhibition-1fc66.firebaseapp.com",
+          "databaseURL": "https://exhibition-1fc66.firebaseio.com",
+          "projectId": "exhibition-1fc66",
+          "storageBucket": "exhibition-1fc66.appspot.com",
+          "messagingSenderId": "828312901155",
+          "appId": "1:828312901155:web:1f95216c0cfff427e7c396"
+        }
+      }
     }
   }
 }

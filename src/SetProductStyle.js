@@ -4,10 +4,11 @@ import styles from '../styles.js'
 import { IconButton, Appbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
+import * as firebase from 'firebase';
+import * as FirebaseCore from 'expo-firebase-core';
 import { Card, CardTitle, CardContent } from 'react-native-material-cards'
 import { Divider, Avatar } from 'react-native-elements';
 import axios from 'axios';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/core';
 
 export default function SetProductStyle({ route, navigation }) {
     const productStyle = route.params.productStyle;
@@ -20,15 +21,40 @@ export default function SetProductStyle({ route, navigation }) {
         fetchData();
     }, []);
 
-    let openImagePickerAsync = async () => {
+    const [selectedImage, setSelectedImage] = useState(styleInfo.productPhoto );
+    if (!firebase.apps.length) {
+        firebase.initializeApp(FirebaseCore.DEFAULT_WEB_APP_OPTIONS);
+      }
+      console.log("before uploadImage");
+      let uploadImage = async(uri) => {
+        console.log("in uploadImage");
+        const filename = uri.split('/').pop();
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        const ref = firebase.storage().ref().child(filename);
+        const snapshot = await ref.put(blob);
+        var url = await snapshot.ref.getDownloadURL();
+        console.log("url:"+url);
+        setSelectedImage(url);
+        console.log("檔案已上傳");
+      }
+      let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+    
         if (permissionResult.granted === false) {
             alert("Permission to access camera roll is required!");
             return;
-        }
-        let pickerResult = await ImagePicker.launchImageLibraryAsync();
-        console.log(pickerResult);
-    }
+          }
+          let pickerResult = await ImagePicker.launchImageLibraryAsync();
+          if (!pickerResult.cancelled) { 
+            console.log("in openImagePickerAsync");
+            console.log(pickerResult.uri);
+            console.log("in openImagePickerAsync after");
+            //setSelectedImage({ localUri: pickerResult.uri });
+            console.log("next go to uploadImage");
+            uploadImage(pickerResult.uri);
+          }
+      }
 
     function sendBack() {
         if (styleInfo != [" "]) {
@@ -39,7 +65,7 @@ export default function SetProductStyle({ route, navigation }) {
                     productDesc: styleInfo.productDesc,
                     productPrice: styleInfo.productPrice,
                     productStock: styleInfo.productStock,
-                    productPhoto: styleInfo.productPhoto,
+                    productPhoto: selectedImage,
                     productStyle: styleInfo.productStyle,
                 };
 
@@ -92,7 +118,7 @@ export default function SetProductStyle({ route, navigation }) {
                                     }]}>
                                         <Image
                                             style={{ width: "200%", height: "200%", bottom: 25, alignSelf: 'center' }}
-                                            source={{ uri: styleInfo.productPhoto }}
+                                            source={{ uri: selectedImage}}
                                         />
                                     </View>
                                 </View>
