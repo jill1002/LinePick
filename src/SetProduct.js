@@ -23,9 +23,9 @@ export default function SetProduct({ route }) {
 
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/ProductsInfo/' + productName);
+            const result = await axios.get('http://7633b20a806d.ngrok.io/ProductsInfo/' + productName);
             setProductStyles(result.data);
-            const type = await axios.get('http://0dccfbd223d7.ngrok.io/Type');
+            const type = await axios.get('http://7633b20a806d.ngrok.io/Type');
             setTypes(type.data);
             type.data.forEach((item, index)=>checked[index]=false);
         }

@@ -16,7 +16,7 @@ export default function SellerSetEdit({ navigation }) {
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://2362e252c931.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
         }
         fetchData();
@@ -25,16 +25,28 @@ export default function SellerSetEdit({ navigation }) {
     const [types, setTypes] = useState([]); //賣場商品分類
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://0dccfbd223d7.ngrok.io/Type');
+            const result = await axios.get('http://2362e252c931.ngrok.io/Type');
             setTypes(result.data);
         }
         fetchData();
     }, []);
     var [typeChips, settypeChips] = useState([]);  //chip
-    var checkChip = 0;
+    var [checkChip, setCheckChip] = useState(0);
+    var [chips, setChips] = useState("");
     if(checkChip == 0){
-        typeChips = types.map((types) => ([types.typeName]))
-    };
+        console.log("checkChip");
+    console.log(checkChip);
+        typeChips = types.map((types) => ([types.typeName]));
+        checkChip++;
+    }else{
+        console.log("checkChip");
+    console.log(checkChip);
+    console.log("chips");
+    console.log(chips);
+        typeChips = types.map((types) => ([types.typeName]));
+        // console.log("typeChips");
+        // console.log(typeChips);
+    }
 
     function send() {
         console.log(typeChips.map((post) => ("newChips" + post)));
@@ -55,12 +67,14 @@ export default function SellerSetEdit({ navigation }) {
                                 typeName: typeChips[j],
                                 sellerId: 1,
                             };
-                            axios.post("http://0dccfbd223d7.ngrok.io/TypeAdd/", newTypes)
-                                .then(res => {
-                                    console.log(res);
-                                    console.log(res.data);
-                                    props.update();
-                                });
+                            console.log("go to TypeAdd");
+                            console.log(newTypes);
+                            // axios.post("http://2362e252c931.ngrok.io/TypeAdd/", newTypes)
+                            //     .then(res => {
+                            //         console.log(res);
+                            //         console.log(res.data);
+                            //         props.update();
+                            //     });
                         }
                     };
                 };
@@ -73,12 +87,12 @@ export default function SellerSetEdit({ navigation }) {
                         } else if (typeChips[j] != types[i].typeName && j == typeChips.length - 1 && i == types.length - 1) {
                             //console.log("i:" + types[i].typeName);
                             //console.log("j:" + typeChips[j]);
-                            console.log(types[i].typeName + "delete");
-                            axios.delete("http://0dccfbd223d7.ngrok.io/TypeDelete/" + types[i].typeName)
-                                .then(res => {
-                                    console.log(res);
-                                    console.log(res.data);
-                                });
+                            // console.log(types[i].typeName + "delete");
+                            // axios.delete("http://2362e252c931.ngrok.io/TypeDelete/" + types[i].typeName)
+                            //     .then(res => {
+                            //         console.log(res);
+                            //         console.log(res.data);
+                            //     });
                         }
                     };
                 };
@@ -96,12 +110,12 @@ export default function SellerSetEdit({ navigation }) {
             marketDesc: seller.marketDesc,
         };
         //console.log(customer);
-        axios.put("http://0dccfbd223d7.ngrok.io/SellerEdit/", Seller)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-                props.hide();
-            });
+        // axios.put("http://2362e252c931.ngrok.io/SellerEdit/", Seller)
+        //     .then(res => {
+        //         console.log(res);
+        //         console.log(res.data);
+        //         props.hide();
+        //     });
     }
 
     return (
@@ -216,19 +230,20 @@ export default function SellerSetEdit({ navigation }) {
                             賣場商品分類</Text>
                 </View>
                 <View style={{ paddingLeft: 18 }}>
-
+                
                     < ReactChipsInput
                         label="請輸入賣場商品分類"
                         // initialChips={types.map((types) => (
                         //     [types.typeName]
                         // ))}
                         initialChips={typeChips}
-                        onChangeChips={(chips) => settypeChips(chips), checkChip++}
+                        onChangeChips={(chips)=>typeChips.push(chips)}
                         alertRequired={true}
                         chipStyle={{ borderColor: '#f9e7d2', backgroundColor: '#f9e7d2' }}
                         inputStyle={{ fontSize: 10 }}
                         labelStyle={{ color: '#8C7599', fontSize: 15 }}
                         labelOnBlur={{ color: '#666' }} />
+
                 </View>
                 <TouchableOpacity style={[styles.button, { width: 100, margin: 30 }]} onPress={send}>
                     <Text style={{ color: "#FFFF", fontWeight: "bold" }}>完成</Text>
