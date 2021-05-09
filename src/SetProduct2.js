@@ -26,39 +26,35 @@ export default function SetProduct2({ route, navigation }) {
         function send() {
             if (productStyles != [""]) {
                 try {
-                    for (var i = 0; i < productStyles.length; i++) {
-                        console.log(productStyles[i].productStyle);
-                        const productEdit = {
-                            productId: productStyles[i].productId,
-                            productName: productStyles[i].productName,
-                            productDesc: productStyles[i].productDesc,
-                            productPrice: productStyles[i].productPrice,
-                            productStock: productStyles[i].productStock,
-                            productPhoto: productStyles[i].productPhoto,
-                            productStyle: productStyles[i].productStyle,
-                        };
+                    // for (var i = 0; i < productStyles.length; i++) {
+                    //     console.log(productStyles[i].productStyle);
+                    //     const productEdit = {
+                    //         productId: productStyles[i].productId,
+                    //         productName: productStyles[i].productName,
+                    //         productDesc: productStyles[i].productDesc,
+                    //         productPrice: productStyles[i].productPrice,
+                    //         productStock: productStyles[i].productStock,
+                    //         productPhoto: productStyles[i].productPhoto,
+                    //         productStyle: productStyles[i].productStyle,
+                    //     };
 
-                        axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productEdit)
-                            .then(res => {
-                                console.log(res);
-                                console.log(res.data);
-                                props.hide();
-                            });
-                    }
+                    //     axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productEdit)
+                    //         .then(res => {
+                    //             console.log(res);
+                    //             console.log(res.data);
+                    //             props.hide();
+                    //         });
+                    // }
                     navigation.navigate("我的商品");
                 } catch { }
             }
         }
-        let openImagePickerAsync = async () => {
-            let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-            if (permissionResult.granted === false) {
-                alert("Permission to access camera roll is required!");
-                return;
-            }
-            let pickerResult = await ImagePicker.launchImageLibraryAsync();
-            console.log(pickerResult);
-        }
 
+        const [change, setChange] = useState(0);
+        function backHere(){
+            console.log("backHere");
+            setChange((change)=>change+1);
+        }
 
         return (
             <View style={[styles.container]}>
@@ -105,7 +101,7 @@ export default function SetProduct2({ route, navigation }) {
                                     style={{ backgroundColor: "#c8d3c5", justifyContent: 'center' }}
                                 >
                                     <CardButton
-                                        onPress={() => navigation.navigate("SetProductStyle", { productStyle: post.productStyle})}
+                                        onPress={() => navigation.navigate("SetProductStyle", {callback: backHere, productStyle: post.productStyle})}
                                         title="修改圖片、價格與庫存"
                                         color="#8C7599"
                                         titleStyle={{ fontSize: 16, fontWeight: "bold" }}
