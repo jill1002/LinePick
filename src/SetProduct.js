@@ -23,9 +23,9 @@ export default function SetProduct({ route }) {
 
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://7633b20a806d.ngrok.io/ProductsInfo/' + productName);
+            const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
             setProductStyles(result.data);
-            const type = await axios.get('http://7633b20a806d.ngrok.io/Type');
+            const type = await axios.get('http://2575fb73fac4.ngrok.io/Type');
             setTypes(type.data);
             type.data.forEach((item, index)=>checked[index]=false);
         }
@@ -40,13 +40,13 @@ export default function SetProduct({ route }) {
 
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
-                const one = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                const one = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
                 setOneProduct(one.data[0]);
                 // console.log("one product:");
                 // console.log(one.data);
-                const type = await axios.get('http://41d4417b19ff.ngrok.io/Type');
+                const type = await axios.get('http://2575fb73fac4.ngrok.io/Type');
                 setTypes(type.data);
                 type.data.forEach((item, index) => checked[index] = false);
             }
@@ -85,7 +85,7 @@ export default function SetProduct({ route }) {
                             productStyle: productStyles[i].productStyle,
                         };
 
-                        axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productNameDesc)
+                        axios.put("http://2575fb73fac4.ngrok.io/ProductEdit/", productNameDesc)
                             .then(res => {
                                 console.log(res);
                                 console.log(res.data);
@@ -124,7 +124,7 @@ export default function SetProduct({ route }) {
                                         productDesc: "" + oneProduct.productDesc,
                                         productStyle: "" + styleChips[j],
                                     };
-                                    axios.post("http://41d4417b19ff.ngrok.io/ProductAdd/", newStyles)
+                                    axios.post("http://2575fb73fac4.ngrok.io/ProductAdd/", newStyles)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);
@@ -144,7 +144,7 @@ export default function SetProduct({ route }) {
                                     // console.log("i:" + productStyles[i].productStyle);
                                     // console.log("j:" + typeChips[j]);
                                     console.log(productStyles[i].productStyle + "delete");
-                                    axios.delete("http://41d4417b19ff.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
+                                    axios.delete("http://2575fb73fac4.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);

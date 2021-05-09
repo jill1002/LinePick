@@ -17,7 +17,7 @@ export default function ProductInfo({ route, navigation }) {
     const [productStyles, setProductStyles] = useState([]);
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://2362e252c931.ngrok.io/ProductsInfo/' + productName);
+            const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
             setProductStyles(result.data);
         }
         fetchData();

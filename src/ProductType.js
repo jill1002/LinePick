@@ -18,7 +18,7 @@ export default function ProductType({ route }) {
         const [types, setTypes] = useState([]); //tab的type
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2362e252c931.ngrok.io/Type');
+                const result = await axios.get('http://2575fb73fac4.ngrok.io/Type');
                 setTypes(result.data);
             }
             fetchData();
@@ -27,7 +27,8 @@ export default function ProductType({ route }) {
         const [products, setProducts] = useState([]); //分類後的商品資訊
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2362e252c931.ngrok.io/SecondType/' + typeId);
+                const result = await axios.get('http://2575fb73fac4.ngrok.io/SecondType/' + typeId);
+                console.log(result.data);
                 setProducts(result.data);
             }
             fetchData();
@@ -76,14 +77,14 @@ export default function ProductType({ route }) {
                     <Header>
                         <Body style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                             {types.map((type) => (
-                                <TouchableOpacity><Text style={{ color: '#8C7599', fontWeight: 'bold' }}>{type.typeName}</Text></TouchableOpacity>
+                                <TouchableOpacity onPress={() => navigation.navigate("ProductType",{ typeId: type.typeId})}><Text style={{ color: '#8C7599', fontWeight: 'bold' }}>{type.typeName}</Text></TouchableOpacity>
                             ))}
                         </Body>
                     </Header>
 
 
-                    {products.map((post) => (
-                        <View>
+                    {products.map((post,key) => (
+                        <View key={post.productId}>
                             <Card style={{ margin: 15, marginLeft: 40, marginRight: 40, borderColor: '#b5c4b1', borderWidth: 3 }}>
                                 <CardImage
                                     source={{ uri: post.productPhoto }}

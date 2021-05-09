@@ -13,24 +13,25 @@ import { Avatar} from 'react-native-elements';
 export default function SellerSet({ navigation }) {
     const [seller, setSeller] = useState([]);
     const id = 1;
+    const [types, setTypes] = useState([]); //賣場商品分類
+    const [change, setChange] = useState(0);
 
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://2362e252c931.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://2575fb73fac4.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
+            const type = await axios.get('http://2575fb73fac4.ngrok.io/Type');
+            setTypes(type.data);
         }
         fetchData();
-    }, []);
+    }, [change]);
 
-    const [types, setTypes] = useState([]); //賣場商品分類
-    useEffect(() => {
-        async function fetchData() {
-            const result = await axios.get('http://2362e252c931.ngrok.io/Type');
-            setTypes(result.data);
+        function backHere(){
+            console.log("backHere");
+            alert('更新成功!')
+            setChange((change)=>change+1);
         }
-        fetchData();
-    }, []);
 
     function setPage() {
         return (
@@ -72,7 +73,7 @@ export default function SellerSet({ navigation }) {
                 </Header>
                 <View style={{ padding: 10, marginBottom: 25 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-end', padding: 18, }}>
-                        <TouchableOpacity onPress={() => navigation.navigate("SellerSetEdit")}>
+                        <TouchableOpacity onPress={() => navigation.navigate("SellerSetEdit",{callback: backHere})}>
                             <Text style={{ fontSize: 18, textDecorationLine: 1, color: '#6b7f94', fontWeight: 'bold' }}>
                                 點我編輯<Icon name='ios-pencil' color='#6b7f94' size={18} />
                             </Text>
@@ -135,7 +136,7 @@ export default function SellerSet({ navigation }) {
                             </Text>
                         </View>
                         <Divider style={{ backgroundColor: '#b5c4b1', height: 2, marginBottom: 8 }} />
-                        <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'flex-start' }}>
+                        <View style={{ flexDirection: 'column', padding: 10, justifyContent: 'flex-start' }}>
                             <Text style={styles.baseText}>
                                 <Icon name='ios-information-circle' color='#6b7f94' size={20} />
                             賣場簡介:</Text>

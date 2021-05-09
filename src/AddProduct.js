@@ -38,7 +38,7 @@ export default function AddProduct() {
         const [types, setTypes] = useState([]); //賣場商品分類
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2362e252c931.ngrok.io/Type');
+                const result = await axios.get('http://2575fb73fac4.ngrok.io/Type');
                 setTypes(result.data);
                 //result.data.forEach((item, index)=>checked[index]=false);
             }

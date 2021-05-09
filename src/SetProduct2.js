@@ -17,42 +17,16 @@ export default function SetProduct2({ route, navigation }) {
         const [productStyles, setProductStyles] = useState([]);
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
             }
             fetchData();
         }, []);
 
-        function send() {
-            if (productStyles != [""]) {
-                try {
-                    // for (var i = 0; i < productStyles.length; i++) {
-                    //     console.log(productStyles[i].productStyle);
-                    //     const productEdit = {
-                    //         productId: productStyles[i].productId,
-                    //         productName: productStyles[i].productName,
-                    //         productDesc: productStyles[i].productDesc,
-                    //         productPrice: productStyles[i].productPrice,
-                    //         productStock: productStyles[i].productStock,
-                    //         productPhoto: productStyles[i].productPhoto,
-                    //         productStyle: productStyles[i].productStyle,
-                    //     };
-
-                    //     axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productEdit)
-                    //         .then(res => {
-                    //             console.log(res);
-                    //             console.log(res.data);
-                    //             props.hide();
-                    //         });
-                    // }
-                    navigation.navigate("我的商品");
-                } catch { }
-            }
-        }
-
         const [change, setChange] = useState(0);
         function backHere(){
             console.log("backHere");
+            alert('更新成功!')
             setChange((change)=>change+1);
         }
 
@@ -110,7 +84,7 @@ export default function SetProduct2({ route, navigation }) {
                             </Card>
                         </View>
                     ))}
-                    <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', padding: 20, marginBottom: 30, }} onPress={send}>
+                    <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', padding: 20, marginBottom: 30, }} onPress={() => navigation.navigate("我的商品")}>
                         <Icon name='ios-checkmark-done-sharp' color='#6b7f94' size={25} />
                         <Text style={{ color: "#6b7f94", fontWeight: "bold", fontSize: 23, textDecorationStyle: 'double', textDecorationLine: 1 }}>完成</Text>
                     </TouchableOpacity>

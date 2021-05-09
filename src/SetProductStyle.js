@@ -13,15 +13,16 @@ import axios from 'axios';
 export default function SetProductStyle({ route, navigation }) {
     const productStyle = route.params.productStyle;
     const [styleInfo, setStyleInfo] = useState([]);
+    const [selectedImage, setSelectedImage] = useState("");
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://41d4417b19ff.ngrok.io/StylesInfo/' + productStyle);
+            const result = await axios.get('http://2575fb73fac4.ngrok.io/StylesInfo/' + productStyle);
             setStyleInfo(result.data);
+            setSelectedImage(result.data.productPhoto);
         }
         fetchData();
     }, []);
 
-    const [selectedImage, setSelectedImage] = useState(styleInfo.productPhoto );
     if (!firebase.apps.length) {
         firebase.initializeApp(FirebaseCore.DEFAULT_WEB_APP_OPTIONS);
       }
@@ -69,13 +70,12 @@ export default function SetProductStyle({ route, navigation }) {
                     productStyle: styleInfo.productStyle,
                 };
 
-                axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productStyleInfo)
+                axios.put("http://2575fb73fac4.ngrok.io/ProductEdit/", productStyleInfo)
                     .then(res => {
                         console.log(res);
                         console.log(res.data);
-                        props.hide();
                     });
-                route.params.callback({styleInfo: styleInfo});
+                route.params.callback();
                 navigation.goBack();
             } catch { }
         }
