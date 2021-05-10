@@ -26,7 +26,16 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyAyc7Nxq08XdoV-R3KLmGb4s2W_4sVtkU8",
+          "authDomain": "line-pick.firebaseapp.com",
+          "projectId": "line-pick",
+          "storageBucket": "line-pick.appspot.com",
+          "messagingSenderId": "21250060887",
+          "appId": "1:21250060887:web:c3931aa33cafd940816912"
+        }
+      }
     }
   }
 }

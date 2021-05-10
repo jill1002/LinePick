@@ -33,14 +33,13 @@ const styles = StyleSheet.create({
   baseText: {
     color: '#6b7f94',
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 20,
   },
   baseText1: {
-    color: '#6b7f94',
-    fontWeight: 'bold',
+    color: '#8C7599',
+    fontWeight: "bold",
     fontSize: 20,
-    flex: 1
-    //#c5b8a5
+    marginLeft:10
   },
   linePick: {
     color: '#77773c',
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     backgroundColor: '#6b7f94',
-    borderRadius: 9,
+    borderRadius: 20,
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center'
@@ -232,10 +231,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     borderWidth: 1,
     borderColor: '#8C7599',
-    height: 130,
+    height: 110,
     borderRadius: 10,
     margin: 15,
-    //marginLeft: 20,
+    marginLeft: 20,
   },
   userAcount: {
     flexDirection: 'row',
@@ -266,16 +265,26 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
+    marginTop: 8,
     borderColor: '#b5c4b1',
-    borderWidth: 6,
+    borderWidth: 3,
     borderRadius: 30,
+    padding:15,
+  },
+  marketBorder2: {
+    flexDirection: 'column',
+    margin: 30,
+    borderColor: '#b5c4b1',
+    borderWidth: 4,
+    borderRadius: 30,
+    padding:5,
   },
   ordercard1: {
     padding: 10,
     margin: 10,
     backgroundColor: "#c8d3c5"
-  },CardContentText:{
+  },
+  CardContentText:{
     color: "#6b7f94", 
     fontSize: 15, 
     alignContent: 'flex-end' 
