@@ -18,7 +18,7 @@ export default function ProductHome() {
         const [products, setProducts] = useState([]); //商品資訊
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2575fb73fac4.ngrok.io/Home');
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/Home');
                 setProducts(result.data);
             }
             fetchData();
@@ -27,7 +27,7 @@ export default function ProductHome() {
         const [types, setTypes] = useState([]); //賣場商品分類
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2575fb73fac4.ngrok.io/Type');
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/Type');
                 setTypes(result.data);
             }
             fetchData();
@@ -80,8 +80,8 @@ export default function ProductHome() {
                     </Header>
 
 
-                    {products.map((post) => (
-                        <View>
+                    {products.map((post, index) => (
+                        <View key={index}>
                             <Card style={{ margin: 15, marginLeft: 40, marginRight: 40, borderColor: '#b5c4b1', borderWidth: 3 }}>
                                 <CardImage
                                     source={{ uri: post.productPhoto }}
@@ -89,7 +89,7 @@ export default function ProductHome() {
                                     singleLineTitle={true}
                                     //textStyle={{ color: "#6b7f94", fontSize: 20, fontWeight: "bold" }}
                                     resizeMode="stretch"
-                                    style={{ height: 230 }}
+                                    style={{ height: 260 }}
                                 />
                                 <CardContent>
                                     <View style={{flexDirection:'row',justifyContent:'center', marginBottom:8}}>
@@ -104,7 +104,7 @@ export default function ProductHome() {
                                     style={{ backgroundColor: "#c8d3c5", justifyContent: 'space-around' }}
                                 >
                                     <CardButton
-                                        onPress={() => navigation.navigate("ProductInfo", { productName: post.productName, productPhoto: post.productPhoto, productDesc: post.productDesc })}
+                                        onPress={() => navigation.navigate("ProductInfo", {productName: post.productName, productPhoto: post.productPhoto, productDesc: post.productDesc })}
                                         title="商品詳細資訊"
                                         color="#8C7599"
                                         titleStyle={{ fontSize: 16, fontWeight: "bold" }}

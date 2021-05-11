@@ -15,51 +15,48 @@ import axios from 'axios';
 export default function SetProduct({ route }) {
     const productName = route.params.productName;
     const productDesc = route.params.productDesc;
-    const [productNameEnd, setproductName] = useState(productName);
-    const [productDescEnd, setproductDesc] = useState(productDesc);
-    const [types, setTypes] = useState([]); //賣場商品分類
-    const [productStyles, setProductStyles] = useState([]);
-    const [checked, setChecked] = useState([]); //checkbox
-
-    useEffect(() => {
-        async function fetchData() {
-            const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
-            setProductStyles(result.data);
-            const type = await axios.get('http://2575fb73fac4.ngrok.io/Type');
-            setTypes(type.data);
-            type.data.forEach((item, index)=>checked[index]=false);
-        }
-        fetchData();
-    }, []);
 
     function AddProduct1({ navigation }) {
         const [types, setTypes] = useState([]); //賣場商品分類
 
         const [productStyles, setProductStyles] = useState([]);
         const [oneProduct, setOneProduct] = useState("");
+        const [productTypeSelect, setProductTypeSelect] = useState("");
 
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
-                const one = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
+                const one = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
                 setOneProduct(one.data[0]);
-                // console.log("one product:");
-                // console.log(one.data);
-                const type = await axios.get('http://2575fb73fac4.ngrok.io/Type');
+                // const productType = await axios.get('http://41d4417b19ff.ngrok.io/ProductType/' + productStyles[0].productId);
+                // setProductType(productType.data);
+                const type = await axios.get('http://41d4417b19ff.ngrok.io/Type');
                 setTypes(type.data);
                 type.data.forEach((item, index) => checked[index] = false);
+                const productTypes = await axios.get('http://41d4417b19ff.ngrok.io/productTypeIdByName/' + productName);
+                console.log("check!");
+                console.log(productTypes.data);
+                setProductTypeSelect(productTypes.data);
             }
             fetchData();
         }, []);
 
+        //const [productType, setProductType] = useState("");
+        const [productTypeId, setProductTypeId] = useState(1);
         const [checked, setChecked] = useState([true, false, false]); //checkbox
         const chooseType = (index, checked) => {
+            console.log("value");
+            console.log(types[index].typeName);
             for (var i = 0; i < checked.length; i++) {
                 checked[i] = false;
                 checked[index] = true;
             }
             setChecked([...checked]);
+            //setProductType(types[index].typeName);
+            console.log("in choosrType after:");
+            console.log(types[index].typeId);
+            setProductTypeId(types[index].typeId);
         }
 
         var [typeChips, setTypeChips] = useState([]);  // productStyle chip
@@ -70,11 +67,11 @@ export default function SetProduct({ route }) {
         };
 
         function edit() {
-
             if (productStyles != [""]) {
                 try {
                     for (var i = 0; i < productStyles.length; i++) {
                         console.log(productStyles[i].productStyle);
+                        var product_id = productStyles[i].productId;
                         const productNameDesc = {
                             productId: productStyles[i].productId,
                             productName: oneProduct.productName,
@@ -84,16 +81,28 @@ export default function SetProduct({ route }) {
                             productPhoto: productStyles[i].productPhoto,
                             productStyle: productStyles[i].productStyle,
                         };
-
-                        axios.put("http://2575fb73fac4.ngrok.io/ProductEdit/", productNameDesc)
+                        axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productNameDesc)
                             .then(res => {
                                 console.log(res);
                                 console.log(res.data);
-                                props.hide();
+                            });
+                        }
+                        for (var i = 0; i < productStyles.length; i++) {
+                        const productTypeUpdate = {
+                            productTypeId: productTypeSelect[i].productTypeId,
+                            productId: productStyles[i].productId,
+                            typeId: productTypeId,
+                        }
+                        console.log("go to productTypeUpdate");
+                        axios.put("http://41d4417b19ff.ngrok.io/ProductTypeEdit/", productTypeUpdate)
+                            .then(res => {
+                                console.log("in productTypeUpdate");
+                                console.log(res);
+                                console.log(res.data);
                             });
                     }
 
-                    console.log(typeChips.map((post) => ("newChips" + post))); 
+                    console.log(typeChips.map((post) => ("newChips" + post)));
                     for (var i = 0; i < typeChips.length; i++) { //找出新增的chip
                         if (i == typeChips.length - 1) {
                             let typeChipsStr = typeChips[i].join();
@@ -124,12 +133,21 @@ export default function SetProduct({ route }) {
                                         productDesc: "" + oneProduct.productDesc,
                                         productStyle: "" + styleChips[j],
                                     };
-                                    axios.post("http://2575fb73fac4.ngrok.io/ProductAdd/", newStyles)
+                                    axios.post("http://41d4417b19ff.ngrok.io/ProductAddPost/", newStyles)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);
-                                            props.update();
+                                            const productType = {
+                                                productId: res.data,
+                                                typeId: productTypeId
+                                            }
+                                            axios.post("http://41d4417b19ff.ngrok.io/ProductTypeAddPost/", productType)
+                                                .then(res => {
+                                                    console.log(res);
+                                                    console.log(res.data);
+                                                });
                                         });
+
                                 }
                             };
                         };
@@ -144,7 +162,7 @@ export default function SetProduct({ route }) {
                                     // console.log("i:" + productStyles[i].productStyle);
                                     // console.log("j:" + typeChips[j]);
                                     console.log(productStyles[i].productStyle + "delete");
-                                    axios.delete("http://2575fb73fac4.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
+                                    axios.delete("http://41d4417b19ff.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);
@@ -153,7 +171,7 @@ export default function SetProduct({ route }) {
                             };
                         };
                     }
-                    navigation.navigate("SetProduct2",{ productName: productName});
+                    navigation.navigate("SetProduct2", { productName: productName });
                 } catch { }
             }
         }

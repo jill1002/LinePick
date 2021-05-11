@@ -19,9 +19,9 @@ export default function SellerSet({ navigation }) {
     useEffect(() => {
         async function fetchData() {
             console.log(id);
-            const result = await axios.get('http://2575fb73fac4.ngrok.io/SellerSet/' + id);
+            const result = await axios.get('http://41d4417b19ff.ngrok.io/SellerSet/' + id);
             setSeller(result.data);
-            const type = await axios.get('http://2575fb73fac4.ngrok.io/Type');
+            const type = await axios.get('http://41d4417b19ff.ngrok.io/Type');
             setTypes(type.data);
         }
         fetchData();
@@ -29,8 +29,8 @@ export default function SellerSet({ navigation }) {
 
         function backHere(){
             console.log("backHere");
-            alert('更新成功!')
             setChange((change)=>change+1);
+            alert('更新成功!')
         }
 
     function setPage() {

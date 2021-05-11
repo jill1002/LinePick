@@ -11,7 +11,7 @@ import * as firebase from 'firebase';
 import * as FirebaseCore from 'expo-firebase-core';
 
 export default function AddProduct2({ navigation, route }) {
-    
+
     const productName1 = route.params.productName;
     const productDesc1 = route.params.productDesc;
     const productType1 = route.params.productType;
@@ -21,76 +21,76 @@ export default function AddProduct2({ navigation, route }) {
     const [productStock1, setProductStock] = useState("");
     const [selectedImage, setSelectedImage] = useState("https://firebasestorage.googleapis.com/v0/b/line-pick.appspot.com/o/5F5508A1-7A05-4441-B81F-DC80F1946DB1.jpg?alt=media&token=c05e63c6-4b3a-47ff-81ca-7f7303042cb2");
 
-  if (!firebase.apps.length) {
-    firebase.initializeApp(FirebaseCore.DEFAULT_WEB_APP_OPTIONS);
-  }
-  console.log("before uploadImage");
-  let uploadImage = async(uri) => {
-    console.log("in uploadImage");
-    const filename = uri.split('/').pop();
-    const response = await fetch(uri);
-    const blob = await response.blob();
-    const ref = firebase.storage().ref().child(filename);
-    const snapshot = await ref.put(blob);
-    var url = await snapshot.ref.getDownloadURL();
-    console.log("url:"+url);
-    setSelectedImage(url);
-    console.log("檔案已上傳");
-  }
-  let openImagePickerAsync = async () => {
-    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-        alert("Permission to access camera roll is required!");
-        return;
-      }
-      let pickerResult = await ImagePicker.launchImageLibraryAsync();
-      if (!pickerResult.cancelled) { 
-        console.log("in openImagePickerAsync");
-        console.log(pickerResult.uri);
-        console.log("in openImagePickerAsync after");
-        //setSelectedImage({ localUri: pickerResult.uri });
-        console.log("next go to uploadImage");
-        uploadImage(pickerResult.uri);
-      }
-  }
-  function add() {
-    console.log("in add");
-    console.log(productName1);
-    console.log(productDesc1);
-    console.log(productType1);
-    console.log(productStyle1);
-    console.log(productType1);
-    console.log(productStyle1);
-    console.log(productTypeId1);
-    console.log("beforeProduct");
-    console.log(selectedImage.url);
-    const product = {
-        productName: ""+productName1,
-        productDesc: ""+productDesc1,
-        productPhoto:selectedImage,
-        productPrice:productPrice1,
-        productStock:productStock1,
-        productStyle:""+productStyle1,
+    if (!firebase.apps.length) {
+        firebase.initializeApp(FirebaseCore.DEFAULT_WEB_APP_OPTIONS);
     }
-    console.log("in add after");
-    axios.put("http://2575fb73fac4.ngrok.io/ProductAdd/", product)
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-            const productType = {
-                productId: res.data,
-                typeId: productTypeId1
-            }
-            axios.put("http://2575fb73fac4.ngrok.io/ProductTypeAdd/", productType)
+    console.log("before uploadImage");
+    let uploadImage = async (uri) => {
+        console.log("in uploadImage");
+        const filename = uri.split('/').pop();
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        const ref = firebase.storage().ref().child(filename);
+        const snapshot = await ref.put(blob);
+        var url = await snapshot.ref.getDownloadURL();
+        console.log("url:" + url);
+        setSelectedImage(url);
+        console.log("檔案已上傳");
+    }
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            alert("Permission to access camera roll is required!");
+            return;
+        }
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        if (!pickerResult.cancelled) {
+            console.log("in openImagePickerAsync");
+            console.log(pickerResult.uri);
+            console.log("in openImagePickerAsync after");
+            //setSelectedImage({ localUri: pickerResult.uri });
+            console.log("next go to uploadImage");
+            uploadImage(pickerResult.uri);
+        }
+    }
+    function add() {
+        console.log("in add");
+        console.log(productName1);
+        console.log(productDesc1);
+        console.log(productType1);
+        console.log(productStyle1);
+        console.log(productType1);
+        console.log(productStyle1);
+        console.log(productTypeId1);
+        console.log("beforeProduct");
+        console.log(selectedImage.url);
+        const product = {
+            productName: "" + productName1,
+            productDesc: "" + productDesc1,
+            productPhoto: selectedImage,
+            productPrice: productPrice1,
+            productStock: productStock1,
+            productStyle: "" + productStyle1,
+        }
+        console.log("in add after");
+        axios.put("http://41d4417b19ff.ngrok.io/ProductAdd/", product)
             .then(res => {
-            console.log(res);
-            console.log(res.data);
-        });  
-});
-navigation.goBack();
-navigation.navigate("我的商品");
-}
+                console.log(res);
+                console.log(res.data);
+                const productType = {
+                    productId: res.data,
+                    typeId: productTypeId1
+                }
+                axios.put("http://41d4417b19ff.ngrok.io/ProductTypeAdd/", productType)
+                    .then(res => {
+                        console.log(res);
+                        console.log(res.data);
+                    });
+            });
+        navigation.goBack();
+        navigation.navigate("我的商品");
+    }
     return (
         <View style={[styles.container]}>
             <ScrollView style={{ backgroundColor: '#f4f3eb' }}>
@@ -126,9 +126,9 @@ navigation.navigate("我的商品");
                                     }]}>
                                         <Image
                                             style={{ width: "200%", height: "200%", bottom: 25, alignSelf: 'center' }}
-                                            source={{ uri:selectedImage}}
+                                            source={{ uri: selectedImage }}
                                         />
-                                    </View>  
+                                    </View>
                                 </View>
                             </View>
 
@@ -143,7 +143,7 @@ navigation.navigate("我的商品");
                                             placeholderTextColor="#8C7599"
                                             value={productPrice1}
                                             onChangeText={text => setProductPrice(text)}
-                                            style={{padding: 10 }}
+                                            style={{ padding: 10 }}
                                         />
                                     </View>
                                 </View>
@@ -165,7 +165,7 @@ navigation.navigate("我的商品");
                         </CardContent>
                     </Card>
 
-                    <TouchableOpacity style={[styles.button, { width: 100, height: 43,flexDirection:'row'}]} onPress={add}>
+                    <TouchableOpacity style={[styles.button, { width: 100, height: 43, flexDirection: 'row' }]} onPress={add}>
                         <Icon name='ios-checkmark-done-circle' color='#FFFFFF' size={18} />
                         <Text style={{ color: '#ffff', fontWeight: 'bold', fontSize: 16 }}>上架</Text>
                     </TouchableOpacity>

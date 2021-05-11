@@ -21,10 +21,11 @@ export default function SignUp({ navigation }) {
     
         }
     
-        axios.post("http://81728945fd9d.ngrok.io/SellerSignUp/", SellerInfo)
+        axios.post("http://41d4417b19ff.ngrok.io/SellerSignUp/", SellerInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);
+            alert('註冊成功!')
             navigation.goBack();
           }); 
       }
@@ -94,6 +95,11 @@ export default function SignUp({ navigation }) {
                     <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginTop: 25 }}>
                         <TouchableOpacity style={[styles.button, { width: "40%" }] } onPress={add}>
                             <Text style={{color: '#ffff', fontWeight:'bold', fontSize: 15}}>註冊</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center'}}>
+                        <TouchableOpacity>
+                            <Button title="已有帳號? 點我登入" color="#6b7f94" onPress={() => navigation.navigate('登入')} />
                         </TouchableOpacity>
                     </View>
                 </View>

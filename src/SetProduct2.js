@@ -12,22 +12,27 @@ import axios from 'axios';
 
 export default function SetProduct2({ route, navigation }) {
     const productName = route.params.productName;
+    
+    function finish() {
+        navigation.goBack();
+        navigation.navigate("我的商品");
+    }
 
     function checkProduct() {
         const [productStyles, setProductStyles] = useState([]);
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
             }
             fetchData();
         }, []);
 
         const [change, setChange] = useState(0);
-        function backHere(){
+        function backHere() {
             console.log("backHere");
             alert('更新成功!')
-            setChange((change)=>change+1);
+            setChange((change) => change + 1);
         }
 
         return (
@@ -45,7 +50,7 @@ export default function SetProduct2({ route, navigation }) {
                                     source={{ uri: post.productPhoto }}
                                     singleLineTitle={true}
                                     resizeMode="stretch"
-                                    style={{ height: 230 }}
+                                    style={{ height: 260 }}
                                 />
                                 <CardContent>
                                     <View style={{ margin: 5, flexDirection: 'row', justifyContent: 'center' }}>
@@ -75,7 +80,7 @@ export default function SetProduct2({ route, navigation }) {
                                     style={{ backgroundColor: "#c8d3c5", justifyContent: 'center' }}
                                 >
                                     <CardButton
-                                        onPress={() => navigation.navigate("SetProductStyle", {callback: backHere, productStyle: post.productStyle})}
+                                        onPress={() => navigation.navigate("SetProductStyle", { callback: backHere, productStyle: post.productStyle })}
                                         title="修改圖片、價格與庫存"
                                         color="#8C7599"
                                         titleStyle={{ fontSize: 16, fontWeight: "bold" }}
@@ -84,9 +89,9 @@ export default function SetProduct2({ route, navigation }) {
                             </Card>
                         </View>
                     ))}
-                    <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', padding: 20, marginBottom: 30, }} onPress={() => navigation.navigate("我的商品")}>
-                        <Icon name='ios-checkmark-done-sharp' color='#6b7f94' size={25} />
-                        <Text style={{ color: "#6b7f94", fontWeight: "bold", fontSize: 23, textDecorationStyle: 'double', textDecorationLine: 1 }}>完成</Text>
+                    <TouchableOpacity style={[styles.button, { width: 100, height: 43, flexDirection: 'row' }]} onPress={finish}>
+                        <Icon name='ios-checkmark-done-circle' color='#FFFFFF' size={18} />
+                        <Text style={{ color: '#ffff', fontWeight: 'bold', fontSize: 16 }}>完成</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>

@@ -27,7 +27,7 @@ export default function ServiceSet({ navigation, route,value}) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const SellerQA = await axios.get('http://5aa27558545e.ngrok.io/Reply');
+        const SellerQA = await axios.get('http://41d4417b19ff.ngrok.io/Reply');
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setReplys(SellerQA.data);
           

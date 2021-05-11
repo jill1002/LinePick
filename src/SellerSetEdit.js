@@ -24,10 +24,10 @@ export default function SellerSetEdit({ navigation ,route}) {
   useEffect(() => {
     async function fetchData() {
       console.log(id);
-      const type = await axios.get("http://2575fb73fac4.ngrok.io/Type");
+      const type = await axios.get("http://41d4417b19ff.ngrok.io/Type");
       setTypes(type.data);
       const result = await axios.get(
-        "http://2575fb73fac4.ngrok.io/SellerSet/" + id
+        "http://41d4417b19ff.ngrok.io/SellerSet/" + id
       );
       setSeller(result.data);
     }
@@ -82,7 +82,7 @@ export default function SellerSetEdit({ navigation ,route}) {
                   sellerId: 1,
                 };
                 axios
-                  .post("http://2575fb73fac4.ngrok.io/TypeAdd/", newTypes)
+                  .post("http://41d4417b19ff.ngrok.io/TypeAdd/", newTypes)
                   .then((res) => {
                     console.log(res);
                     console.log(res.data);
@@ -108,7 +108,7 @@ export default function SellerSetEdit({ navigation ,route}) {
                 console.log(types[i].typeName + "delete");
                 axios
                   .delete(
-                    "http://2575fb73fac4.ngrok.io/TypeDelete/" +
+                    "http://41d4417b19ff.ngrok.io/TypeDelete/" +
                       types[i].typeName
                   )
                   .then((res) => {
@@ -131,7 +131,7 @@ export default function SellerSetEdit({ navigation ,route}) {
         };
         //console.log(customer);
         axios
-          .put("http://2575fb73fac4.ngrok.io/SellerEdit/", Seller)
+          .put("http://41d4417b19ff.ngrok.io/SellerEdit/", Seller)
           .then((res) => {
             console.log(res);
             //console.log(res.data);

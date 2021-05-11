@@ -24,14 +24,14 @@ export default function SignIn({ navigation }) {
 function login(){
     console.log("account:"+account);
     console.log("user_password:"+user_password);
-    const result = axios.get('http://81728945fd9d.ngrok.io/SellerLogIn/'+account+'/'+user_password)
+    const result = axios.get('http://41d4417b19ff.ngrok.io/SellerLogIn/'+account+'/'+user_password)
     .then(res => {
         console.log(res);
         console.log(res.data);
         var info = res.data;
         if(info!=undefined){
             console.log("in true");
-            navigation.navigate("賴皮客服")
+            navigation.navigate("我的商品")
         }else{
             console.log("in false");
             alert("登入失敗")
@@ -80,7 +80,7 @@ function login(){
                     </View>
                     <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', marginTop: 10 }}>
                         <TouchableOpacity>
-                            <Button title="還沒有帳戶? 點我註冊" color="#6b7f94" onPress={() => navigation.navigate('註冊')} />
+                            <Button title="還沒有帳號? 點我註冊" color="#6b7f94" onPress={() => navigation.navigate('註冊')} />
                         </TouchableOpacity>
                     </View>
                 </View>

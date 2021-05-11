@@ -17,7 +17,7 @@ useEffect(() => {
   async function fetchData () {
   console.log("in fetchData");
    
-  const orderListCard = await axios.get('http://5aa27558545e.ngrok.io/ReplyContent/'+replyId);
+  const orderListCard = await axios.get('http://41d4417b19ff.ngrok.io/ReplyContent/'+replyId);
     //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
     setReplys(orderListCard.data);
 
@@ -38,7 +38,7 @@ useEffect(() => {
         
     }
 
-    axios.put("http://5aa27558545e.ngrok.io/ServiceEdit/", QAEditInfo)
+    axios.put("http://41d4417b19ff.ngrok.io/ServiceEdit/", QAEditInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);

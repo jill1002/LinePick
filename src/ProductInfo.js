@@ -17,11 +17,22 @@ export default function ProductInfo({ route, navigation }) {
     const [productStyles, setProductStyles] = useState([]);
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://2575fb73fac4.ngrok.io/ProductsInfo/' + productName);
+            const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
             setProductStyles(result.data);
         }
         fetchData();
     }, []);
+
+    function deleteProduct(){
+        axios.delete("http://41d4417b19ff.ngrok.io/ProductDelete/" + productName)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            });
+        alert('刪除成功!');
+        route.params.callback();
+        navigation.goBack();
+    }
 
     return (
         <View>
@@ -32,7 +43,7 @@ export default function ProductInfo({ route, navigation }) {
                     <Text style={styles.baseText}>商品詳細資訊</Text>
                 </Appbar.Header>
                 <View style={{ padding: 15 }}>
-                    <View style={{ borderColor: "#c8d3c5", borderWidth: 2.5, borderRadius: 10, margin: 10, padding:5 }}>
+                    <View style={{ borderColor: "#c8d3c5", borderWidth: 2.5, borderRadius: 10, margin: 10, padding: 5 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingBottom: 5, margin: 10 }}>
                             <Text style={{ fontSize: 23, color: '#8C7599', fontWeight: 'bold' }}>{productName}</Text>
                         </View>
@@ -41,8 +52,8 @@ export default function ProductInfo({ route, navigation }) {
                             <Text style={{ fontSize: 15, color: '#8C7599' }}>{productDesc}</Text>
                         </View>
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 18, marginRight: 15, marginLeft: 15, marginTop:8 }}>
-                        <TouchableOpacity onPress={() => navigation.navigate("SetProduct", { productName: productName, productDesc: productDesc })}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 18, marginRight: 15, marginLeft: 15, marginTop: 8 }}>
+                        <TouchableOpacity onPress={deleteProduct}>
                             <Text style={{ fontSize: 18, textDecorationLine: 1, color: '#6b7f94', fontWeight: 'bold' }}>
                                 <Icon name='ios-trash-bin' color='#6b7f94' size={18} />下架商品
                             </Text>
@@ -68,9 +79,9 @@ export default function ProductInfo({ route, navigation }) {
                                     <Text style={{ fontSize: 20, color: '#6b7f94', fontWeight: 'bold' }}>-{post.productStyle}-</Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                                    <Text style={{ fontSize: 17, color:"#8C7599"}}>
+                                    <Text style={{ fontSize: 17, color: "#8C7599" }}>
                                         <Icon name='ios-wallet' color='#8C7599' size={18} />價格:{post.productPrice}</Text>
-                                    <Text style={{ fontSize: 17, color:"#8C7599"}}>
+                                    <Text style={{ fontSize: 17, color: "#8C7599" }}>
                                         <Icon name='ios-file-tray' color='#8C7599' size={18} />庫存:{post.productStock}</Text>
                                 </View>
                             </CardContent>
