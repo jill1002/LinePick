@@ -122,17 +122,13 @@ export default function NotFinishOrder({ navigation, route }) {
                                             <Text style={[styles.CardContentText, { marginRight: 40 }]}>訂購日期: {orderlist.orderDate}</Text>
                                             <Text style={styles.CardContentText}>付款狀態: {orderlist.payStatus}</Text>
                                         </View>
-                                        <View style={{ flexDirection: 'row', marginTop: 20 }}>
-                                            <View style={{ justifyContent: "flex-start", marginLeft: 13 }}>
+                                        <View style={{ flexDirection: 'row',justifyContent: "space-around", marginTop: 20 }}>
                                                 <TouchableOpacity style={{ paddingLeft: 20, paddingRight: 20, flexDirection: "row", marginTop: 20 }} onPress={() => navigation.navigate('訂單詳細資訊', { orderlistId: orderlist.orderListId, orderStatus: orderlist.orderListStatus })}>
                                                     <Text style={{ color: '#8C7599', fontWeight: "bold", fontSize: 18, textDecorationLine: 1 }}><Icon name='ios-information-circle' color='#8C7599' size={18} />詳細資訊</Text>
                                                 </TouchableOpacity>
-                                            </View>
-                                            <View style={{ marginLeft: 50, justifyContent: "flex-end" }}>
                                                 <TouchableOpacity style={{ paddingLeft: 20, paddingRight: 20, flexDirection: "row", marginTop: 20, marginHorizontal: 20 }} onPress={() => changeStatus(index)}>
                                                     <Text style={{ color: '#8C7599', fontWeight: "bold", fontSize: 18, textDecorationLine: 1 }}><Icon name='ios-bus-outline' color='#8C7599' size={18} />出貨</Text>
                                                 </TouchableOpacity>
-                                            </View>
                                         </View>
                                     </CardContent>
                                 </Card>

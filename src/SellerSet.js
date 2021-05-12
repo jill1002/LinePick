@@ -18,11 +18,15 @@ export default function SellerSet({ navigation }) {
 
     useEffect(() => {
         async function fetchData() {
+            console.log("SellerSet fetchData 1");
             console.log(id);
             const result = await axios.get('http://41d4417b19ff.ngrok.io/SellerSet/' + id);
+            console.log(result.data);
             setSeller(result.data);
             const type = await axios.get('http://41d4417b19ff.ngrok.io/Type');
             setTypes(type.data);
+            console.log("SellerSet fetchData 2");
+            console.log(type.data);
         }
         fetchData();
     }, [change]);

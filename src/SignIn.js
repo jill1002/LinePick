@@ -1,13 +1,15 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, Component,useContext } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image, Button } from 'react-native';
 import styles from '../styles.js'
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
+//import { AuthContext } from './AuthContext';
 
 export default function SignIn({ navigation }) {
     const [signUser, setSignUser] = useState("");
     const [account, setAccount] = useState("");
     const [user_password, setUserPassword] = useState("");
+    //const authContext = useContext(AuthContext);
 
     // useEffect(() => {
     //     async function fetchData () {
@@ -31,6 +33,7 @@ function login(){
         var info = res.data;
         if(info!=undefined){
             console.log("in true");
+            //authContext.setStatus(true);
             navigation.navigate("我的商品")
         }else{
             console.log("in false");

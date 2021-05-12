@@ -12,7 +12,7 @@ import axios from 'axios';
 
 export default function SetProduct2({ route, navigation }) {
     const productName = route.params.productName;
-    
+
     function finish() {
         navigation.goBack();
         navigation.navigate("我的商品");

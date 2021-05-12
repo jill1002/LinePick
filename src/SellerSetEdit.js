@@ -135,9 +135,12 @@ export default function SellerSetEdit({ navigation ,route}) {
           .then((res) => {
             console.log(res);
             //console.log(res.data);
+            route.params.callback();
+            navigation.goBack();
+    
           });
-        route.params.callback();
-        navigation.goBack();
+        //route.params.callback();
+        //navigation.goBack();
       } catch {}
     }
 

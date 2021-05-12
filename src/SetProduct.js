@@ -16,7 +16,7 @@ export default function SetProduct({ route }) {
     const productName = route.params.productName;
     const productDesc = route.params.productDesc;
 
-    function AddProduct1({ navigation }) {
+    function SetProduct1({ navigation }) {
         const [types, setTypes] = useState([]); //賣場商品分類
 
         const [productStyles, setProductStyles] = useState([]);
@@ -273,8 +273,8 @@ export default function SetProduct({ route }) {
     };
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator initialRouteName="AddProduct1" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="AddProduct1" component={AddProduct1} />
+        <Stack.Navigator initialRouteName="SetProduct1" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="SetProduct1" component={SetProduct1} />
             <Stack.Screen name="SetProduct2" component={SetProduct2} />
         </Stack.Navigator>
     );
