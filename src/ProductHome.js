@@ -13,25 +13,32 @@ import { Divider } from 'react-native-elements';
 import axios from 'axios';
 
 export default function ProductHome() {
-
+   
     function myProduct({ navigation }) {
+        const [change, setChange] = useState(0);
         const [products, setProducts] = useState([]); //商品資訊
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/Home');
+                const result = await axios.get('http://a8324ec7c82c.ngrok.io/Home');
                 setProducts(result.data);
             }
             fetchData();
-        }, []);
+        }, [change]);
 
         const [types, setTypes] = useState([]); //賣場商品分類
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/Type');
+                const result = await axios.get('http://a8324ec7c82c.ngrok.io/Type');
                 setTypes(result.data);
             }
             fetchData();
         }, []);
+
+        function backHere(){
+            console.log("backHere");
+            setChange((change)=>change+1);
+            alert('更新成功!')
+        }
 
         return (
             <View >
@@ -110,7 +117,7 @@ export default function ProductHome() {
                                         titleStyle={{ fontSize: 16, fontWeight: "bold" }}
                                     />
                                     <CardButton
-                                        onPress={() => navigation.navigate("SetProduct",{productName: post.productName, productPhoto: post.productPhoto, productDesc: post.productDesc})}
+                                        onPress={() => navigation.navigate("SetProduct",{callback: backHere,productName: post.productName, productPhoto: post.productPhoto, productDesc: post.productDesc})}
                                         title="修改商品"
                                         color="#8C7599"
                                         titleStyle={{ fontSize: 16, fontWeight: "bold" }}

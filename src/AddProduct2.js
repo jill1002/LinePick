@@ -74,7 +74,7 @@ export default function AddProduct2({ navigation, route }) {
             productStyle: "" + productStyle1,
         }
         console.log("in add after");
-        axios.put("http://41d4417b19ff.ngrok.io/ProductAdd/", product)
+        axios.put("http://a8324ec7c82c.ngrok.io/ProductAdd/", product)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -82,7 +82,7 @@ export default function AddProduct2({ navigation, route }) {
                     productId: res.data,
                     typeId: productTypeId1
                 }
-                axios.put("http://41d4417b19ff.ngrok.io/ProductTypeAdd/", productType)
+                axios.put("http://a8324ec7c82c.ngrok.io/ProductTypeAdd/", productType)
                     .then(res => {
                         console.log(res);
                         console.log(res.data);

@@ -26,7 +26,7 @@ export default function SignIn({ navigation }) {
 function login(){
     console.log("account:"+account);
     console.log("user_password:"+user_password);
-    const result = axios.get('http://41d4417b19ff.ngrok.io/SellerLogIn/'+account+'/'+user_password)
+    const result = axios.get('http://a8324ec7c82c.ngrok.io/SellerLogIn/'+account+'/'+user_password)
     .then(res => {
         console.log(res);
         console.log(res.data);

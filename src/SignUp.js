@@ -21,7 +21,7 @@ export default function SignUp({ navigation }) {
     
         }
     
-        axios.post("http://41d4417b19ff.ngrok.io/SellerSignUp/", SellerInfo)
+        axios.post("http://a8324ec7c82c.ngrok.io/SellerSignUp/", SellerInfo)
         .then(res => {
             console.log(res);
             console.log(res.data);

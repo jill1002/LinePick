@@ -17,20 +17,20 @@ export default function ProductInfo({ route, navigation }) {
     const [productStyles, setProductStyles] = useState([]);
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+            const result = await axios.get('http://a8324ec7c82c.ngrok.io/ProductsInfo/' + productName);
             setProductStyles(result.data);
         }
         fetchData();
     }, []);
 
     function deleteProduct(){
-        axios.delete("http://41d4417b19ff.ngrok.io/ProductDelete/" + productName)
+        axios.delete("http://a8324ec7c82c.ngrok.io/ProductDelete/" + productName)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
             });
         alert('刪除成功!');
-        route.params.callback();
+        //route.params.callback();
         navigation.goBack();
     }
 

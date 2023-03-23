@@ -22,7 +22,7 @@ export default function FinishOrder({ navigation, route }) {
         async function fetchData () {
         console.log("in fetchData");
         
-        const orderListCard = await axios.get('http://41d4417b19ff.ngrok.io/Orderlist/'+orderListStatus);
+        const orderListCard = await axios.get('http://a8324ec7c82c.ngrok.io/Orderlist/'+orderListStatus);
           //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
           setOrderlists(orderListCard.data);
              

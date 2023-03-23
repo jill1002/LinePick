@@ -18,7 +18,7 @@ export default function ProductType({ route }) {
         const [types, setTypes] = useState([]); //tab的type
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/Type');
+                const result = await axios.get('http://a8324ec7c82c.ngrok.io/Type');
                 setTypes(result.data);
             }
             fetchData();
@@ -27,7 +27,7 @@ export default function ProductType({ route }) {
         const [products, setProducts] = useState([]); //分類後的商品資訊
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/SecondType/' + typeId);
+                const result = await axios.get('http://a8324ec7c82c.ngrok.io/SecondType/' + typeId);
                 console.log(result.data);
                 setProducts(result.data);
             }

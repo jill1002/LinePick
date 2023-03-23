@@ -10,19 +10,14 @@ import { Divider } from 'react-native-elements';
 import SetProductStyle from './SetProductStyle';
 import axios from 'axios';
 
-export default function SetProduct2({ route, navigation }) {
+export default function SetProduct2({ navigation, route}) {
     const productName = route.params.productName;
 
-    function finish() {
-        navigation.goBack();
-        navigation.navigate("我的商品");
-    }
-
-    function checkProduct() {
+    function checkProduct({ navigation }) {
         const [productStyles, setProductStyles] = useState([]);
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://a8324ec7c82c.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
             }
             fetchData();
@@ -33,6 +28,13 @@ export default function SetProduct2({ route, navigation }) {
             console.log("backHere");
             alert('更新成功!')
             setChange((change) => change + 1);
+        }
+
+        function Setfinish() {
+            console.log("Setfinish");
+            alert("更新成功");
+            navigation.goBack();
+            navigation.navigate("我的商品");
         }
 
         return (
@@ -89,7 +91,7 @@ export default function SetProduct2({ route, navigation }) {
                             </Card>
                         </View>
                     ))}
-                    <TouchableOpacity style={[styles.button, { width: 100, height: 43, flexDirection: 'row' }]} onPress={finish}>
+                    <TouchableOpacity style={[styles.button, { width: 100, height: 43, flexDirection: 'row' }]} onPress={Setfinish}>
                         <Icon name='ios-checkmark-done-circle' color='#FFFFFF' size={18} />
                         <Text style={{ color: '#ffff', fontWeight: 'bold', fontSize: 16 }}>完成</Text>
                     </TouchableOpacity>

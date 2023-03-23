@@ -25,16 +25,16 @@ export default function SetProduct({ route }) {
 
         useEffect(() => {
             async function fetchData() {
-                const result = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                const result = await axios.get('http://a8324ec7c82c.ngrok.io/ProductsInfo/' + productName);
                 setProductStyles(result.data);
-                const one = await axios.get('http://41d4417b19ff.ngrok.io/ProductsInfo/' + productName);
+                const one = await axios.get('http://a8324ec7c82c.ngrok.io/ProductsInfo/' + productName);
                 setOneProduct(one.data[0]);
                 // const productType = await axios.get('http://41d4417b19ff.ngrok.io/ProductType/' + productStyles[0].productId);
                 // setProductType(productType.data);
-                const type = await axios.get('http://41d4417b19ff.ngrok.io/Type');
+                const type = await axios.get('http://a8324ec7c82c.ngrok.io/Type');
                 setTypes(type.data);
                 type.data.forEach((item, index) => checked[index] = false);
-                const productTypes = await axios.get('http://41d4417b19ff.ngrok.io/productTypeIdByName/' + productName);
+                const productTypes = await axios.get('http://a8324ec7c82c.ngrok.io/productTypeIdByName/' + productName);
                 console.log("check!");
                 console.log(productTypes.data);
                 setProductTypeSelect(productTypes.data);
@@ -81,7 +81,7 @@ export default function SetProduct({ route }) {
                             productPhoto: productStyles[i].productPhoto,
                             productStyle: productStyles[i].productStyle,
                         };
-                        axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productNameDesc)
+                        axios.put("http://a8324ec7c82c.ngrok.io/ProductEdit/", productNameDesc)
                             .then(res => {
                                 console.log(res);
                                 console.log(res.data);
@@ -94,7 +94,7 @@ export default function SetProduct({ route }) {
                             typeId: productTypeId,
                         }
                         console.log("go to productTypeUpdate");
-                        axios.put("http://41d4417b19ff.ngrok.io/ProductTypeEdit/", productTypeUpdate)
+                        axios.put("http://a8324ec7c82c.ngrok.io/ProductTypeEdit/", productTypeUpdate)
                             .then(res => {
                                 console.log("in productTypeUpdate");
                                 console.log(res);
@@ -133,7 +133,7 @@ export default function SetProduct({ route }) {
                                         productDesc: "" + oneProduct.productDesc,
                                         productStyle: "" + styleChips[j],
                                     };
-                                    axios.post("http://41d4417b19ff.ngrok.io/ProductAddPost/", newStyles)
+                                    axios.post("http://a8324ec7c82c.ngrok.io/ProductAddPost/", newStyles)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);
@@ -141,7 +141,7 @@ export default function SetProduct({ route }) {
                                                 productId: res.data,
                                                 typeId: productTypeId
                                             }
-                                            axios.post("http://41d4417b19ff.ngrok.io/ProductTypeAddPost/", productType)
+                                            axios.post("http://a8324ec7c82c.ngrok.io/ProductTypeAddPost/", productType)
                                                 .then(res => {
                                                     console.log(res);
                                                     console.log(res.data);
@@ -162,7 +162,7 @@ export default function SetProduct({ route }) {
                                     // console.log("i:" + productStyles[i].productStyle);
                                     // console.log("j:" + typeChips[j]);
                                     console.log(productStyles[i].productStyle + "delete");
-                                    axios.delete("http://41d4417b19ff.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
+                                    axios.delete("http://a8324ec7c82c.ngrok.io/ProductStyleDelete/" + productStyles[i].productStyle)
                                         .then(res => {
                                             console.log(res);
                                             console.log(res.data);

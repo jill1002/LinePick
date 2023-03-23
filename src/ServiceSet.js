@@ -22,7 +22,7 @@ export default function ServiceSet({ navigation, route, value }) {
     useEffect(() => {
         async function fetchData() {
             console.log("in fetchData");
-            const SellerQA = await axios.get('http://41d4417b19ff.ngrok.io/Reply');
+            const SellerQA = await axios.get('http://a8324ec7c82c.ngrok.io/Reply');
             //const result = await axios.get('http://localhost:8080/Orderlist/'+orderlistStatus);
             setReplys(SellerQA.data);
         }
@@ -30,26 +30,28 @@ export default function ServiceSet({ navigation, route, value }) {
     }, [modalVisible, change]);
 
     function hide() {
+        setChange((change) => change + 1);
         setModalVisible(false);
     }
 
     function update() {
+        setChange((change) => change + 1);
         setModalVisible(false);
     }
 
     function backHere() {
-        console.log("hi");
+        console.log("back");
         setChange((change) => change + 1);
     }
 
-    function deleteService(props){
-        axios.delete("http://41d4417b19ff.ngrok.io/ReplyDelete/" + props.reply_id)
+    function deleteService(props) {
+        axios.delete("http://a8324ec7c82c.ngrok.io/ReplyDelete/" + props.reply_id)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
             });
-        console.log("reply_id:"+props.reply_id);
-        setModalVisible(false);
+        console.log("reply_id:" + props.reply_id);
+        setChange((change) => change + 1);
         alert('刪除成功!');
     }
 
@@ -95,7 +97,7 @@ export default function ServiceSet({ navigation, route, value }) {
                     <View style={{ marginTop: 25 }}>
                         <View style={{ flex: 10 }}>
                             <TouchableOpacity buttonColor="#8696a7" style={{ flexDirection: "row", justifyContent: "flex-end", marginRight: 20 }} onPress={() => setModalVisible(true)} position="bottomRight">
-                                <Text style={{ fontSize: 20, color: "#8C7599", fontWeight: "bold" }}> <Icon name="ios-add-circle" size={20} style={{ color: "#8C7599" }} /> 新增</Text>
+                                <Text style={{ fontSize: 20, color: "#8C7599", fontWeight: "bold"}}> <Icon name="ios-create-outline" size={23} style={{ color: "#8C7599" }} /> 新增</Text>
                             </TouchableOpacity>
                             <Divider borderColor="#6b7f94" color="#6b7f94" orientation="center">
                                 填寫範例
@@ -105,9 +107,9 @@ export default function ServiceSet({ navigation, route, value }) {
                             <Card style={{ marginLeft: 10, marginRight: 10, backgroundColor: "#c8d3c5" }}>
                                 <CardContent style={{ padding: 10 }}>
                                     <View style={{ flexDirection: 'row', flexWrap: "wrap" }} >
-                                        <Text style={{ color: "#8C7599", fontSize: 15, fontWeight:'bold' }}><Info name='info' color="#8C7599" size={20} style={{ width: 30, marginLeft: 5 }} />
+                                        <Text style={{ color: "#8C7599", fontSize: 15, fontWeight: 'bold' }}><Info name='info' color="#8C7599" size={20} style={{ width: 30, marginLeft: 5 }} />
                                             {" "}設定賴皮客服讓聊天機器人</Text>
-                                        <Text style={{ color: "#8C7599", fontSize: 15, fontWeight:'bold' }}>{"      "}幫你自動回覆常見的問題吧～</Text>
+                                        <Text style={{ color: "#8C7599", fontSize: 15, fontWeight: 'bold' }}>{"      "}幫你自動回覆常見的問題吧～</Text>
                                     </View>
                                     <View>
                                         <Text style={{ color: "#6b7f94", fontSize: 16 }}>
@@ -148,7 +150,7 @@ export default function ServiceSet({ navigation, route, value }) {
                                         <TouchableOpacity style={{ paddingLeft: 20, paddingRight: 20, flexDirection: "row", marginTop: 20 }} onPress={() => navigation.navigate('客服編輯', { callback: backHere, replyid: reply.replyId })}>
                                             <Text style={{ color: '#8C7599', fontWeight: "bold", fontSize: 18 }}><Icon name='ios-pencil' color='#8C7599' size={18} />修改</Text>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={{ flexDirection: "row", marginTop: 20 }} onPress={()=>deleteService({reply_id :reply.replyId})}>
+                                        <TouchableOpacity style={{ flexDirection: "row", marginTop: 20 }} onPress={() => deleteService({ reply_id: reply.replyId })}>
                                             <Text style={{ color: '#8C7599', fontWeight: "bold", fontSize: 18 }}><Icon name='ios-trash-bin' color='#8C7599' size={18} />刪除</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -156,7 +158,7 @@ export default function ServiceSet({ navigation, route, value }) {
                             </Card>
                         ))}
                     </View>
-                    <QAadd modalVisible={modalVisible} hide={hide} />
+                    <QAadd modalVisible={modalVisible} hide={hide} update={update}/>
                 </ScrollView>
             </View >
         );

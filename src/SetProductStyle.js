@@ -16,7 +16,7 @@ export default function SetProductStyle({ route, navigation }) {
     const [selectedImage, setSelectedImage] = useState("");
     useEffect(() => {
         async function fetchData() {
-            const result = await axios.get('http://41d4417b19ff.ngrok.io/StylesInfo/' + productStyle);
+            const result = await axios.get('http://a8324ec7c82c.ngrok.io/StylesInfo/' + productStyle);
             setStyleInfo(result.data);
             setSelectedImage(result.data.productPhoto);
         }
@@ -70,7 +70,7 @@ export default function SetProductStyle({ route, navigation }) {
                     productStyle: styleInfo.productStyle,
                 };
 
-                axios.put("http://41d4417b19ff.ngrok.io/ProductEdit/", productStyleInfo)
+                axios.put("http://a8324ec7c82c.ngrok.io/ProductEdit/", productStyleInfo)
                     .then(res => {
                         console.log(res);
                         console.log(res.data);
